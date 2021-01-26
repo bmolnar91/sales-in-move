@@ -24,7 +24,7 @@ export const NavMenu = () => {
       >
         <Container>
           <NavbarBrand tag={Link} to="/">
-            SalesInMove
+            Sales in Move
           </NavbarBrand>
           <NavbarToggler onClick={toggleNavbar} className="mr-2" />
           <Collapse
@@ -34,8 +34,8 @@ export const NavMenu = () => {
           >
             <ul className="navbar-nav flex-grow">
               <NavItem>
-                <NavLink tag={Link} className="text-dark" to="/">
-                  Home
+                <NavLink tag={Link} className="text-dark" to="#">
+                  Bejelentkezés
                 </NavLink>
               </NavItem>
             </ul>

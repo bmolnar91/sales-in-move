@@ -1,12 +1,14 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.SpaServices.ReactDevelopmentServer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using SalesInMove.DatabaseRelated;
+using SalesInMove.Models;
 
 namespace SalesInMove
 {
@@ -28,6 +30,17 @@ namespace SalesInMove
             {
                 opt.UseNpgsql(Configuration.GetConnectionString("SalesmenConnection"));
             });
+
+            services.AddIdentity<Account, IdentityRole>(config =>
+            {
+                config.Password.RequiredLength = 4;
+                config.SignIn.RequireConfirmedAccount = false;
+                config.Password.RequireDigit = false;
+                config.Password.RequireUppercase = false;
+                config.Password.RequireNonAlphanumeric = false;
+
+            })
+                .AddEntityFrameworkStores<SalesmenDbContext>();
 
             // In production, the React files will be served from this directory
             services.AddSpaStaticFiles(configuration =>
@@ -55,6 +68,8 @@ namespace SalesInMove
             app.UseSpaStaticFiles();
 
             app.UseRouting();
+
+            app.UseAuthentication();
 
             app.UseEndpoints(endpoints =>
             {

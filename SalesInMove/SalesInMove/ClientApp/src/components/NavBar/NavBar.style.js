@@ -3,13 +3,14 @@ import { Link } from "react-router-dom";
 
 export const NavContainer = styled.div`
   display: flex;
-  justify-content: flex-end;
+  flex-direction: column;
 `;
 
 export const NavList = styled.ul`
   border-bottom: 0.25rem solid ${({ theme }) => theme.colors.blue[100]};
 
-  display: inline-flex;
+  /* display: inline-flex; */
+  display: flex;
   list-style-type: none;
 
   & > * {
@@ -18,7 +19,7 @@ export const NavList = styled.ul`
 `;
 
 export const StyledLink = styled(Link)`
-  font-size: 1.25rem;
+  font-size: 1rem;
   color: black;
 
   && {

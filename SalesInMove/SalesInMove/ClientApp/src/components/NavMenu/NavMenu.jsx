@@ -39,7 +39,7 @@ export const NavMenu = () => {
                 </NavLink>
               </NavItem>
               <NavItem>
-                <NavLink tag={Link} className="text-dark" to="#">
+                <NavLink tag={Link} className="text-dark" to="/regisztracio">
                   Regisztráció
                 </NavLink>
               </NavItem>

@@ -9,7 +9,7 @@ import {
   NavLink,
 } from "reactstrap";
 import { Link } from "react-router-dom";
-import "./NavMenu.css";
+import { Header } from "./NavMenu.style";
 
 export const NavMenu = () => {
   const [collapsed, setCollapsed] = useState(true);
@@ -17,7 +17,7 @@ export const NavMenu = () => {
   const toggleNavbar = () => setCollapsed(!collapsed);
 
   return (
-    <header>
+    <Header>
       <Navbar
         className="navbar-expand-sm navbar-toggleable-sm ng-white border-bottom box-shadow mb-3"
         light
@@ -38,10 +38,15 @@ export const NavMenu = () => {
                   Bejelentkezés
                 </NavLink>
               </NavItem>
+              <NavItem>
+                <NavLink tag={Link} className="text-dark" to="#">
+                  Regisztráció
+                </NavLink>
+              </NavItem>
             </ul>
           </Collapse>
         </Container>
       </Navbar>
-    </header>
+    </Header>
   );
 };

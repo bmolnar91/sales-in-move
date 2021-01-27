@@ -1,6 +1,6 @@
 import React from "react";
 import { HomeMainSection } from "../../components/HomeMainSection";
 
-export const Home = () => {
+export const HomePage = () => {
   return <HomeMainSection />;
 };

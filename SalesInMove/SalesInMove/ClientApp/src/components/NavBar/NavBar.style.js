@@ -9,7 +9,6 @@ export const NavContainer = styled.div`
 export const NavList = styled.ul`
   border-bottom: 0.25rem solid ${({ theme }) => theme.colors.blue[100]};
 
-  /* display: inline-flex; */
   display: flex;
   list-style-type: none;
 

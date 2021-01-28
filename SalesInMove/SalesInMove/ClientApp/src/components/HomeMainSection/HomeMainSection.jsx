@@ -3,6 +3,8 @@ import { NavBar } from "../NavBar";
 import {
   Container,
   TopSectionContainer,
+  MidSectionContainer,
+  LogoImage,
   Image,
   TextContainer,
 } from "./HomeMainSection.style";
@@ -19,12 +21,16 @@ MOVE`;
   return (
     <Container>
       <TopSectionContainer>
-        <Image src="/images/logo.png" />
+        <LogoImage src="/images/logo-02.png" />
         <NavBar />
       </TopSectionContainer>
-      <TextContainer>
-        <p>{paragraph}</p>
-      </TextContainer>
+      <MidSectionContainer>
+        <TextContainer>
+          <p>{paragraph}</p>
+        </TextContainer>
+        <Image src="/images/landing-01.png" />
+      </MidSectionContainer>
+      <br />
     </Container>
   );
 };

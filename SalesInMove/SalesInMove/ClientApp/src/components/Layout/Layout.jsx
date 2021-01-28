@@ -1,12 +1,6 @@
 import React from "react";
-import { Container } from "reactstrap";
-import { NavMenu } from "../NavMenu";
+import { Container } from "./Layout.style";
 
 export const Layout = ({ children }) => {
-  return (
-    <div>
-      <NavMenu />
-      <Container>{children}</Container>
-    </div>
-  );
+  return <Container>{children}</Container>;
 };

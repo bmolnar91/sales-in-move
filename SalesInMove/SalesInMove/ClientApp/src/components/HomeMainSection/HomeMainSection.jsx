@@ -1,10 +1,7 @@
 import React from "react";
-import { NavBar } from "../NavBar";
 import {
   Container,
-  TopSectionContainer,
   MidSectionContainer,
-  LogoImage,
   Image,
   TextContainer,
 } from "./HomeMainSection.style";
@@ -20,10 +17,6 @@ MOVE`;
 
   return (
     <Container>
-      <TopSectionContainer>
-        <LogoImage src="/images/logo-02.png" />
-        <NavBar />
-      </TopSectionContainer>
       <MidSectionContainer>
         <TextContainer>
           <p>{paragraph}</p>

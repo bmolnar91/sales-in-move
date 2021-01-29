@@ -4,9 +4,13 @@
     <meta charset="utf-8" />
     <meta
       name="viewport"
-      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+      content="minimum-scale=1, initial-scale=1, width=device-width"
     />
     <meta name="theme-color" content="#000000" />
+    <meta
+      name="google-signin-client_id"
+      content="286443842595-7gikn8eb3ok9sr6v2ovad23v9ktsivcj.apps.googleusercontent.com"
+    />
     <base href="%PUBLIC_URL%/" />
     <!--
       manifest.json provides metadata used when your web app is added to the
@@ -23,10 +27,26 @@
       work correctly both with client-side routing and a non-root public URL.
       Learn how to configure a non-root public URL by running `npm run build`.
     -->
-    <title>SalesInMove</title>
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+    />
+    <title>Sales in Move</title>
   </head>
   <body>
     <noscript> You need to enable JavaScript to run this app. </noscript>
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
+    <script
+      async
+      defer
+      crossorigin="anonymous"
+      src="https://connect.facebook.net/hu_HU/sdk.js#xfbml=1&version=v9.0&appId=263574818451662"
+      nonce="wcs2wCQg"
+    ></script>
     <div id="root"></div>
     <!--
       This HTML file is a template.

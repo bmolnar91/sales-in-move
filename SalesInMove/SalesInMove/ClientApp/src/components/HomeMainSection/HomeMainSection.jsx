@@ -9,6 +9,7 @@ import Button from '@material-ui/core/Button';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
+import ImageBg from '../../images/homepageBg.jpg';
 
 const useStyles = makeStyles((theme) => ({
   mainh1Text: {
@@ -23,15 +24,33 @@ const useStyles = makeStyles((theme) => ({
   },
   jobSearchBtn: {
     marginRight: '30px',
+    fontSize: '20px',
+  },
+  mainGridContainer: {
+    backgroundImage: `url(${ImageBg})`,
+    backgroundSize: 'cover',
+    display: 'flex',
+    justifyContent: 'center',
+    padding: '36px',
+    minHeight: '100vh',
+  },
+  empSearchBtn: {
+    fontSize: '20px',
+    color: 'white',
   },
 }));
 
 export const HomeMainSection = () => {
   const classes = useStyles();
   return (
-    <Grid container direction='column' spacing={1}>
-      <Grid container item xs={12}>
-        <Grid item item xs={5}>
+    <Grid
+      container
+      direction='column'
+      spacing={1}
+      className={classes.mainGridContainer}
+    >
+      <Grid container item xs={6}>
+        <Container item item xs={5}>
           <Container component='div'>
             <TextContainer>
               <Typography
@@ -56,10 +75,10 @@ export const HomeMainSection = () => {
               </Typography>
             </TextContainer>
           </Container>
-        </Grid>
+        </Container>
         <Grid xs={7}></Grid>
       </Grid>
-      <Grid container xs={5}>
+      <Grid container xs={6}>
         <Grid item className={classes.buttonContainer}>
           <Button
             variant='contained'
@@ -68,7 +87,11 @@ export const HomeMainSection = () => {
           >
             Munkát keresek !
           </Button>
-          <Button variant='contained' color='secondary'>
+          <Button
+            variant='contained'
+            color='secondary'
+            className={classes.empSearchBtn}
+          >
             Munkát kínálok !
           </Button>
         </Grid>

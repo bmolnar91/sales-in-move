@@ -34,6 +34,12 @@ namespace SalesInMove.Controllers
             return signInResult;
         }
 
+        [HttpPost("logout")]
+        public async void Logout()
+        {
+            await _signInManager.SignOutAsync();
+        }
+
         [HttpPost("register")]
         public async Task<IdentityUser> Register([FromForm] Account model)
         {

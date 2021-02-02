@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using NETCore.MailKit.Core;
 using SalesInMove.Models;
 using System;
 using System.Collections.Generic;
@@ -15,11 +16,13 @@ namespace SalesInMove.Controllers
     {
         private readonly UserManager<IdentityUser> _userManager;
         private readonly SignInManager<IdentityUser> _signInManager;
+        private readonly IEmailService _emailService;
 
-        public AccountController(UserManager<IdentityUser> userManager, SignInManager<IdentityUser> signInManager)
+        public AccountController(UserManager<IdentityUser> userManager, SignInManager<IdentityUser> signInManager, IEmailService emailService)
         {
             _userManager = userManager;
             _signInManager = signInManager;
+            _emailService = emailService; 
         }
 
         [HttpPost("login")]
@@ -31,11 +34,19 @@ namespace SalesInMove.Controllers
                 var signInResult = await _signInManager.PasswordSignInAsync(targetUser, logger.Password, false, false);
                 if (signInResult.Succeeded)
                 {
-                    Console.WriteLine("succeeded");
+                    var code = await _userManager.GenerateEmailConfirmationTokenAsync(targetUser);
+                    await _emailService.SendAsync("lilaalex95@gmail.com", "email verify", $"<a href=\register");
                 }
 
             }
             return targetUser;
+        }
+
+        public async Task<IActionResult> VerifyEmail(string userId, string code)
+        {
+            var user = await _userManager.FindByIdAsync(userId);
+            if (user == null) return BadRequest();
+            var result = await _userManager.ConfirmEmailAsync(user, code);
         }
 
         [HttpPost("register")]

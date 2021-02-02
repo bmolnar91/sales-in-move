@@ -14,14 +14,16 @@ namespace SalesInMove.DatabaseRelated
         {
             _context = context;
         }
-        public void AddAccount()
+        public void AddAccount(Account account)
         {
-            throw new NotImplementedException();
+            _context.Accounts.Add(account);
+            _context.SaveChanges();
+
         }
 
-        public Account GetAccount()
+        public Account GetAccount(string email)
         {
-            throw new NotImplementedException();
+            return _context.Accounts.Where(x => x.Email.Equals(email)).FirstOrDefault();
         }
     }
 }

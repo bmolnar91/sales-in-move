@@ -7,6 +7,8 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using NETCore.MailKit.Extensions;
+using NETCore.MailKit.Infrastructure.Internal;
 using SalesInMove.DatabaseRelated;
 using SalesInMove.Models;
 
@@ -38,7 +40,8 @@ namespace SalesInMove
                 config.Password.RequireDigit = false;
                 config.Password.RequireUppercase = false;
                 config.Password.RequireNonAlphanumeric = false;
-
+                config.SignIn.RequireConfirmedEmail = true; 
+    
             })
                 .AddEntityFrameworkStores<SalesmenDbContext>();
 
@@ -57,11 +60,8 @@ namespace SalesInMove
             options.ClientSecret = googleAuthNSection["ClientSecret"];
             });
 
-            // services.AddAuthentication().AddFacebook(facebookOptions =>
-            // {
-            //     facebookOptions.AppId = Configuration["Authentication:Facebook:AppId"];
-            //     facebookOptions.AppSecret = Configuration["Authentication:Facebook:AppSecret"];
-            // });
+            var mailKitOptions = Configuration.GetSection("Email").Get<MailKitOptions>();
+            services.AddMailKit(Configuration => Configuration.UseMailKit(mailKitOptions));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

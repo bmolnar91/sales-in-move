@@ -23,19 +23,15 @@ namespace SalesInMove.Controllers
         }
 
         [HttpPost("login")]
-        public async Task<IdentityUser> Login(Account logger)
+        public async Task<Microsoft.AspNetCore.Identity.SignInResult> Login([FromForm] Account model)
         {
-            var targetUser =  await _userManager.FindByNameAsync(logger.UserName);
-            if(targetUser != null)
+            var signInResult = await _signInManager.PasswordSignInAsync(model.UserName, model.Password, false, false);
+            if (signInResult.Succeeded)
             {
-                var signInResult = await _signInManager.PasswordSignInAsync(targetUser, logger.Password, false, false);
-                if (signInResult.Succeeded)
-                {
-                    Console.WriteLine("succeeded");
-                }
-
+                Console.WriteLine("succeeded");
             }
-            return targetUser;
+
+            return signInResult;
         }
 
         [HttpPost("register")]

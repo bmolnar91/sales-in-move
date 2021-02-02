@@ -47,6 +47,7 @@ namespace SalesInMove.Controllers
             var user = await _userManager.FindByIdAsync(userId);
             if (user == null) return BadRequest();
             var result = await _userManager.ConfirmEmailAsync(user, code);
+            
         }
 
         [HttpPost("register")]

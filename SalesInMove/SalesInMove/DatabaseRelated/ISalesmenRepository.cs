@@ -8,7 +8,7 @@ namespace SalesInMove.DatabaseRelated
 {
     public interface ISalesmenRepository
     {
-        Account GetAccount();
-        void AddAccount();
+        Account GetAccount(string email);
+        void AddAccount(Account account);
     }
 }

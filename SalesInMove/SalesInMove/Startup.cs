@@ -31,7 +31,7 @@ namespace SalesInMove
                 opt.UseNpgsql(Configuration.GetConnectionString("SalesmenConnection"));
             });
 
-            services.AddIdentity<Account, IdentityRole>(config =>
+            services.AddIdentity<IdentityUser, IdentityRole>(config =>
             {
                 config.Password.RequiredLength = 4;
                 config.SignIn.RequireConfirmedAccount = false;

@@ -13,17 +13,17 @@ namespace SalesInMove.Controllers
     [ApiController]
     public class AccountController : ControllerBase
     {
-        private readonly UserManager<Account> _userManager;
-        private readonly SignInManager<Account> _signInManager;
+        private readonly UserManager<IdentityUser> _userManager;
+        private readonly SignInManager<IdentityUser> _signInManager;
 
-        public AccountController(UserManager<Account> userManager, SignInManager<Account> signInManager)
+        public AccountController(UserManager<IdentityUser> userManager, SignInManager<IdentityUser> signInManager)
         {
             _userManager = userManager;
             _signInManager = signInManager;
         }
 
-
-        public async Task<Account> Login(Account logger)
+        [HttpPost("login")]
+        public async Task<IdentityUser> Login(Account logger)
         {
             var targetUser =  await _userManager.FindByNameAsync(logger.UserName);
             if(targetUser != null)
@@ -38,19 +38,20 @@ namespace SalesInMove.Controllers
             return targetUser;
         }
 
-
-        public async Task<Account> Register(string username, string password)
+        [HttpPost("register")]
+        public async Task<IdentityUser> Register([FromForm] Account model)
         {
-            var user = new Account
+            var user = new IdentityUser
             {
-                Username = "csharptw5@gmail.com",
-                Password = "Csharp123"
+                UserName = model.Username,
+                Email = model.Username,
+                PasswordHash = model.Password,
             };
 
-            var result = await _userManager.CreateAsync(user, password);
+            var result = await _userManager.CreateAsync(user, model.Password);
             if (result.Succeeded)
             {
-                var signInResult = await _signInManager.PasswordSignInAsync(user, user.Password, false, false);
+                var signInResult = await _signInManager.PasswordSignInAsync(user, model.Password, false, false);
                 if (signInResult.Succeeded)
                 {
                     Console.WriteLine("succeeded");

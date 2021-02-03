@@ -31,17 +31,9 @@ namespace SalesInMove.Controllers
             var signInResult = await _signInManager.PasswordSignInAsync(model.UserName, model.Password, false, false);
             if (signInResult.Succeeded)
             {
-<<<<<<< HEAD
-                var signInResult = await _signInManager.PasswordSignInAsync(targetUser, logger.Password, false, false);
-                if (signInResult.Succeeded)
-                {
-                    var code = await _userManager.GenerateEmailConfirmationTokenAsync(targetUser);
-                    await _emailService.SendAsync("lilaalex95@gmail.com", "email verify", $"<a href=\register");
-                }
 
-=======
                 Console.WriteLine("succeeded");
->>>>>>> a72811ccfc26e9436d0d0ab2592e320ca07959de
+
             }
 
             return signInResult;
@@ -53,13 +45,13 @@ namespace SalesInMove.Controllers
             await _signInManager.SignOutAsync();
         }
 
-        public async Task<IActionResult> VerifyEmail(string userId, string code)
-        {
-            var user = await _userManager.FindByIdAsync(userId);
-            if (user == null) return BadRequest();
-            var result = await _userManager.ConfirmEmailAsync(user, code);
+        //public async Task<IActionResult> VerifyEmail(string userId, string code)
+        //{
+        //    var user = await _userManager.FindByIdAsync(userId);
+        //    if (user == null) return BadRequest();
+        //    var result = await _userManager.ConfirmEmailAsync(user, code);
             
-        }
+        //}
 
         [HttpPost("register")]
         public async Task<IdentityUser> Register([FromForm] Account model)
@@ -74,11 +66,8 @@ namespace SalesInMove.Controllers
             var result = await _userManager.CreateAsync(user, model.Password);
             if (result.Succeeded)
             {
-                var signInResult = await _signInManager.PasswordSignInAsync(user, model.Password, false, false);
-                if (signInResult.Succeeded)
-                {
-                    Console.WriteLine("succeeded");
-                }
+                var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);
+                await _emailService.SendAsync("lilaalex95@gmail.com", "email verify", $"<a href=\register");
             }
 
             return user;

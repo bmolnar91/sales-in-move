@@ -75,7 +75,8 @@ namespace SalesInMove.Controllers
             if (result.Succeeded)
             {
                 var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);
-                await _emailService.SendMailAsync(new MailMessage(from:"csharptw5@gmail.com",to: "lilaalex95@gmail.com", subject: "email verify", body: "email sent"));
+                var link = Url.Action(nameof(VerifyEmail), "Account", new { user.Id, code }, Request.Scheme, Request.Host.ToString());
+                await _emailService.SendMailAsync(new MailMessage(from:"csharptw5@gmail.com",to: "lilaalex95@gmail.com", subject: "email verify", body: $"<a href=\"{link}\">Verify Email</a>"));
             }
 
             return user;

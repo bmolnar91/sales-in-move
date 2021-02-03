@@ -64,8 +64,8 @@ namespace SalesInMove
             options.ClientSecret = googleAuthNSection["ClientSecret"];
             });
 
-            var mailKitOptions = Configuration.GetSection("Email").Get<MailKitOptions>();
-            services.AddMailKit(Configuration => Configuration.UseMailKit(mailKitOptions));
+            //var mailKitOptions = Configuration.GetSection("Email").Get<MailKitOptions>();
+            //services.AddMailKit(Configuration => Configuration.UseMailKit(mailKitOptions));
             services.AddTransient<SmtpClient>((serviceProvider) =>
             {
                 var config = serviceProvider.GetRequiredService<IConfiguration>();

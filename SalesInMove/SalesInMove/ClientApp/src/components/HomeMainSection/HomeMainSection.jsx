@@ -1,42 +1,41 @@
-import React from 'react';
+import React from "react";
 import {
   Container,
   MidSectionContainer,
   Image,
   TextContainer,
-} from './HomeMainSection.style';
-import Button from '@material-ui/core/Button';
-import Grid from '@material-ui/core/Grid';
-import Typography from '@material-ui/core/Typography';
-import { makeStyles } from '@material-ui/core/styles';
-import ImageBg from '../../images/homepageBg.jpg';
+} from "./HomeMainSection.style";
+import Button from "@material-ui/core/Button";
+import Grid from "@material-ui/core/Grid";
+import Typography from "@material-ui/core/Typography";
+import { makeStyles } from "@material-ui/core/styles";
 
 const useStyles = makeStyles((theme) => ({
   mainh1Text: {
-    fontWeight: '600',
-    fontSize: '4rem',
+    fontWeight: "600",
+    fontSize: "4rem",
   },
   mainSecondaryText: {
-    fontSize: '32px',
+    fontSize: "32px",
   },
   moveText: {
-    fontSize: '42px',
+    fontSize: "42px",
   },
   jobSearchBtn: {
-    marginRight: '30px',
-    fontSize: '20px',
+    marginRight: "30px",
+    fontSize: "20px",
   },
   mainGridContainer: {
-    backgroundImage: `url(${ImageBg})`,
-    backgroundSize: 'cover',
-    display: 'flex',
-    justifyContent: 'center',
-    padding: '36px',
-    minHeight: '100vh',
+    backgroundImage: `url("images/homepageBg.jpg")`,
+    backgroundSize: "cover",
+    display: "flex",
+    justifyContent: "center",
+    padding: "36px",
+    minHeight: "100vh",
   },
   empSearchBtn: {
-    fontSize: '20px',
-    color: 'white',
+    fontSize: "20px",
+    color: "white",
   },
 }));
 
@@ -45,18 +44,18 @@ export const HomeMainSection = () => {
   return (
     <Grid
       container
-      direction='column'
+      direction="column"
       spacing={1}
       className={classes.mainGridContainer}
     >
       <Grid container item xs={6}>
         <Container item item xs={5}>
-          <Container component='div'>
+          <Container component="div">
             <TextContainer>
               <Typography
                 className={classes.mainh1Text}
-                variant='h2'
-                component='h2'
+                variant="h2"
+                component="h2"
                 gutterBottom
               >
                 Mutasd meg szeméyiségedet azonnal, merj önmagad lenni!
@@ -67,8 +66,8 @@ export const HomeMainSection = () => {
               </Typography>
               <Typography
                 className={classes.moveText}
-                variant='h4'
-                component='h4'
+                variant="h4"
+                component="h4"
                 gutterBottom
               >
                 Felkészültél ? Move !
@@ -81,15 +80,15 @@ export const HomeMainSection = () => {
       <Grid container xs={6}>
         <Grid item className={classes.buttonContainer}>
           <Button
-            variant='contained'
-            color='primary'
+            variant="contained"
+            color="primary"
             className={classes.jobSearchBtn}
           >
             Munkát keresek !
           </Button>
           <Button
-            variant='contained'
-            color='secondary'
+            variant="contained"
+            color="secondary"
             className={classes.empSearchBtn}
           >
             Munkát kínálok !

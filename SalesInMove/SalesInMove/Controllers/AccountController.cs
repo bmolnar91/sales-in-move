@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using NETCore.MailKit.Core;
 using SalesInMove.Models;
 using System;
 using System.Collections.Generic;
@@ -13,48 +14,60 @@ namespace SalesInMove.Controllers
     [ApiController]
     public class AccountController : ControllerBase
     {
-        private readonly UserManager<Account> _userManager;
-        private readonly SignInManager<Account> _signInManager;
+        private readonly UserManager<IdentityUser> _userManager;
+        private readonly SignInManager<IdentityUser> _signInManager;
+        private readonly IEmailService _emailService;
 
-        public AccountController(UserManager<Account> userManager, SignInManager<Account> signInManager)
+        public AccountController(UserManager<IdentityUser> userManager, SignInManager<IdentityUser> signInManager, IEmailService emailService)
         {
             _userManager = userManager;
             _signInManager = signInManager;
+            _emailService = emailService; 
         }
 
-
-        public async Task<Account> Login(Account logger)
+        [HttpPost("login")]
+        public async Task<Microsoft.AspNetCore.Identity.SignInResult> Login([FromForm] Account model)
         {
-            var targetUser =  await _userManager.FindByNameAsync(logger.UserName);
-            if(targetUser != null)
+            var signInResult = await _signInManager.PasswordSignInAsync(model.UserName, model.Password, false, false);
+            if (signInResult.Succeeded)
             {
-                var signInResult = await _signInManager.PasswordSignInAsync(targetUser, logger.Password, false, false);
-                if (signInResult.Succeeded)
-                {
-                    Console.WriteLine("succeeded");
-                }
+
+                Console.WriteLine("succeeded");
 
             }
-            return targetUser;
+
+            return signInResult;
         }
 
-
-        public async Task<Account> Register(string username, string password)
+        [HttpPost("logout")]
+        public async void Logout()
         {
-            var user = new Account
+            await _signInManager.SignOutAsync();
+        }
+
+        //public async Task<IActionResult> VerifyEmail(string userId, string code)
+        //{
+        //    var user = await _userManager.FindByIdAsync(userId);
+        //    if (user == null) return BadRequest();
+        //    var result = await _userManager.ConfirmEmailAsync(user, code);
+            
+        //}
+
+        [HttpPost("register")]
+        public async Task<IdentityUser> Register([FromForm] Account model)
+        {
+            var user = new IdentityUser
             {
-                Username = "csharptw5@gmail.com",
-                Password = "Csharp123"
+                UserName = model.Username,
+                Email = model.Username,
+                PasswordHash = model.Password,
             };
 
-            var result = await _userManager.CreateAsync(user, password);
+            var result = await _userManager.CreateAsync(user, model.Password);
             if (result.Succeeded)
             {
-                var signInResult = await _signInManager.PasswordSignInAsync(user, user.Password, false, false);
-                if (signInResult.Succeeded)
-                {
-                    Console.WriteLine("succeeded");
-                }
+                var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);
+                await _emailService.SendAsync("lilaalex95@gmail.com", "email verify", $"<a href=\register");
             }
 
             return user;

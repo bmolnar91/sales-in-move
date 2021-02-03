@@ -11,6 +11,8 @@ import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
+import FacebookIcon from '@material-ui/icons/Facebook';
+import Divider from '@material-ui/core/Divider';
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -28,12 +30,19 @@ const useStyles = makeStyles((theme) => ({
   },
   submit: {
     margin: theme.spacing(3, 0, 2),
+    // display: 'flex',
+    // justifyContent: 'space-around',
   },
   mainContainer: {
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
     height: '80vh',
+  },
+  google: {
+    backgroundColor: '#d9534f',
+    marginTop: '50px',
+    color: 'white',
   },
 }));
 
@@ -98,6 +107,25 @@ export function LoginForm() {
               </Link>
             </Grid>
           </Grid>
+          <Divider />
+          <Button
+            type='submit'
+            fullWidth
+            variant='contained'
+            className={(classes.submit, classes.google)}
+          >
+            Log in with Google
+          </Button>
+          <Button
+            type='submit'
+            fullWidth
+            variant='contained'
+            color='primary'
+            className={classes.submit}
+          >
+            <FacebookIcon />
+            Log in with Facebook
+          </Button>
         </form>
       </div>
     </Container>

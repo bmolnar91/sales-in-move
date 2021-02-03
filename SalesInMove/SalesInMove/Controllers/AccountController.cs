@@ -26,11 +26,12 @@ namespace SalesInMove.Controllers
         }
 
         [HttpPost("login")]
-        public async Task<IdentityUser> Login(Account logger)
+        public async Task<Microsoft.AspNetCore.Identity.SignInResult> Login([FromForm] Account model)
         {
-            var targetUser =  await _userManager.FindByNameAsync(logger.UserName);
-            if(targetUser != null)
+            var signInResult = await _signInManager.PasswordSignInAsync(model.UserName, model.Password, false, false);
+            if (signInResult.Succeeded)
             {
+<<<<<<< HEAD
                 var signInResult = await _signInManager.PasswordSignInAsync(targetUser, logger.Password, false, false);
                 if (signInResult.Succeeded)
                 {
@@ -38,8 +39,18 @@ namespace SalesInMove.Controllers
                     await _emailService.SendAsync("lilaalex95@gmail.com", "email verify", $"<a href=\register");
                 }
 
+=======
+                Console.WriteLine("succeeded");
+>>>>>>> a72811ccfc26e9436d0d0ab2592e320ca07959de
             }
-            return targetUser;
+
+            return signInResult;
+        }
+
+        [HttpPost("logout")]
+        public async void Logout()
+        {
+            await _signInManager.SignOutAsync();
         }
 
         public async Task<IActionResult> VerifyEmail(string userId, string code)

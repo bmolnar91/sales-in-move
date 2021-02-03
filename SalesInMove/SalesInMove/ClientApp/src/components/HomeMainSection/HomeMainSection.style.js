@@ -1,8 +1,7 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 export const Container = styled.div`
   max-width: 1600px;
-  margin: 10rem 0;
 
   & > * {
     margin-bottom: 2rem;
@@ -33,7 +32,6 @@ export const Image = styled.img`
 `;
 
 export const TextContainer = styled.div`
-  width: 33.125rem;
   height: auto;
 
   align-self: center;

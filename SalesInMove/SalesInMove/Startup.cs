@@ -11,6 +11,9 @@ using NETCore.MailKit.Extensions;
 using NETCore.MailKit.Infrastructure.Internal;
 using SalesInMove.DatabaseRelated;
 using SalesInMove.Models;
+using System;
+using System.Net;
+using System.Net.Mail;
 
 namespace SalesInMove
 {
@@ -40,10 +43,11 @@ namespace SalesInMove
                 config.Password.RequireDigit = false;
                 config.Password.RequireUppercase = false;
                 config.Password.RequireNonAlphanumeric = false;
-                config.SignIn.RequireConfirmedEmail = true; 
-    
+                config.SignIn.RequireConfirmedEmail = true;
+
             })
-                .AddEntityFrameworkStores<SalesmenDbContext>();
+                .AddEntityFrameworkStores<SalesmenDbContext>()
+                .AddDefaultTokenProviders();
 
             // In production, the React files will be served from this directory
             services.AddSpaStaticFiles(configuration =>
@@ -62,6 +66,18 @@ namespace SalesInMove
 
             var mailKitOptions = Configuration.GetSection("Email").Get<MailKitOptions>();
             services.AddMailKit(Configuration => Configuration.UseMailKit(mailKitOptions));
+            services.AddTransient<SmtpClient>((serviceProvider) =>
+            {
+                var config = serviceProvider.GetRequiredService<IConfiguration>();
+                return new SmtpClient()
+                {
+                    EnableSsl = true,
+                    Host = config.GetValue<String>("Email:Smtp:Host"),
+                    Port = config.GetValue<int>("Email:Smtp:Port"),
+                    Credentials = new NetworkCredential(config.GetValue<String>("Email:Smtp:Username"), config.GetValue<String>("Email:Smtp:Password"))
+                };
+           });
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

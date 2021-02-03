@@ -6,6 +6,7 @@ using SalesInMove.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Mail;
 using System.Threading.Tasks;
 
 namespace SalesInMove.Controllers
@@ -16,9 +17,9 @@ namespace SalesInMove.Controllers
     {
         private readonly UserManager<IdentityUser> _userManager;
         private readonly SignInManager<IdentityUser> _signInManager;
-        private readonly IEmailService _emailService;
+        private readonly SmtpClient _emailService;
 
-        public AccountController(UserManager<IdentityUser> userManager, SignInManager<IdentityUser> signInManager, IEmailService emailService)
+        public AccountController(UserManager<IdentityUser> userManager, SignInManager<IdentityUser> signInManager, SmtpClient emailService)
         {
             _userManager = userManager;
             _signInManager = signInManager;
@@ -28,7 +29,9 @@ namespace SalesInMove.Controllers
         [HttpPost("login")]
         public async Task<Microsoft.AspNetCore.Identity.SignInResult> Login([FromForm] Account model)
         {
-            var signInResult = await _signInManager.PasswordSignInAsync(model.Email, model.Password, false, false);
+            IdentityUser user = await _userManager.FindByEmailAsync(model.Email);
+
+            var signInResult = await _signInManager.PasswordSignInAsync(user, model.Password, false, false);
 
             return signInResult;
         }
@@ -39,13 +42,20 @@ namespace SalesInMove.Controllers
             await _signInManager.SignOutAsync();
         }
 
-        //public async Task<IActionResult> VerifyEmail(string userId, string code)
-        //{
-        //    var user = await _userManager.FindByIdAsync(userId);
-        //    if (user == null) return BadRequest();
-        //    var result = await _userManager.ConfirmEmailAsync(user, code);
-            
-        //}
+        [HttpPost("confirmation")]
+        public async Task<IdentityUser> VerifyEmail(string userId, string code)
+        {
+            var user = await _userManager.FindByIdAsync(userId);
+            //if (user == null) return NullReferenceException();
+            var result = await _userManager.ConfirmEmailAsync(user, code);
+            if (result.Succeeded)
+            {
+                return user;
+            }
+
+            return null;
+        }
+
 
         [HttpPost("register")]
         public async Task<IdentityResult> Register([FromForm] Account model)
@@ -58,11 +68,12 @@ namespace SalesInMove.Controllers
             };
 
             var result = await _userManager.CreateAsync(user, model.Password);
-            //if (result.Succeeded)
-            //{
-            //    var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);
-            //    await _emailService.SendAsync("lilaalex95@gmail.com", "email verify", $"<a href=\register");
-            //}
+            if (result.Succeeded)
+            {
+                var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);
+                var link = Url.Action(nameof(VerifyEmail), "Account", new { user.Id, code }, Request.Scheme, Request.Host.ToString());
+                await _emailService.SendMailAsync(new MailMessage(from:"csharptw5@gmail.com",to: "lilaalex95@gmail.com", subject: "email verify", body: $"<a href=\"{link}\">Verify Email</a>"));
+            }
 
             return result;
 

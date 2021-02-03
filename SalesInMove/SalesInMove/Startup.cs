@@ -40,8 +40,7 @@ namespace SalesInMove
                 config.Password.RequireDigit = false;
                 config.Password.RequireUppercase = false;
                 config.Password.RequireNonAlphanumeric = false;
-                config.SignIn.RequireConfirmedEmail = true; 
-    
+                config.SignIn.RequireConfirmedEmail = true;
             })
                 .AddEntityFrameworkStores<SalesmenDbContext>();
 

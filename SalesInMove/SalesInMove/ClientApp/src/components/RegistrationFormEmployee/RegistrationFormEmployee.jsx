@@ -41,7 +41,6 @@ const useStyles = makeStyles((theme) => ({
 
 export function RegistrationFormEmployee() {
   const classes = useStyles();
-
   return (
     <Container component='main' maxWidth='xs'>
       <CssBaseline />

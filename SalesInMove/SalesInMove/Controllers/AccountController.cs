@@ -28,13 +28,7 @@ namespace SalesInMove.Controllers
         [HttpPost("login")]
         public async Task<Microsoft.AspNetCore.Identity.SignInResult> Login([FromForm] Account model)
         {
-            var signInResult = await _signInManager.PasswordSignInAsync(model.UserName, model.Password, false, false);
-            if (signInResult.Succeeded)
-            {
-
-                Console.WriteLine("succeeded");
-
-            }
+            var signInResult = await _signInManager.PasswordSignInAsync(model.Email, model.Password, false, false);
 
             return signInResult;
         }
@@ -54,23 +48,23 @@ namespace SalesInMove.Controllers
         //}
 
         [HttpPost("register")]
-        public async Task<IdentityUser> Register([FromForm] Account model)
+        public async Task<IdentityResult> Register([FromForm] Account model)
         {
             var user = new IdentityUser
             {
-                UserName = model.Username,
-                Email = model.Username,
+                UserName = model.FirstName + model.LastName,
+                Email = model.Email,
                 PasswordHash = model.Password,
             };
 
             var result = await _userManager.CreateAsync(user, model.Password);
-            if (result.Succeeded)
-            {
-                var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);
-                await _emailService.SendAsync("lilaalex95@gmail.com", "email verify", $"<a href=\register");
-            }
+            //if (result.Succeeded)
+            //{
+            //    var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);
+            //    await _emailService.SendAsync("lilaalex95@gmail.com", "email verify", $"<a href=\register");
+            //}
 
-            return user;
+            return result;
 
 
         }

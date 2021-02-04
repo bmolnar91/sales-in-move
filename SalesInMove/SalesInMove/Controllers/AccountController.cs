@@ -21,6 +21,7 @@ namespace SalesInMove.Controllers
 
         public AccountController(UserManager<IdentityUser> userManager, SignInManager<IdentityUser> signInManager, SmtpClient emailService)
         {
+            //register some services throughout the IOC
             _userManager = userManager;
             _signInManager = signInManager;
             _emailService = emailService; 
@@ -29,6 +30,9 @@ namespace SalesInMove.Controllers
         [HttpPost("login")]
         public async Task<Microsoft.AspNetCore.Identity.SignInResult> Login([FromForm] Account model)
         {
+            //1.getting a request from frontend, and generating a model object from JSON by it
+            //2. getting an identityuser from the database which matches with we got from the JSON by email adress
+            //3. and if we got , we are signing it in order to be available throughout the IOC.
             IdentityUser user = await _userManager.FindByEmailAsync(model.Email);
 
             var signInResult = await _signInManager.PasswordSignInAsync(user, model.Password, false, false);
@@ -39,14 +43,16 @@ namespace SalesInMove.Controllers
         [HttpPost("logout")]
         public async void Logout()
         {
+            // we logging out to free the signinmanager
             await _signInManager.SignOutAsync();
         }
 
         [HttpPost("confirmation")]
         public async Task<IdentityUser> VerifyEmail(string userId, string code)
-        {
-            var user = await _userManager.FindByIdAsync(userId);
-            //if (user == null) return NullReferenceException();
+        {   
+            //this methods gets activated when the user clicks on the link on his/her email provider, and redirect here where his/her email gets confirmed and able to sign in
+             var user = await _userManager.FindByIdAsync(userId);
+            if (user == null) throw new Exception();
             var result = await _userManager.ConfirmEmailAsync(user, code);
             if (result.Succeeded)
             {
@@ -60,6 +66,8 @@ namespace SalesInMove.Controllers
         [HttpPost("register")]
         public async Task<IdentityResult> Register([FromForm] Account model)
         {
+            // registers users in the database. we get an account form which we are converting into an IdentityUser
+            //also using the SMTP protocal (if we are able to create user) to send comfirmation email to the user's email
             var user = new IdentityUser
             {
                 UserName = model.FirstName + model.LastName,

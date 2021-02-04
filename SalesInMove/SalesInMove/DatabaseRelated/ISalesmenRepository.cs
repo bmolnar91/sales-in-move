@@ -8,6 +8,7 @@ namespace SalesInMove.DatabaseRelated
 {
     public interface ISalesmenRepository
     {
+        //interface which sqlslaesmenrepository to implement the methods
         Account GetAccount(string email);
         void AddAccount(Account account);
     }

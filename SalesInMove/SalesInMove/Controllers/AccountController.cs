@@ -68,14 +68,14 @@ namespace SalesInMove.Controllers
         {
             // registers users in the database. we get an account form which we are converting into an IdentityUser
             //also using the SMTP protocal (if we are able to create user) to send comfirmation email to the user's email
-            var user = new IdentityUser
+            var user = new Account
             {
                 UserName = model.FirstName + model.LastName,
                 Email = model.Email,
                 PasswordHash = model.Password,
             };
 
-            var result = await _userManager.CreateAsync(user, model.Password);
+            IdentityResult result = await _userManager.CreateAsync(user, model.Password);
             if (result.Succeeded)
             {
                 var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);

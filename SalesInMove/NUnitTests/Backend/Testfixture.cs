@@ -26,7 +26,7 @@ namespace NUnitTests.Backend
         public void Dispose()
         {
             _client.Dispose();
-            Server.Dispose(;
+            Server.Dispose();
         }
     }
 }

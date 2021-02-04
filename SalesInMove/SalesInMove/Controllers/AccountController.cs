@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net.Mail;
 using System.Threading.Tasks;
+using System.Web;
 
 namespace SalesInMove.Controllers
 {
@@ -47,11 +48,11 @@ namespace SalesInMove.Controllers
             await _signInManager.SignOutAsync();
         }
 
-        [HttpPost("confirmation")]
-        public async Task<IdentityUser> VerifyEmail(string userId, string code)
+        [HttpGet("confirmation/{id}")]
+        public async Task<IdentityUser> VerifyEmail(string id, string code)
         {   
             //this methods gets activated when the user clicks on the link on his/her email provider, and redirect here where his/her email gets confirmed and able to sign in
-             var user = await _userManager.FindByIdAsync(userId);
+             var user = await _userManager.FindByIdAsync(id);
             if (user == null) throw new Exception();
             var result = await _userManager.ConfirmEmailAsync(user, code);
             if (result.Succeeded)
@@ -80,13 +81,13 @@ namespace SalesInMove.Controllers
             {
                 var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);
                 var link = Url.Action(nameof(VerifyEmail), "Account", new { user.Id, code }, Request.Scheme, Request.Host.ToString());
-                await _emailService.SendMailAsync(new MailMessage(from:"csharptw5@gmail.com",to: "lilaalex95@gmail.com", subject: "email verify", body: $"<a href=\"{link}\">Verify Email</a>"));
+
+                var msg = new MailMessage(from: "csharptw5@gmail.com", to: "csharptw5@gmail.com", subject: "Email Verification", body: $"<a href=\"{link}\">Verify your email</a>");
+                msg.IsBodyHtml = true;
+                await _emailService.SendMailAsync(msg);
             }
 
             return result;
-
-
         }
-
     }
 }

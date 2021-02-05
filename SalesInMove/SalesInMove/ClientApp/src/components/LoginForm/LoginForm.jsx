@@ -59,7 +59,11 @@ export function LoginForm() {
         <Typography component="h1" variant="h5">
           Bejelentkezés
         </Typography>
-        <form className={classes.form} noValidate>
+        <form className={classes.form}
+            noValidate
+            method='post'
+            action='/api/account/login'
+        >
           <TextField
             variant="outlined"
             margin="normal"

@@ -10,6 +10,7 @@ namespace SalesInMove.DatabaseRelated
 {
     public class SalesmenDbContext : IdentityDbContext
     {
+        //connection with the entityframework core
         public SalesmenDbContext(DbContextOptions<SalesmenDbContext> options) : base(options)
         {
 

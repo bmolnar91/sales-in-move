@@ -41,7 +41,6 @@ const useStyles = makeStyles((theme) => ({
 
 export function RegistrationFormEmployee() {
   const classes = useStyles();
-
   return (
     <Container component='main' maxWidth='xs'>
       <CssBaseline />
@@ -141,24 +140,26 @@ export function RegistrationFormEmployee() {
             </Grid>
           </Grid>
           <Divider />
-          <Button
+          {/* <Button
             type='submit'
             fullWidth
             variant='contained'
             className={(classes.submit, classes.google)}
           >
             Log in with Google
-          </Button>
-          <Button
+          </Button> */}
+          <div class="g-signin2" data-onsuccess="onSignIn"></div>
+          {/*<Button
             type='submit'
             fullWidth
             variant='contained'
             color='primary'
             className={classes.submit}
-          >
+           >
             <FacebookIcon />
             Log in with Facebook
-          </Button>
+          </Button>*/}
+          <div class="fb-login-button" data-width="" data-size="medium" data-button-type="continue_with" data-layout="default" data-auto-logout-link="false" data-use-continue-as="false"></div>
         </form>
       </div>
     </Container>

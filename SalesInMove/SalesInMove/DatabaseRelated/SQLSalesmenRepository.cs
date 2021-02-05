@@ -8,6 +8,7 @@ namespace SalesInMove.DatabaseRelated
 {
     public class SQLSalesmenRepository : ISalesmenRepository
     {
+        // implements the interace's methods, where we can create and get users
         private readonly SalesmenDbContext _context;
 
         public SQLSalesmenRepository(SalesmenDbContext context)

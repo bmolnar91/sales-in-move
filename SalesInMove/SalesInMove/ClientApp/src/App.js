@@ -9,6 +9,7 @@ import { RegistrationEmployee } from './pages/registration/registration-employee
 import { LoginPage } from './pages/login/login';
 import { StickyFooter } from './components/StickyFooter';
 import { AppBar } from './components/AppBar';
+import profilePage from './pages/profile/profilePage';
 
 const App = () => {
   return (
@@ -27,6 +28,7 @@ const App = () => {
         component={RegistrationEmployee}
       />
       <Route exact path='/bejelentkezes' component={LoginPage} />
+      <Route exact path='/ProfilePage' component={profilePage} />
       <StickyFooter />
     </>
   );

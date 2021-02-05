@@ -25,7 +25,5 @@ namespace SalesInMove.DatabaseRelated
         {
             return _context.Accounts.Where(x => x.Email.Equals(email)).FirstOrDefault();
         }
-
-
     }
 }

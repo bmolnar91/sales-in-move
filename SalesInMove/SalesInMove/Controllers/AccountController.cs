@@ -71,10 +71,12 @@ namespace SalesInMove.Controllers
             //also using the SMTP protocal (if we are able to create user) to send comfirmation email to the user's email
             var user = new Account
             {
-                UserName = model.FirstName + model.LastName,
+                UserName = model.Email,
                 Email = model.Email,
                 PasswordHash = model.Password,
             };
+
+            // var bob = _userManager.FindByEmailAsync(user.Email);
 
             IdentityResult result = await _userManager.CreateAsync(user, model.Password);
             if (result.Succeeded)

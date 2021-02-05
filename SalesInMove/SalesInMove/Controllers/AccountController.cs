@@ -76,8 +76,6 @@ namespace SalesInMove.Controllers
                 PasswordHash = model.Password,
             };
 
-            // var bob = _userManager.FindByEmailAsync(user.Email);
-
             IdentityResult result = await _userManager.CreateAsync(user, model.Password);
             if (result.Succeeded)
             {

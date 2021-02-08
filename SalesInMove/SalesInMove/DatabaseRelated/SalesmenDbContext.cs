@@ -28,6 +28,11 @@ namespace SalesInMove.DatabaseRelated
                 .HasOne(userCompany => userCompany.User)
                 .WithOne()
                 .HasForeignKey<User>(user => user.Id);
+
+            builder.Entity<UserCompany>()
+                .HasOne(userCompany => userCompany.Company)
+                .WithOne()
+                .HasForeignKey<Company>(company => company.Id);
         }
 
     }

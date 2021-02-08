@@ -16,7 +16,6 @@ namespace SalesInMove.DatabaseRelated
 
         public DbSet<User> Users { get; set; }
 
-        public DbSet<UserCompany> UserCompanies { get; set; }
 
         public DbSet<Account> Accounts { get; set; }
 
@@ -24,15 +23,6 @@ namespace SalesInMove.DatabaseRelated
         {
             base.OnModelCreating(builder);
 
-            builder.Entity<UserCompany>()
-                .HasOne(userCompany => userCompany.User)
-                .WithOne()
-                .HasForeignKey<User>(user => user.Id);
-
-            builder.Entity<UserCompany>()
-                .HasOne(userCompany => userCompany.Company)
-                .WithOne(company => company.UserCompany)
-                .HasForeignKey<Company>(company => company.Id);
         }
 
     }

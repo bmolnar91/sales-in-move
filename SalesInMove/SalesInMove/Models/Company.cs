@@ -19,10 +19,10 @@ namespace SalesInMove.Models
         public string Headquarter { get; set; }
         
         [MaxLength(11)]
-        public int TaxNumber { get; set; }
+        public long TaxNumber { get; set; }
         
         // Cégjegyzék
-        public int Registry { get; set; }
+        public long Registry { get; set; }
 
         public DateTime? YearOfFoundation { get; set; }
         

@@ -36,11 +36,11 @@ namespace SalesInMove.Models
         public bool ProgressionSupport { get; set; }
 
         // Hogyan fog kinézni egy napja
+         public WorkHourRatio WorkHourRatio { get; set; }
 
-        [ForeignKey("PositionIds")]
         public Company Company { get; set; }
 
-        public WorkHourRatio WorkHourRatio { get; set; }
+       
 
 
     }

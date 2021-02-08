@@ -8,9 +8,11 @@ namespace SalesInMove.Models
     public class Company
     {
         [Key]
-        public int Id { get; set; }
+        public int CompanyId { get; set; }
 
         public int UserId { get; set; }
+
+        public IList<int> CompanyPositionIds { get; set; }
 
         public string Name { get; set; }
         
@@ -37,5 +39,7 @@ namespace SalesInMove.Models
         public bool SalesSupport { get; set; }
 
         public UserCompany UserCompany { get; set; }
+
+        public IList<CompanyPosition> CompanyPositions { get; set; }
     }
 }

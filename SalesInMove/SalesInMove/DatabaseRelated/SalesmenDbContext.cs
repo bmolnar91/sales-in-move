@@ -31,7 +31,7 @@ namespace SalesInMove.DatabaseRelated
 
             builder.Entity<UserCompany>()
                 .HasOne(userCompany => userCompany.Company)
-                .WithOne()
+                .WithOne(company => company.UserCompany)
                 .HasForeignKey<Company>(company => company.Id);
         }
 

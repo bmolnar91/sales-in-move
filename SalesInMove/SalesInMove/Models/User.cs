@@ -13,5 +13,7 @@ namespace SalesInMove.Models
 
         [Required]
         public string Password { get; set; }
+
+        public Company Company { get; set; }
     }
 }

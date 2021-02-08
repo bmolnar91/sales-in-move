@@ -1,10 +1,8 @@
 ﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using SalesInMove.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using SalesInMove.Models.JoinTables;
+
 
 namespace SalesInMove.DatabaseRelated
 {
@@ -18,11 +16,18 @@ namespace SalesInMove.DatabaseRelated
 
         public DbSet<User> Users { get; set; }
 
+        public DbSet<UserCompany> UserCompanies { get; set; }
+
         public DbSet<Account> Accounts { get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
             base.OnModelCreating(builder);
+
+            builder.Entity<UserCompany>()
+                .HasOne(userCompany => userCompany.User)
+                .WithOne()
+                .HasForeignKey<User>(user => user.Id);
         }
 
     }

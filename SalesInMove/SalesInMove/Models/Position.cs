@@ -1,4 +1,3 @@
-using SalesInMove.Models.JoinTables;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -11,7 +10,7 @@ namespace SalesInMove.Models
 
         public int CompanyPositionId { get; set; }
         
-        public int PositionWorkHourRatioId { get; set; }
+        public int WorkHourRatioId { get; set; }
 
         public string Name { get; set; }
         
@@ -37,10 +36,11 @@ namespace SalesInMove.Models
         public bool ProgressionSupport { get; set; }
 
         // Hogyan fog kinézni egy napja
-        public PositionWorkHourRatio PositionWorkHourRatio { get; set; }
 
         [ForeignKey("PositionIds")]
         public Company Company { get; set; }
+
+        public WorkHourRatio WorkHourRatio { get; set; }
 
 
     }

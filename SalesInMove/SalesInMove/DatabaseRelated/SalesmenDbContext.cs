@@ -1,8 +1,6 @@
 ﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using SalesInMove.Models;
-using SalesInMove.Models.JoinTables;
-
 
 namespace SalesInMove.DatabaseRelated
 {

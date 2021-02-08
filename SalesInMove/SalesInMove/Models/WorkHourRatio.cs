@@ -1,4 +1,3 @@
-using SalesInMove.Models.JoinTables;
 using System.ComponentModel.DataAnnotations;
 
 namespace SalesInMove.Models
@@ -8,8 +7,6 @@ namespace SalesInMove.Models
         [Key]
         public int WorkHourRatioId { get; set; }
         
-        public int PositionWorkHourRatioId { get; set; }
-
         public ushort WorkHoursPerMonth { get; set; }
 
         public byte OfficeHours { get; set; }
@@ -18,6 +15,7 @@ namespace SalesInMove.Models
         
         public byte DrivingHours { get; set; }
 
-        public PositionWorkHourRatio PositionWorkHourRatio { get; set; }
+        public Position Position { get; set; }
+
     }
 }

@@ -16,6 +16,8 @@ namespace SalesInMove.DatabaseRelated
 
         }
 
+        public DbSet<User> Users { get; set; }
+
         public DbSet<Account> Accounts { get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder)

@@ -1,6 +1,7 @@
 using System.ComponentModel.DataAnnotations;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace SalesInMove.Models
 {
@@ -37,6 +38,8 @@ namespace SalesInMove.Models
         // Értékesítési támogatást nyújtunk
         public bool SalesSupport { get; set; }
 
+        [Required]
+        [ForeignKey("UserId")]
         public User User { get; set; }
 
         public IList<Position> Positions { get; set; }

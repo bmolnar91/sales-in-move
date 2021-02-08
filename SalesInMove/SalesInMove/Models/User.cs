@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Identity;
 using System.ComponentModel.DataAnnotations;
 
+
 namespace SalesInMove.Models
 {
     public class User: IdentityUser
@@ -9,5 +10,8 @@ namespace SalesInMove.Models
 
         [EmailAddress]
         public string EmailAddress { get; set; }
+
+        [Required]
+        public string Password { get; set; }
     }
 }

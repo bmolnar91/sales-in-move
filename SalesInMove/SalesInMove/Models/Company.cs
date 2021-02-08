@@ -37,6 +37,8 @@ namespace SalesInMove.Models
         // Értékesítési támogatást nyújtunk
         public bool SalesSupport { get; set; }
 
+        public User User { get; set; }
+
         public IList<Position> Positions { get; set; }
 
     }

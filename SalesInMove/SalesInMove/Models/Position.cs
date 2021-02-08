@@ -36,6 +36,9 @@ namespace SalesInMove.Models
         public bool ProgressionSupport { get; set; }
 
         public CompanyPosition CompanyPosition { get; set; }
+        
+        // Hogyan fog kinézni egy napja
+        public PositionWorkHourRatio PositionWorkHourRatio { get; set; }
 
 
     }

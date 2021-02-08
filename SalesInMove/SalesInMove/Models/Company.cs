@@ -1,7 +1,6 @@
 using System.ComponentModel.DataAnnotations;
 using System;
 using System.Collections.Generic;
-using SalesInMove.Models.JoinTables;
 
 namespace SalesInMove.Models
 {
@@ -12,7 +11,7 @@ namespace SalesInMove.Models
 
         public int UserId { get; set; }
 
-        public IList<int> CompanyPositionIds { get; set; }
+        public IList<int> PositionIds { get; set; }
 
         public string Name { get; set; }
         
@@ -38,6 +37,7 @@ namespace SalesInMove.Models
         // Értékesítési támogatást nyújtunk
         public bool SalesSupport { get; set; }
 
-        public IList<CompanyPosition> CompanyPositions { get; set; }
+        public IList<Position> Positions { get; set; }
+
     }
 }

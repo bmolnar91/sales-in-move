@@ -1,4 +1,5 @@
 using System;
+using System.Linq;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using SalesInMove.Models;
@@ -17,7 +18,7 @@ namespace SalesInMove.DatabaseRelated
 
         public async void AddEntityAsync(Company entity)
         {
-            Company reference = GetCompanyByNameAsync(entity.Name).Result;
+            Company reference = GetCompanyByName(entity.Name);
 
             if (reference == null)
             {
@@ -30,9 +31,9 @@ namespace SalesInMove.DatabaseRelated
             }
         }
 
-        public async void DeleteCompanyByNameAsync(string companyName)
+        public void DeleteCompanyByName(string companyName)
         {
-            Company toDelete = await GetCompanyByNameAsync(companyName);
+            Company toDelete = GetCompanyByName(companyName);
             _context.Companies.Remove(toDelete);
             SaveAsync();
         }
@@ -42,9 +43,13 @@ namespace SalesInMove.DatabaseRelated
             return _context.Companies; 
         }
 
-        public async Task<Company> GetCompanyByNameAsync(string companyName)
+        public Company GetCompanyByName(string companyName)
         {
-            return await _context.Companies.FindAsync(companyName);
+            var company = from c in GetAllEntities()
+                            where c.Name.Equals(companyName)
+                            select c;
+            
+            return company.FirstOrDefault<Company>();
         }
 
         public void UpdateEntityAsync(Company entity)

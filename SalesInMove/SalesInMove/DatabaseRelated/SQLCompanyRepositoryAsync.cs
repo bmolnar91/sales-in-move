@@ -37,9 +37,9 @@ namespace SalesInMove.DatabaseRelated
             SaveAsync();
         }
 
-        public IEnumerable<Company> GetAllEntitiesAsync()
+        public IEnumerable<Company> GetAllEntities()
         {
-            throw new NotImplementedException();
+            return _context.Companies; 
         }
 
         public async Task<Company> GetCompanyByNameAsync(string companyName)

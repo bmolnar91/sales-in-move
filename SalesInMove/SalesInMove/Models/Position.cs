@@ -8,8 +8,6 @@ namespace SalesInMove.Models
         [Key]
         public int PositionId { get; set; }
 
-        public int CompanyPositionId { get; set; }
-        
         public int WorkHourRatioId { get; set; }
 
         public string Name { get; set; }

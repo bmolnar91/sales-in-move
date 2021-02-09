@@ -6,7 +6,7 @@ namespace SalesInMove.DatabaseRelated
 {
     public interface IAsyncCompanyRepository : IAsyncRepository<Company>
     {
-        Task<Company> GetCompanyByNameAsync(string companyName);
-        void DeleteCompanyByNameAsync(string companyName);        
+        Company GetCompanyByName(string companyName);
+        void DeleteCompanyByName(string companyName);        
     }
 }

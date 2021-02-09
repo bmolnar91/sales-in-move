@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using SalesInMove.Models;
 
 namespace SalesInMove.DatabaseRelated
@@ -7,13 +8,29 @@ namespace SalesInMove.DatabaseRelated
     public class SQLCompanyRepositoryAsync : IAsyncCompanyRepository, IDisposable
     {
         private bool disposedValue;
+        private SalesmenDbContext _context;
 
-        public void AddEntityAsync(Company entity)
+        public SQLCompanyRepositoryAsync(SalesmenDbContext context)
         {
-            throw new NotImplementedException();
+            _context = context;
         }
 
-        public void DeleteCompanyByNameAsync(string companyName)
+        public async void AddEntityAsync(Company entity)
+        {
+            Company reference = GetCompanyByNameAsync(entity.Name).Result;
+
+            if (reference == null)
+            {
+                await _context.Companies.AddAsync(entity);
+                SaveAsync();
+            }
+            else
+            {
+                throw new ArgumentException($"Company has already registered with this name: {reference.Name}");
+            }
+        }
+
+        public async void DeleteCompanyByNameAsync(string companyName)
         {
             throw new NotImplementedException();
         }
@@ -23,7 +40,7 @@ namespace SalesInMove.DatabaseRelated
             throw new NotImplementedException();
         }
 
-        public Company GetCompanyByNameAsync(string companyName)
+        public async Task<Company> GetCompanyByNameAsync(string companyName)
         {
             throw new NotImplementedException();
         }
@@ -32,6 +49,12 @@ namespace SalesInMove.DatabaseRelated
         {
             throw new NotImplementedException();
         }
+
+         private async void SaveAsync()
+        {
+            await _context.SaveChangesAsync();
+        }
+        
 
         protected virtual void Dispose(bool disposing)
         {
@@ -61,5 +84,6 @@ namespace SalesInMove.DatabaseRelated
             Dispose(disposing: true);
             GC.SuppressFinalize(this);
         }
+
     }
 }

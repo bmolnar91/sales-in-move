@@ -1,45 +1,34 @@
-using SalesInMove.Models;
 using System;
 using System.Collections.Generic;
+using SalesInMove.Models;
 
 namespace SalesInMove.DatabaseRelated
 {
-    public class SQLAsyncUserRepository : IAsyncRepository<User>, IDisposable
+    public class SQLCompanyRepositoryAsync : IAsyncCompanyRepository, IDisposable
     {
         private bool disposedValue;
-        private SalesmenDbContext _context;
 
-        public SQLAsyncUserRepository(SalesmenDbContext context)
-        {
-            _context = context;
-        }
-
-        public async void AddAsync(User entity)
+        public void AddEntityAsync(Company entity)
         {
             throw new NotImplementedException();
         }
 
-        public void DeleteByEmailAsync(User entity)
+        public void DeleteCompanyByNameAsync(string companyName)
         {
             throw new NotImplementedException();
         }
 
-        public IEnumerable<User> GetAllAsync(User entity)
+        public IEnumerable<Company> GetAllEntitiesAsync()
         {
             throw new NotImplementedException();
         }
 
-        public User GetByEmailAsync(User entity)
+        public Company GetCompanyByNameAsync(string companyName)
         {
             throw new NotImplementedException();
         }
 
-        public void SaveAsync()
-        {
-            throw new NotImplementedException();
-        }
-
-        public void UpdateAsync(User entity)
+        public void UpdateEntityAsync(Company entity)
         {
             throw new NotImplementedException();
         }
@@ -60,7 +49,7 @@ namespace SalesInMove.DatabaseRelated
         }
 
         // // TODO: override finalizer only if 'Dispose(bool disposing)' has code to free unmanaged resources
-        // ~SQLAsyncUserRepository()
+        // ~SQLCompanyRepositoryAsync()
         // {
         //     // Do not change this code. Put cleanup code in 'Dispose(bool disposing)' method
         //     Dispose(disposing: false);

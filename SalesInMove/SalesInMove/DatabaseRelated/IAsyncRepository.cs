@@ -1,15 +1,11 @@
 using System.Collections.Generic;
-using System;
 
 namespace SalesInMove.DatabaseRelated
 {
-    public interface IAsyncRepository<TEntity> : IDisposable
+    public interface IAsyncRepository <TEntity> where TEntity : class
     {
-         void AddAsync(TEntity entity);
-         void UpdateAsync(TEntity entity);
-         IEnumerable<TEntity> GetAllAsync(TEntity entity);
-         TEntity GetByEmailAsync(TEntity entity);
-         void DeleteByEmailAsync(TEntity entity);
-         void SaveAsync();
+         void AddEntityAsync(TEntity entity);
+        IEnumerable<TEntity> GetAllEntitiesAsync();
+        void UpdateEntityAsync(TEntity entity);
     }
 }

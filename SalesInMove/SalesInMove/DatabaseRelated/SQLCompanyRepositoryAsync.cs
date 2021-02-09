@@ -32,7 +32,7 @@ namespace SalesInMove.DatabaseRelated
 
         public async void DeleteCompanyByNameAsync(string companyName)
         {
-            throw new NotImplementedException();
+            
         }
 
         public IEnumerable<Company> GetAllEntitiesAsync()
@@ -42,7 +42,7 @@ namespace SalesInMove.DatabaseRelated
 
         public async Task<Company> GetCompanyByNameAsync(string companyName)
         {
-            throw new NotImplementedException();
+            return await _context.Companies.FindAsync(companyName);
         }
 
         public void UpdateEntityAsync(Company entity)

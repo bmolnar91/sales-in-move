@@ -4,10 +4,11 @@ using SalesInMove.Models;
 
 namespace SalesInMove.Services
 {
-    public interface ICompanyFactory : IUserFactory
+    public interface ICompanyFactory
     {
-        Company CreateCompany(string name, string headquarter, long taxNumber, long registry, 
+        Company CreateCompany(int userType, string emailAddress, string password, string companyName, 
+            string headquarter, long taxNumber, long registry, 
             DateTime? yearOfFoundation, int numberOfSalesman, string sector, long annualNettoIncome,
-            string[] employeeOpinions, bool salesSupport, User user, ICollection<Position> positions);
+            List<string> employeeOpinions, bool salesSupport, User user, ICollection<Position> positions);
     }
 }

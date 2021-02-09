@@ -7,6 +7,5 @@ namespace SalesInMove.DatabaseRelated
         void AddEntityAsync(TEntity entity);
         IEnumerable<TEntity> GetAllEntitiesAsync();
         void UpdateEntityAsync(TEntity entity);
-        void SaveAsync();
     }
 }

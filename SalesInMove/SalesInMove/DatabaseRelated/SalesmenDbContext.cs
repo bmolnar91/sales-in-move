@@ -1,7 +1,9 @@
 ﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using SalesInMove.Models;
 using System;
+using System.Collections.Generic;
 
 namespace SalesInMove.DatabaseRelated
 {
@@ -20,6 +22,9 @@ namespace SalesInMove.DatabaseRelated
         protected override void OnModelCreating(ModelBuilder builder)
         {
             base.OnModelCreating(builder);
+
+            var splitStringConverter = new ValueConverter<IList<string>, string>(v => string.Join(";", v), v => v.Split(new[] { ';' }));
+            builder.Entity<Company>().Property(nameof(Company.EmployeeOpinions)).HasConversion(splitStringConverter);
 
             #region PositionSeed
             builder.Entity<WorkHourRatio>().HasData(
@@ -71,7 +76,7 @@ namespace SalesInMove.DatabaseRelated
                     YearOfFoundation = DateTime.Parse("Jan 1, 2000"),
                     NumberOfSalesman = 10,
                     AnnualNettoIncome = 2000321865,
-                    EmployeeOpinions = new string[] { "Good", "Bad", "Terrific!", "Horrific!" },
+                    EmployeeOpinions = new List<string>() { "Good", "Bad", "Terrific!", "Horrific!" },
                     SalesSupport = true,
                     UserId = "0",
                     PositionId = 3

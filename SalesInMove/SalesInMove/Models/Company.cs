@@ -33,7 +33,7 @@ namespace SalesInMove.Models
         public long AnnualNettoIncome { get; set; }
 
         // Munkavállalóink írták
-        public string[] EmployeeOpinions { get; set; }
+        public IList<String> EmployeeOpinions { get; set; }
         
         // Értékesítési támogatást nyújtunk
         public bool SalesSupport { get; set; }

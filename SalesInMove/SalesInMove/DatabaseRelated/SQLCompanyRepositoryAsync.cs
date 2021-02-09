@@ -32,7 +32,9 @@ namespace SalesInMove.DatabaseRelated
 
         public async void DeleteCompanyByNameAsync(string companyName)
         {
-            
+            Company toDelete = await GetCompanyByNameAsync(companyName);
+            _context.Companies.Remove(toDelete);
+            SaveAsync();
         }
 
         public IEnumerable<Company> GetAllEntitiesAsync()

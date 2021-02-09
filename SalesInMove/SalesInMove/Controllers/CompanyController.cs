@@ -2,6 +2,8 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using SalesInMove.DatabaseRelated;
 using SalesInMove.Models;
+using System.Text.Json;
+using System.Text.Json.Serialization;
 
 namespace SalesInMove.Controllers
 {
@@ -17,9 +19,9 @@ namespace SalesInMove.Controllers
         }
 
         [HttpGet("getcompany/{name}")]
-        public Company Get(string name)
+        public string Get(string name)
         {
-            return _repo.GetCompanyByName(name);
+            return JsonSerializer.Serialize(_repo.GetCompanyByName(name));
         }
 
     }

@@ -24,6 +24,34 @@ namespace SalesInMove.DatabaseRelated
         {
             base.OnModelCreating(builder);
 
+            #region PositionSeed
+            builder.Entity<WorkHourRatio>().HasData(
+                new WorkHourRatio
+                {
+                    WorkHourRatioId = 4,
+                    WorkHoursPerMonth = 184,
+                    HomeOfficeHours = 100,
+                    DrivingHours = 20,
+                    OfficeHours = 64
+                }
+            );
+
+            builder.Entity<Position>().HasData(
+                new Position
+                {
+                    PositionId = 3,
+                    WorkHourRatioId = 4,
+                    Name = "Sales manager",
+                    City = "Halásztelek",
+                    Description = "Good",
+                    BossExpectations = "Be good and reliable!",
+                    WorkHour = "Full",
+                    OtherBenefits = "Laptop and car",
+                    ProgressionSupport = true
+                }
+            );
+            #endregion
+
             #region Company seed
             builder.Entity<User>().HasData(
                 new User
@@ -48,7 +76,8 @@ namespace SalesInMove.DatabaseRelated
                     AnnualNettoIncome = 2000321865,
                     EmployeeOpinions = new string[] { "Good", "Bad", "Terrific!", "Horrific!" },
                     SalesSupport = true,
-                    UserId = "0"
+                    UserId = "0",
+                    PositionId = 3
 
                 }
             );

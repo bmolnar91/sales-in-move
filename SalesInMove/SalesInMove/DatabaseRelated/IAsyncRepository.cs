@@ -5,11 +5,11 @@ namespace SalesInMove.DatabaseRelated
 {
     public interface IAsyncRepository<TEntity> : IDisposable
     {
-         public void AddAsync(TEntity entity);
-         public void UpdateAsync(TEntity entity);
-         public IEnumerable<TEntity> GetAllAsync(TEntity entity);
-         public TEntity GetByEmailAsync(TEntity entity);
-         public void DeleteByEmailAsync(TEntity entity);
-         public void SaveAsync();
+         void AddAsync(TEntity entity);
+         void UpdateAsync(TEntity entity);
+         IEnumerable<TEntity> GetAllAsync(TEntity entity);
+         TEntity GetByEmailAsync(TEntity entity);
+         void DeleteByEmailAsync(TEntity entity);
+         void SaveAsync();
     }
 }

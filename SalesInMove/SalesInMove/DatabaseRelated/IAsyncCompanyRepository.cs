@@ -4,7 +4,7 @@ using SalesInMove.Models;
 
 namespace SalesInMove.DatabaseRelated
 {
-    public interface IAsyncCompanyRepository : IAsyncRepository<Company>
+    public interface ICompanyRepository : IAsyncRepository<Company>
     {
         Company GetCompanyByName(string companyName);
         void DeleteCompanyByName(string companyName);        

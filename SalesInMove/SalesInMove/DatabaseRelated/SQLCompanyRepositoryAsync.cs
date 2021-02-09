@@ -6,7 +6,7 @@ using SalesInMove.Models;
 
 namespace SalesInMove.DatabaseRelated
 {
-    public class SQLCompanyRepositoryAsync : IAsyncCompanyRepository, IDisposable
+    public class SQLCompanyRepositoryAsync : ICompanyRepository, IDisposable
     {
         private bool disposedValue;
         private SalesmenDbContext _context;

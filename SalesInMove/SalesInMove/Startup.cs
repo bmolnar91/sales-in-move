@@ -78,7 +78,7 @@ namespace SalesInMove
                 };
            });
 
-           services.AddScoped<IAsyncCompanyRepository, SQLCompanyRepositoryAsync>();
+           services.AddScoped<ICompanyRepository, SQLCompanyRepositoryAsync>();
 
         }
 

@@ -2,7 +2,7 @@ namespace SalesInMove.ViewModels
 {
     public class CompanyRegistrationVM : AbstractUserVM
     {
-        public string companyName { get; set; }
+        public string CompanyName { get; set; }
         public string[] CompanyProfile { get; set; }
         public string Headquarter { get; set; }
         public long TaxNumber { get; set; }

@@ -16,7 +16,7 @@ namespace SalesInMove.DatabaseRelated
             _context = context;
         }
 
-        public async void AddEntityAsync(Company entity)
+        public async Task<Company> AddEntityAsync(Company entity)
         {
             Company reference = GetCompanyByName(entity.Name);
 
@@ -24,6 +24,7 @@ namespace SalesInMove.DatabaseRelated
             {
                 await _context.Companies.AddAsync(entity);
                 SaveAsync();
+                return entity;
             }
             else
             {

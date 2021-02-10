@@ -229,6 +229,9 @@ namespace SalesInMove.Migrations
                     b.Property<long>("AnnualNettoIncome")
                         .HasColumnType("bigint");
 
+                    b.Property<string>("CompanyProfile")
+                        .HasColumnType("text");
+
                     b.Property<string>("EmployeeOpinions")
                         .HasColumnType("text");
 
@@ -423,12 +426,12 @@ namespace SalesInMove.Migrations
                         {
                             Id = "0",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "2a9e74e3-a2c0-4f9d-9d64-932d20288beb",
+                            ConcurrencyStamp = "dbff3fee-b160-40b0-ac32-5add4d384132",
                             Email = "marko@gmail.com",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "7bbf5341-1f65-434e-a7b5-ed9dffd3e5cb",
+                            SecurityStamp = "ff7314d5-b1d7-4751-b578-4d7d6a1ce41e",
                             TwoFactorEnabled = false,
                             Password = "Asd123",
                             UserType = 2

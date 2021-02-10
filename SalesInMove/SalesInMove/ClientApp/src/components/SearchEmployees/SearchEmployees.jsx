@@ -15,6 +15,7 @@ import FacebookIcon from "@material-ui/icons/Facebook";
 import Divider from "@material-ui/core/Divider";
 import SelectInput from "@material-ui/core/Select/SelectInput";
 import { ControlledOpenSelect } from "../ControlledOpenSelect";
+import { CheckboxesGroup } from "../CheckboxesGroup";
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -46,8 +47,8 @@ export const SearchEmployees = () => {
       <Grid container item xs={3}>
         <Grid item xs={12}>
           <ControlledOpenSelect
-            label={"Végzettség"}
-            items={[
+            selectLabel={"Végzettség"}
+            selectItems={[
               "felnőttképzés",
               "érettségi",
               "főiskola",
@@ -59,8 +60,8 @@ export const SearchEmployees = () => {
         <Grid item xs={12}></Grid>
         <Grid item xs={12}>
           <ControlledOpenSelect
-            label={"Lokáció"}
-            items={[
+            selectLabel={"Lokáció"}
+            selectItems={[
               "Budapest",
               "Székesfehérvár",
               "Siófok",
@@ -83,10 +84,28 @@ export const SearchEmployees = () => {
           />
         </Grid>
         <Grid item xs={12}>
-          <Checkbox></Checkbox>
+          <CheckboxesGroup
+            checkboxLabel={"Beszélt nyelvek"}
+            checkboxItems={[
+              "angol",
+              "német",
+              "spanyol",
+              "francia",
+              "kínai",
+              "orosz",
+              "lengyel",
+              "szlovák",
+              "cseh",
+              "román",
+              "szerb",
+            ].sort()}
+          ></CheckboxesGroup>
         </Grid>
         <Grid item xs={12}>
-          <Checkbox></Checkbox>
+          <ControlledOpenSelect
+            selectLabel={"Jogosítvány"}
+            selectItems={["van", "nincs"]}
+          />
         </Grid>
       </Grid>
       <Grid container item xs={9}>

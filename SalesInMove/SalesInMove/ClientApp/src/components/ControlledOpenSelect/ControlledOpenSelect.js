@@ -17,7 +17,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export const ControlledOpenSelect = ({ label, items }) => {
+export const ControlledOpenSelect = ({ selectLabel, selectItems }) => {
   const classes = useStyles();
   const [val, setVal] = React.useState("");
   const [open, setOpen] = React.useState(false);
@@ -40,7 +40,9 @@ export const ControlledOpenSelect = ({ label, items }) => {
         {/* Open the select */}
       </Button>
       <FormControl className={classes.formControl}>
-        <InputLabel id="demo-controlled-open-select-label">{label}</InputLabel>
+        <InputLabel id="demo-controlled-open-select-label">
+          {selectLabel}
+        </InputLabel>
         <Select
           labelId="demo-controlled-open-select-label"
           id="demo-controlled-open-select"
@@ -53,7 +55,7 @@ export const ControlledOpenSelect = ({ label, items }) => {
           <MenuItem value="egyéb">
             <em>egyéb</em>
           </MenuItem>
-          {items.map((item) => {
+          {selectItems.map((item) => {
             return (
               <MenuItem key={item} value={item}>
                 {item}

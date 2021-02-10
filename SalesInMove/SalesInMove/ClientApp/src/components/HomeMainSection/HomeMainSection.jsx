@@ -1,10 +1,5 @@
 import React from "react";
-import {
-  Container,
-  MidSectionContainer,
-  Image,
-  TextContainer,
-} from "./HomeMainSection.style";
+import { Container, TextContainer } from "./HomeMainSection.style";
 import Button from "@material-ui/core/Button";
 import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
@@ -49,7 +44,7 @@ export const HomeMainSection = () => {
       className={classes.mainGridContainer}
     >
       <Grid container item xs={6}>
-        <Container item item xs={5}>
+        <Container item xs={5}>
           <Container component="div">
             <TextContainer>
               <Typography
@@ -75,9 +70,9 @@ export const HomeMainSection = () => {
             </TextContainer>
           </Container>
         </Container>
-        <Grid xs={7}></Grid>
+        {/* <Grid xs={7}></Grid> */}
       </Grid>
-      <Grid container xs={6}>
+      <Grid container item xs={6}>
         <Grid item className={classes.buttonContainer}>
           <Button
             variant="contained"
@@ -94,7 +89,7 @@ export const HomeMainSection = () => {
             Munkát kínálok !
           </Button>
         </Grid>
-        <Grid xs={7}></Grid>
+        {/* <Grid xs={7}></Grid> */}
       </Grid>
     </Grid>
 

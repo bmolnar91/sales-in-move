@@ -1,4 +1,7 @@
-import React from "react";
+import React, { useState } from "react";
+import axios from "axios";
+import { useHistory } from "react-router-dom";
+import FormData from "form-data";
 import Avatar from "@material-ui/core/Avatar";
 import Button from "@material-ui/core/Button";
 import CssBaseline from "@material-ui/core/CssBaseline";
@@ -48,6 +51,52 @@ const useStyles = makeStyles((theme) => ({
 
 export function LoginForm() {
   const classes = useStyles();
+  let history = useHistory();
+
+  const [formInputFields, setFormInputFields] = useState({
+    email: "",
+    password: "",
+  });
+
+  const [isValidLogin, setIsValidLogin] = useState(false);
+
+  const passwordOnChange = (e) => {
+    setFormInputFields({ ...formInputFields, password: e.target.value });
+  };
+
+  const emailOnChange = (e) => {
+    setFormInputFields({ ...formInputFields, email: e.target.value });
+  };
+
+  const onSubmit = (e) => {
+    e.preventDefault();
+
+    let bodyFormData = new FormData();
+    bodyFormData.append("email", formInputFields.email);
+    bodyFormData.append("password", formInputFields.password);
+    console.log(bodyFormData.get("email"));
+
+    axios({
+      method: "post",
+      url: "/api/account/login",
+      data: bodyFormData,
+      headers: { "Content-type": "multipart/form-data" },
+    })
+      .then((res) => {
+        console.log(res);
+        const token = res.data.token;
+        localStorage.setItem("jwt", token);
+
+        setIsValidLogin(true);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+
+    if (isValidLogin) {
+      history.push("/");
+    }
+  };
 
   return (
     <Container component="main" maxWidth="xs" className={classes.mainContainer}>
@@ -59,10 +108,12 @@ export function LoginForm() {
         <Typography component="h1" variant="h5">
           Bejelentkezés
         </Typography>
-        <form className={classes.form}
-            noValidate
-            method='post'
-            action='/api/account/login'
+        <form
+          className={classes.form}
+          noValidate
+          // method="post"
+          // action="/api/account/login"
+          onSubmit={onSubmit}
         >
           <TextField
             variant="outlined"
@@ -71,20 +122,22 @@ export function LoginForm() {
             fullWidth
             id="email"
             label="Email cím"
-            name="email"
+            // name="email"
             autoComplete="email"
             autoFocus
+            onChange={emailOnChange}
           />
           <TextField
             variant="outlined"
             margin="normal"
             required
             fullWidth
-            name="password"
+            // name="password"
             label="Jelszó"
             type="password"
             id="password"
             autoComplete="current-password"
+            onChange={passwordOnChange}
           />
           <FormControlLabel
             control={<Checkbox value="remember" color="primary" />}

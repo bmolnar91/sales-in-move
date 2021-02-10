@@ -2,6 +2,8 @@ namespace SalesInMove.ViewModels
 {
     public class CompanyRegistrationVM : AbstractUserVM
     {
+        public string ContactFirstName { get; set; }
+        public string ContactLastName { get; set; }
         public string CompanyName { get; set; }
         public string[] CompanyProfile { get; set; }
         public string Headquarter { get; set; }

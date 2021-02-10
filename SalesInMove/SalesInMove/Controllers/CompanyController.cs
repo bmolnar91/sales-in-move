@@ -41,8 +41,9 @@ namespace SalesInMove.Controllers
             
             Company newCompany = _companyFactory.CreateCompany
             (
-                jsonDatas.UserType, jsonDatas.Email, jsonDatas.Password, jsonDatas.CompanyName,
-                jsonDatas.CompanyProfile, jsonDatas.Headquarter, jsonDatas.TaxNumber, jsonDatas.Registry,
+                jsonDatas.UserType, jsonDatas.Email, jsonDatas.Password, jsonDatas.CompanyName, 
+                jsonDatas.ContactFirstName, jsonDatas.ContactLastName, jsonDatas.CompanyProfile, 
+                jsonDatas.Headquarter, jsonDatas.TaxNumber, jsonDatas.Registry,
                 yearOfFoundationDate, jsonDatas.NumberOfSalesman, jsonDatas.Sector, jsonDatas.AnnualNettoIncome,
                 jsonDatas.SalesSupport, jsonDatas.EmployeeOpinions
             );

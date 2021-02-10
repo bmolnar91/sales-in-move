@@ -6,9 +6,12 @@ namespace SalesInMove.Services
 {
     public interface ICompanyFactory
     {
-        Company CreateCompany(byte userType, string email, string password, string companyName, 
+        Company CreateCompany
+        (
+            byte userType, string email, string password, string companyName, string contactFirstName, string contactLastName,
             string[] companyProfile, string headquarter, long taxNumber, long registry, DateTime? yearOfFoundation, 
             int numberOfSalesman, string sector, long annualNettoIncome, bool salesSupport, 
-            string[] employeeOpinions = null);
+            string[] employeeOpinions = null
+        );
     }
 }

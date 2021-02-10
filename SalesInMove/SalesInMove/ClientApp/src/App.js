@@ -10,6 +10,7 @@ import { LoginPage } from './pages/login/login';
 import { StickyFooter } from './components/StickyFooter';
 import { AppBar } from './components/AppBar';
 import profilePage from './pages/profile/profilePage';
+import './styles/App.css';
 
 const App = () => {
   return (

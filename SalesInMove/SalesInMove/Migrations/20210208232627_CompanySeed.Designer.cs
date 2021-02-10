@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 using SalesInMove.DatabaseRelated;
@@ -9,9 +10,10 @@ using SalesInMove.DatabaseRelated;
 namespace SalesInMove.Migrations
 {
     [DbContext(typeof(SalesmenDbContext))]
-    partial class SalesmenDbContextModelSnapshot : ModelSnapshot
+    [Migration("20210208232627_CompanySeed")]
+    partial class CompanySeed
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -280,7 +282,7 @@ namespace SalesInMove.Migrations
                             Headquarter = "Halásztelek",
                             Name = "Markoó Kft.",
                             NumberOfSalesman = 10,
-                            PositionId = 3,
+                            PositionId = 0,
                             Registry = 109321480L,
                             SalesSupport = true,
                             TaxNumber = 24767107243L,
@@ -303,6 +305,9 @@ namespace SalesInMove.Migrations
                         .HasColumnType("text");
 
                     b.Property<int?>("CompanyId")
+                        .HasColumnType("integer");
+
+                    b.Property<int>("CompanyPositionId")
                         .HasColumnType("integer");
 
                     b.Property<string>("Description")
@@ -337,20 +342,6 @@ namespace SalesInMove.Migrations
                         .IsUnique();
 
                     b.ToTable("Position");
-
-                    b.HasData(
-                        new
-                        {
-                            PositionId = 3,
-                            BossExpectations = "Be good and reliable!",
-                            City = "Halásztelek",
-                            Description = "Good",
-                            Name = "Sales manager",
-                            OtherBenefits = "Laptop and car",
-                            ProgressionSupport = true,
-                            WorkHour = "Full",
-                            WorkHourRatioId = 4
-                        });
                 });
 
             modelBuilder.Entity("SalesInMove.Models.WorkHourRatio", b =>
@@ -375,16 +366,6 @@ namespace SalesInMove.Migrations
                     b.HasKey("WorkHourRatioId");
 
                     b.ToTable("WorkHourRatio");
-
-                    b.HasData(
-                        new
-                        {
-                            WorkHourRatioId = 4,
-                            DrivingHours = (byte)20,
-                            HomeOfficeHours = (byte)100,
-                            OfficeHours = (byte)64,
-                            WorkHoursPerMonth = 184
-                        });
                 });
 
             modelBuilder.Entity("SalesInMove.Models.Account", b =>
@@ -408,6 +389,9 @@ namespace SalesInMove.Migrations
                 {
                     b.HasBaseType("Microsoft.AspNetCore.Identity.IdentityUser");
 
+                    b.Property<string>("EmailAddress")
+                        .HasColumnType("text");
+
                     b.Property<string>("Password")
                         .IsRequired()
                         .HasColumnType("text")
@@ -423,12 +407,12 @@ namespace SalesInMove.Migrations
                         {
                             Id = "0",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "cbc07a5d-15b8-4fe1-b247-1203d71dbe3e",
+                            ConcurrencyStamp = "2cf815ef-87f1-4328-ae9b-4114554f54d8",
                             Email = "marko@gmail.com",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "894fd9c0-4429-4aa8-8c39-c24030f300f3",
+                            SecurityStamp = "ca4cc619-ad5e-44b4-84b7-84a778f02cb1",
                             TwoFactorEnabled = false,
                             Password = "Asd123",
                             UserType = 2

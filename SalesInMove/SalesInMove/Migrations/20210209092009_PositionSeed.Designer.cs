@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 using SalesInMove.DatabaseRelated;
@@ -9,9 +10,10 @@ using SalesInMove.DatabaseRelated;
 namespace SalesInMove.Migrations
 {
     [DbContext(typeof(SalesmenDbContext))]
-    partial class SalesmenDbContextModelSnapshot : ModelSnapshot
+    [Migration("20210209092009_PositionSeed")]
+    partial class PositionSeed
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -408,6 +410,9 @@ namespace SalesInMove.Migrations
                 {
                     b.HasBaseType("Microsoft.AspNetCore.Identity.IdentityUser");
 
+                    b.Property<string>("EmailAddress")
+                        .HasColumnType("text");
+
                     b.Property<string>("Password")
                         .IsRequired()
                         .HasColumnType("text")
@@ -423,12 +428,12 @@ namespace SalesInMove.Migrations
                         {
                             Id = "0",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "cbc07a5d-15b8-4fe1-b247-1203d71dbe3e",
+                            ConcurrencyStamp = "ca4aa081-928d-4045-bfff-513e64448f4c",
                             Email = "marko@gmail.com",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "894fd9c0-4429-4aa8-8c39-c24030f300f3",
+                            SecurityStamp = "218b2118-30b6-49d3-9e1d-bfd0d1be984f",
                             TwoFactorEnabled = false,
                             Password = "Asd123",
                             UserType = 2

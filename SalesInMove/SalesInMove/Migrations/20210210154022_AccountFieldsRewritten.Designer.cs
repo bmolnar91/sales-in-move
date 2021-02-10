@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 using SalesInMove.DatabaseRelated;
@@ -10,9 +11,10 @@ using SalesInMove.DatabaseRelated;
 namespace SalesInMove.Migrations
 {
     [DbContext(typeof(SalesmenDbContext))]
-    partial class SalesmenDbContextModelSnapshot : ModelSnapshot
+    [Migration("20210210154022_AccountFieldsRewritten")]
+    partial class AccountFieldsRewritten
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -392,16 +394,10 @@ namespace SalesInMove.Migrations
                 {
                     b.HasBaseType("Microsoft.AspNetCore.Identity.IdentityUser");
 
-                    b.Property<string>("Eletkor")
-                        .HasColumnType("text");
-
-                    b.Property<bool>("ErtékesitoiForgalom")
-                        .HasColumnType("boolean");
-
                     b.Property<string>("FirstName")
                         .HasColumnType("text");
 
-                    b.Property<bool>("Jogositvany")
+                    b.Property<bool>("Jogosítvány")
                         .HasColumnType("boolean");
 
                     b.Property<string>("LastName")
@@ -414,20 +410,26 @@ namespace SalesInMove.Migrations
                         .IsRequired()
                         .HasColumnType("text");
 
-                    b.Property<bool>("SalesKurzusElofizetes")
+                    b.Property<bool>("SalesKurzusElőfizetés")
                         .HasColumnType("boolean");
 
-                    b.Property<string>("Szakterulet")
+                    b.Property<string>("Szakterület")
                         .HasColumnType("text");
 
-                    b.Property<bool>("SzemelyisegTeszt")
+                    b.Property<bool>("SzemélyiségiTeszt")
                         .HasColumnType("boolean");
 
-                    b.Property<string>("Varos")
+                    b.Property<string>("Város")
                         .HasColumnType("text");
 
-                    b.Property<string>("Vegzettseg")
+                    b.Property<string>("Végzettség")
                         .HasColumnType("text");
+
+                    b.Property<string>("Életkor")
+                        .HasColumnType("text");
+
+                    b.Property<bool>("ÉrtékesítőiForgalom")
+                        .HasColumnType("boolean");
 
                     b.HasDiscriminator().HasValue("Account");
                 });
@@ -451,12 +453,12 @@ namespace SalesInMove.Migrations
                         {
                             Id = "0",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "393f176a-33a7-466a-b02a-7f53f5fe5c98",
+                            ConcurrencyStamp = "2697c4de-48b4-4905-adf6-81e3808c3cc3",
                             Email = "marko@gmail.com",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "3fcc256b-db81-470c-a6bd-3503d33ca22a",
+                            SecurityStamp = "f4f69176-43bb-47cf-afc5-4281588cc188",
                             TwoFactorEnabled = false,
                             Password = "Asd123",
                             UserType = 2

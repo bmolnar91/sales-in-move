@@ -5,10 +5,15 @@ using NETCore.MailKit.Core;
 using SalesInMove.Models;
 using System;
 using System.Collections.Generic;
+using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
 using System.Net.Mail;
+using System.Security.Claims;
+using System.Text;
 using System.Threading.Tasks;
 using System.Web;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.IdentityModel.Tokens;
 
 namespace SalesInMove.Controllers
 {
@@ -29,7 +34,7 @@ namespace SalesInMove.Controllers
         }
 
         [HttpPost("login")]
-        public async Task<Microsoft.AspNetCore.Identity.SignInResult> Login([FromForm] Account model)
+        public async Task<IActionResult> Login([FromForm] Account model)
         {
             //1.getting a request from frontend, and generating a model object from JSON by it
             //2. getting an identityuser from the database which matches with we got from the JSON by email adress
@@ -38,7 +43,26 @@ namespace SalesInMove.Controllers
 
             var signInResult = await _signInManager.PasswordSignInAsync(user, model.Password, false, false);
 
-            return signInResult;
+            if (signInResult.Succeeded)
+            {
+                var secretKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("superSecretKey@345"));
+                var signingCredentials = new SigningCredentials(secretKey, SecurityAlgorithms.HmacSha256);
+
+                var tokenOptions = new JwtSecurityToken
+                (
+                    issuer: "https://localhost:5001",
+                    audience: "https://localhost:5001",
+                    claims: new List<Claim>(),
+                    expires: DateTime.Now.AddMinutes(5),
+                    signingCredentials: signingCredentials
+                );
+
+                var tokenString = new JwtSecurityTokenHandler().WriteToken(tokenOptions);
+
+                return Ok(new {Token = tokenString});
+            }
+            
+            return Unauthorized();
         }
 
         [HttpPost("logout")]
@@ -90,6 +114,15 @@ namespace SalesInMove.Controllers
             }
 
             return result;
+        }
+
+        // TODO: delete this endpoint
+        [HttpGet("customers")]
+        [Authorize]
+        public string Customers()
+        {
+            Console.WriteLine("bob");
+            return "bob";
         }
     }
 }

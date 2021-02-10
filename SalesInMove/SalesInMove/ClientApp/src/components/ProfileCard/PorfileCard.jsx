@@ -12,206 +12,158 @@ import LanguageIcon from '@material-ui/icons/Language';
 import AttachMoneyIcon from '@material-ui/icons/AttachMoney';
 import ArrowDropDownIcon from '@material-ui/icons/ArrowDropDown';
 import DriveEtaIcon from '@material-ui/icons/DriveEta';
+import LocationOnIcon from '@material-ui/icons/LocationOn';
+import CheckCircleIcon from '@material-ui/icons/CheckCircle';
+import MessageIcon from '@material-ui/icons/Message';
+import SaveIcon from '@material-ui/icons/Save';
+import ProfileCardTabs from '../ProfileCardTabs/ProfileCardTabs';
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    height: '100vh',
-    maxWidth: '80%',
-    justifyContent: 'center',
-    alignItems: 'center',
-    marginTop: '100px',
-  },
-  mainGrid: {
-    display: 'flex',
-    flexDirection: 'row',
-    justifyContent: 'center',
-  },
-  halfItem: {
-    // display: 'flex',
-    // justifyContent: 'center',
-    // flexDirection: 'column',
-    alignItems: 'center',
-    margin: '50px',
-  },
-  profileHeadingContainer: {
-    textAlign: 'center',
-    fontWeight: '700',
-    fontSize: '50px',
-    letterSpacing: '5px',
-  },
-  profileImageContainer: {
-    display: 'flex',
-    justifyContent: 'center',
-  },
-  profileNameText: {
-    marginTop: '20px',
-    fontSize: '36px',
-    textAlign: 'center',
-    letterSpacing: '10px',
-  },
-  courseIfCourse: {
-    display: 'flex',
-    justifyContent: 'center',
     marginTop: '20px',
   },
-  profileImage: {
-    borderRadius: '10px',
+  videoTitleText: {
+    fontSize: '12px',
+    color: '#a1a1a1',
+    paddingTop: '12px',
   },
-  salesCourseGridItem: {
-    marginRight: '30px',
+  videoTitleTextAndDividerContainer: {
+    paddingRight: '24px',
+    paddingLeft: '24px',
   },
-  twitterText: {
-    textAlign: 'center',
-    color: 'grey',
+  gridRightHalfTop: {
+    height: '34%',
+    padding: '0px 24px 0px 24px',
   },
-  skillsGridItem: {
-    // textAlign: 'center',
-    display: 'flex',
-    alignItems: 'center',
-    fontSize: '24px',
-    marginTop: '40px',
-  },
-  skillsIcon: {
-    fontSize: '40px',
+  checkCircleIcon: {
+    marginRight: '15px',
   },
 }));
 const ProfileCard = () => {
   const classes = useStyles();
+
   return (
-    <Container component='div' className={classes.root}>
-      <Container component='div'>
-        <Container component='div' className='startContainer'>
-          <Container component='div' className={classes.profileImageContainer}>
+    <Container className={classes.root}>
+      <Grid container>
+        <Grid item xs={4}>
+          <Container component='div'>
             <img
-              src='images/profile.jpg'
-              width='150px'
+              src='images/profile2.jpg'
+              width='350x'
               className={classes.profileImage}
             />
           </Container>
-          <Typography className={classes.profileNameText} variant='h6'>
-            Erzsébet Chan, 28, Budapest
-          </Typography>
-          <Typography className={classes.twitterText} variant='h6'>
-            @chanzsi
-          </Typography>
-        </Container>
-
-        <Grid container className={classes.courseIfCourse}>
-          <Grid className={classes.salesCourseGridItem}>
-            <AssignmentTurnedInIcon /> Sales kurzus előfizetés
-          </Grid>
-          <Grid>
-            <AssignmentTurnedInIcon />
-            Profiles Személyiség teszt
-          </Grid>
-        </Grid>
-        <Divider style={{ marginTop: '30px' }} />
-      </Container>
-      <Grid container className={classes.mainGrid}>
-        <Grid item xs={4} className={classes.halfItem}>
-          <Grid className={classes.skillsGridItem}>
-            <AssignmentTurnedInIcon
-              className={classes.skillsIcon}
-            ></AssignmentTurnedInIcon>
-            Sales Specialist
-          </Grid>
-          <Grid className={classes.skillsGridItem}>
-            <SchoolIcon className={classes.skillsIcon} />
-            Marketing BA
-          </Grid>
-          <Grid className={classes.skillsGridItem}>
-            <LanguageIcon className={classes.skillsIcon} />
-            Angol, Kínai
-          </Grid>
-          <Grid className={classes.skillsGridItem}>
-            <AttachMoneyIcon className={classes.skillsIcon} />
-            50 milliós forgalom az elmúlt 1 évben
-          </Grid>
-          <Grid></Grid>
-        </Grid>
-        <Grid item xs={4} className={classes.halfItem}>
-          <iframe
-            width='400'
-            height='315'
-            src='https://www.youtube.com/embed/icxJjlhYVMw'
-            frameborder='0'
-            allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture'
-            allowfullscreen
-          ></iframe>
-        </Grid>
-      </Grid>
-      <Container
-        component='div'
-        className='moreInfo'
-        style={{
-          display: 'flex',
-          justifyContent: 'center',
-        }}
-      >
-        <Button href='#text-buttons' color='primary'>
-          További információk rólam <ArrowDropDownIcon />
-        </Button>
-      </Container>
-      <Divider style={{ marginTop: '30px' }} />
-      <Grid container className={classes.mainGrid}>
-        <Grid item xs={4} className={classes.halfItem}>
-          <Grid className={classes.skillsGridItem}>
-            <DriveEtaIcon className={classes.skillsIcon}></DriveEtaIcon>
-            Jogosítvánnyal rendelkezem
-          </Grid>
-          <Grid className={classes.skillsGridItem}>
-            <SchoolIcon className={classes.skillsIcon} />
-            Egyéb oklevelek
-          </Grid>
-          <Typography style={{ marginTop: '25px' }} variant='h6'>
-            Legutolsó munkahelyem:
-          </Typography>
-          <Typography>Google LLC </Typography>
-          <Grid></Grid>
-        </Grid>
-        <Grid item xs={4} className={classes.halfItem}>
-          <Typography variant='h6'>Referencia videó</Typography>
-          <iframe
-            width='400'
-            height='315'
-            src='https://www.youtube.com/embed/_Ha594R_zNw'
-            frameborder='0'
-            allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture'
-            allowfullscreen
-          ></iframe>
-        </Grid>
-        <Grid item xs={12} container>
-          <Grid item xs={1} />
-          <Grid item xs={9}>
-            <Typography style={{ marginTop: '25px' }} variant='h6'>
-              Amiben fejlődni szeretnék:
+          <Container className={classes.videoTitleTextAndDividerContainer}>
+            <Typography className={classes.videoTitleText}>
+              Bemutatkozó videó
             </Typography>
-            <Typography>
-              It is a long established fact that a reader will be distracted by
-              the readable content of a page when looking at its layout. The
-              point of using Lorem Ipsum is that it has a more-or-less normal
-              distribution of letters, as opposed to using 'Content here,
-              content here', making it look like readable English. Many desktop
-              publishing packages and web page editors now use Lorem Ipsum as
-              their default model text, and a search for 'lorem ipsum' will
-              uncover many web sites still in their infancy.
+            <Divider style={{ marginBottom: '15px' }} />
+          </Container>
+          <Container component='div'>
+            <iframe
+              width='350'
+              height='200'
+              src='https://www.youtube.com/embed/icxJjlhYVMw'
+              frameborder='0'
+              allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture'
+              allowfullscreen
+            ></iframe>
+          </Container>
+          <Container className={classes.videoTitleTextAndDividerContainer}>
+            <Typography className={classes.videoTitleText}>
+              Rólam mondták
             </Typography>
-            <Typography style={{ marginTop: '25px' }} variant='h6'>
-              Amiben jó vagyok:
-            </Typography>
-            <Typography>
-              It is a long established fact that a reader will be distracted by
-              the readable content of a page when looking at its layout. The
-              point of using Lorem Ipsum is that it has a more-or-less normal
-              distribution of letters, as opposed to using 'Content here,
-              content here', making it look like readable English. Many desktop
-              publishing packages and web page editors now use Lorem Ipsum as
-              their default model text, and a search for 'lorem ipsum' will
-              uncover many web sites still in their infancy.
-            </Typography>
+            <Divider style={{ marginBottom: '15px' }} />
+          </Container>
+          <Container component='div'>
+            <iframe
+              width='350'
+              height='200'
+              src='https://www.youtube.com/embed/_Ha594R_zNw'
+              frameborder='0'
+              allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture'
+              allowfullscreen
+            ></iframe>
+          </Container>
+        </Grid>
+        {/* Main container right half START*/}
+        <Grid item container xs={8}>
+          {/*  right half top  */}
+          <Grid item container className={classes.gridRightHalfTop}>
+            <Grid item item xs={4}>
+              <Typography
+                variant='h4'
+                style={{
+                  fontWeight: '500',
+                }}
+              >
+                Erzsébet Chen
+              </Typography>
+            </Grid>
+            <Grid
+              item
+              style={{
+                color: 'grey',
+              }}
+              xs={8}
+            >
+              <LocationOnIcon style={{ color: 'grey' }} /> Budapest, HUN
+            </Grid>
+            <Grid
+              item
+              xs={12}
+              style={{
+                color: '#0044f4',
+                fontSize: '18px',
+                marginTop: '-15px',
+                fontWeight: '500',
+              }}
+            >
+              Sales Manager
+            </Grid>
+            <Grid item xs={4}>
+              <Grid>
+                <CheckCircleIcon
+                  color='primary'
+                  className={classes.checkCircleIcon}
+                />
+                Sales Kurzus előfizetés
+              </Grid>
+              <Button startIcon={<MessageIcon />} style={{ marginTop: '30px' }}>
+                Üzenet küldés
+              </Button>
+            </Grid>
+            <Grid item xs={4}>
+              <CheckCircleIcon
+                className={classes.checkCircleIcon}
+                color='primary'
+              />
+              Profile személyiség teszt
+              <Button
+                startIcon={<SaveIcon />}
+                variant='outlined'
+                color='primary'
+                style={{
+                  marginTop: '30px',
+                }}
+              >
+                Profil mentése
+              </Button>
+            </Grid>
+          </Grid>
+          {/*  right half bottom*/}
+          <Grid
+            item
+            style={{
+              display: 'flex',
+              alignItems: 'flex-start',
+              height: '100%',
+            }}
+          >
+            <ProfileCardTabs />
           </Grid>
         </Grid>
-        <Grid item xs={1} />
+        {/* Main container right half END*/}
       </Grid>
     </Container>
   );

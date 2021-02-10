@@ -17,7 +17,7 @@ namespace SalesInMove.Services
 
         private Dictionary<string,bool> GetAccountsWhichContainsMandatoryField(Dictionary<string,bool> parameters)
         {
-            var 
+            
 
             throw new NotImplementedException();
         }

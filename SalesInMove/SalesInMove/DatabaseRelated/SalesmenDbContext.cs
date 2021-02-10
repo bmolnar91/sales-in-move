@@ -21,6 +21,9 @@ namespace SalesInMove.DatabaseRelated
         {
             base.OnModelCreating(builder);
 
+
+
+
             #region PositionSeed
             builder.Entity<WorkHourRatio>().HasData(
                 new WorkHourRatio
@@ -59,6 +62,8 @@ namespace SalesInMove.DatabaseRelated
                     UserType = 2,
                 }
             );
+                
+
 
             builder.Entity<Company>().HasData(
                 new Company

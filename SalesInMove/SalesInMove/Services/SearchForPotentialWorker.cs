@@ -8,11 +8,10 @@ namespace SalesInMove.Services
 {
     public class SearchForPotentialWorker : ISearch
     {
-        public List<Account> _accounts;
-
 
         public List<Account> Search(Company company, List<string> parameters)
         {
+
 
 
             throw new NotImplementedException();

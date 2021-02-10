@@ -25,6 +25,8 @@ namespace SalesInMove.DatabaseRelated
 
             var splitStringConverter = new ValueConverter<IList<string>, string>(v => string.Join(";", v), v => v.Split(new[] { ';' }));
             builder.Entity<Company>().Property(nameof(Company.EmployeeOpinions)).HasConversion(splitStringConverter);
+            
+            builder.Entity<Company>().Property(nameof(Company.CompanyProfile)).HasConversion(splitStringConverter);
 
             #region PositionSeed
             builder.Entity<WorkHourRatio>().HasData(

@@ -12,6 +12,10 @@ namespace SalesInMove.Models
 
         public string UserId { get; set; }
 
+        public string ContactFirstName { get; set; }
+        
+        public string ContactLastName { get; set; }
+
         public int PositionId { get; set; }
 
         public IList<string> CompanyProfile { get; set; }

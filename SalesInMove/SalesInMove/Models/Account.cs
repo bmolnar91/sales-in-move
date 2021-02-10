@@ -15,15 +15,16 @@ namespace SalesInMove.Models
         [Required]
         public string Password { get; set; }
 
-        public string Eletkor{ get; set; }
+        public int Eletkor{ get; set; }
         public string Varos { get; set; }
         public string Szakterulet { get; set; }
         public string Vegzettseg { get; set; }
         public List<string> Nyelvek { get; set; }
         public bool Jogositvany { get; set; }
         public bool SalesKurzusElofizetes { get; set; }
-        public bool ErtékesitoiForgalom { get; set; }
+        public int ErtékesitoiForgalom { get; set; }
         public bool SzemelyisegTeszt { get; set; }
+        public string Picture { get; set; }
 
 
     }

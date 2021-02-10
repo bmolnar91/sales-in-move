@@ -14,6 +14,8 @@ namespace SalesInMove.Models
 
         public int PositionId { get; set; }
 
+        public IList<string> CompanyProfile { get; set; }
+
         public string Name { get; set; }
         
         public string Headquarter { get; set; }

@@ -72,11 +72,13 @@ namespace SalesInMove.Controllers
             var user = new Account
             {
                 UserName = model.Email,
+                FirstName = model.FirstName,
+                LastName = model.LastName,
                 Email = model.Email,
-                PasswordHash = model.Password,
+                PasswordHash = model.Password
             };
 
-            IdentityResult result = await _userManager.CreateAsync(user, model.Password);
+            var result = await _userManager.CreateAsync(user, model.Password);
             if (result.Succeeded)
             {
                 var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);

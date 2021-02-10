@@ -11,6 +11,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 using Xunit;
 
 namespace NUnitTests.Backend
@@ -67,6 +68,21 @@ namespace NUnitTests.Backend
 
             AccountController = new AccountController(fakeUserManager.Object, FakeSignInManager.Object, new System.Net.Mail.SmtpClient());
 
+        }
+
+        [Theory]
+        [InlineData("test@tet.it", "Ciao.Ciao", "Test_user")]
+        public async Task Insert(string email, string password, string name)
+        {
+            //Arrange
+            var TestUser = new Account
+            {
+                Email = email,
+                Password = password,
+                FirstName = name
+            };
+            //Act
+            // var createdUser = await Repository.AddAccount(TestUser);
         }
     }
 }

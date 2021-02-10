@@ -20,7 +20,7 @@ namespace SalesInMove.DatabaseRelated
             _context.Accounts.Add(account);
             _context.SaveChanges();
         }
-
+        
         public Account GetAccount(string email)
         {
             return _context.Accounts.Where(x => x.Email.Equals(email)).FirstOrDefault();

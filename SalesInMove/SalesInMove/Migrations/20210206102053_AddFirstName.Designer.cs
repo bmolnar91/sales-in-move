@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 using SalesInMove.DatabaseRelated;
@@ -9,9 +10,10 @@ using SalesInMove.DatabaseRelated;
 namespace SalesInMove.Migrations
 {
     [DbContext(typeof(SalesmenDbContext))]
-    partial class SalesmenDbContextModelSnapshot : ModelSnapshot
+    [Migration("20210206102053_AddFirstName")]
+    partial class AddFirstName
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -219,249 +221,21 @@ namespace SalesInMove.Migrations
                     b.ToTable("AspNetUserTokens");
                 });
 
-            modelBuilder.Entity("SalesInMove.Models.Company", b =>
-                {
-                    b.Property<int>("CompanyId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("integer")
-                        .UseIdentityByDefaultColumn();
-
-                    b.Property<long>("AnnualNettoIncome")
-                        .HasColumnType("bigint");
-
-                    b.Property<string[]>("EmployeeOpinions")
-                        .HasColumnType("text[]");
-
-                    b.Property<string>("Headquarter")
-                        .HasColumnType("text");
-
-                    b.Property<string>("Name")
-                        .HasColumnType("text");
-
-                    b.Property<int>("NumberOfSalesman")
-                        .HasColumnType("integer");
-
-                    b.Property<int>("PositionId")
-                        .HasColumnType("integer");
-
-                    b.Property<long>("Registry")
-                        .HasColumnType("bigint");
-
-                    b.Property<bool>("SalesSupport")
-                        .HasColumnType("boolean");
-
-                    b.Property<string>("Sector")
-                        .HasColumnType("text");
-
-                    b.Property<long>("TaxNumber")
-                        .HasMaxLength(11)
-                        .HasColumnType("bigint");
-
-                    b.Property<string>("UserId")
-                        .IsRequired()
-                        .HasColumnType("text");
-
-                    b.Property<DateTime?>("YearOfFoundation")
-                        .HasColumnType("timestamp without time zone");
-
-                    b.HasKey("CompanyId");
-
-                    b.HasIndex("UserId")
-                        .IsUnique();
-
-                    b.ToTable("Companies");
-
-                    b.HasData(
-                        new
-                        {
-                            CompanyId = 12,
-                            AnnualNettoIncome = 2000321865L,
-                            EmployeeOpinions = new[] { "Good", "Bad", "Terrific!", "Horrific!" },
-                            Headquarter = "Halásztelek",
-                            Name = "Markoó Kft.",
-                            NumberOfSalesman = 10,
-                            PositionId = 3,
-                            Registry = 109321480L,
-                            SalesSupport = true,
-                            TaxNumber = 24767107243L,
-                            UserId = "0",
-                            YearOfFoundation = new DateTime(2000, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
-                        });
-                });
-
-            modelBuilder.Entity("SalesInMove.Models.Position", b =>
-                {
-                    b.Property<int>("PositionId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("integer")
-                        .UseIdentityByDefaultColumn();
-
-                    b.Property<string>("BossExpectations")
-                        .HasColumnType("text");
-
-                    b.Property<string>("City")
-                        .HasColumnType("text");
-
-                    b.Property<int?>("CompanyId")
-                        .HasColumnType("integer");
-
-                    b.Property<string>("Description")
-                        .HasColumnType("text");
-
-                    b.Property<string>("Expectations")
-                        .HasColumnType("text");
-
-                    b.Property<string>("Name")
-                        .HasColumnType("text");
-
-                    b.Property<string>("OtherBenefits")
-                        .HasColumnType("text");
-
-                    b.Property<bool>("ProgressionSupport")
-                        .HasColumnType("boolean");
-
-                    b.Property<string>("Wages")
-                        .HasColumnType("text");
-
-                    b.Property<string>("WorkHour")
-                        .HasColumnType("text");
-
-                    b.Property<int>("WorkHourRatioId")
-                        .HasColumnType("integer");
-
-                    b.HasKey("PositionId");
-
-                    b.HasIndex("CompanyId");
-
-                    b.HasIndex("WorkHourRatioId")
-                        .IsUnique();
-
-                    b.ToTable("Position");
-
-                    b.HasData(
-                        new
-                        {
-                            PositionId = 3,
-                            BossExpectations = "Be good and reliable!",
-                            City = "Halásztelek",
-                            Description = "Good",
-                            Name = "Sales manager",
-                            OtherBenefits = "Laptop and car",
-                            ProgressionSupport = true,
-                            WorkHour = "Full",
-                            WorkHourRatioId = 4
-                        });
-                });
-
-            modelBuilder.Entity("SalesInMove.Models.WorkHourRatio", b =>
-                {
-                    b.Property<int>("WorkHourRatioId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("integer")
-                        .UseIdentityByDefaultColumn();
-
-                    b.Property<byte>("DrivingHours")
-                        .HasColumnType("smallint");
-
-                    b.Property<byte>("HomeOfficeHours")
-                        .HasColumnType("smallint");
-
-                    b.Property<byte>("OfficeHours")
-                        .HasColumnType("smallint");
-
-                    b.Property<int>("WorkHoursPerMonth")
-                        .HasColumnType("integer");
-
-                    b.HasKey("WorkHourRatioId");
-
-                    b.ToTable("WorkHourRatio");
-
-                    b.HasData(
-                        new
-                        {
-                            WorkHourRatioId = 4,
-                            DrivingHours = (byte)20,
-                            HomeOfficeHours = (byte)100,
-                            OfficeHours = (byte)64,
-                            WorkHoursPerMonth = 184
-                        });
-                });
-
             modelBuilder.Entity("SalesInMove.Models.Account", b =>
                 {
                     b.HasBaseType("Microsoft.AspNetCore.Identity.IdentityUser");
 
-                    b.Property<DateTime?>("BirthDate")
-                        .HasColumnType("timestamp without time zone");
-
-                    b.Property<string>("Education")
-                        .HasColumnType("text");
-
                     b.Property<string>("FirstName")
-                        .IsRequired()
                         .HasColumnType("text");
-
-                    b.Property<bool>("HasPersonalityTest")
-                        .HasColumnType("boolean");
-
-                    b.Property<bool>("IsSubscribed")
-                        .HasColumnType("boolean");
-
-                    b.Property<string>("JobTitle")
-                        .HasColumnType("text");
-
-                    b.Property<string[]>("Languages")
-                        .HasColumnType("text[]");
 
                     b.Property<string>("LastName")
-                        .IsRequired()
                         .HasColumnType("text");
 
                     b.Property<string>("Password")
                         .IsRequired()
                         .HasColumnType("text");
-
-                    b.Property<string>("ProfilePicture")
-                        .HasColumnType("text");
-
-                    b.Property<string>("ProfileVideo")
-                        .HasColumnType("text");
-
-                    b.Property<int?>("TurnoverLastYear")
-                        .HasColumnType("integer");
 
                     b.HasDiscriminator().HasValue("Account");
-                });
-
-            modelBuilder.Entity("SalesInMove.Models.User", b =>
-                {
-                    b.HasBaseType("Microsoft.AspNetCore.Identity.IdentityUser");
-
-                    b.Property<string>("Password")
-                        .IsRequired()
-                        .HasColumnType("text")
-                        .HasColumnName("User_Password");
-
-                    b.Property<int>("UserType")
-                        .HasColumnType("integer");
-
-                    b.HasDiscriminator().HasValue("User");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = "0",
-                            AccessFailedCount = 0,
-                            ConcurrencyStamp = "cbc07a5d-15b8-4fe1-b247-1203d71dbe3e",
-                            Email = "marko@gmail.com",
-                            EmailConfirmed = false,
-                            LockoutEnabled = false,
-                            PhoneNumberConfirmed = false,
-                            SecurityStamp = "894fd9c0-4429-4aa8-8c39-c24030f300f3",
-                            TwoFactorEnabled = false,
-                            Password = "Asd123",
-                            UserType = 2
-                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -513,49 +287,6 @@ namespace SalesInMove.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-                });
-
-            modelBuilder.Entity("SalesInMove.Models.Company", b =>
-                {
-                    b.HasOne("SalesInMove.Models.User", "User")
-                        .WithOne("Company")
-                        .HasForeignKey("SalesInMove.Models.Company", "UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("User");
-                });
-
-            modelBuilder.Entity("SalesInMove.Models.Position", b =>
-                {
-                    b.HasOne("SalesInMove.Models.Company", "Company")
-                        .WithMany("Positions")
-                        .HasForeignKey("CompanyId");
-
-                    b.HasOne("SalesInMove.Models.WorkHourRatio", "WorkHourRatio")
-                        .WithOne("Position")
-                        .HasForeignKey("SalesInMove.Models.Position", "WorkHourRatioId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Company");
-
-                    b.Navigation("WorkHourRatio");
-                });
-
-            modelBuilder.Entity("SalesInMove.Models.Company", b =>
-                {
-                    b.Navigation("Positions");
-                });
-
-            modelBuilder.Entity("SalesInMove.Models.WorkHourRatio", b =>
-                {
-                    b.Navigation("Position");
-                });
-
-            modelBuilder.Entity("SalesInMove.Models.User", b =>
-                {
-                    b.Navigation("Company");
                 });
 #pragma warning restore 612, 618
         }

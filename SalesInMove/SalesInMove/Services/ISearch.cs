@@ -8,6 +8,6 @@ namespace SalesInMove.Services
 {
     public interface ISearch
     {
-        List<Account> Search(Company company, List<String> parameters);
+        List<Account> Search(Company company, Dictionary<string,bool> parameters);
     }
 }

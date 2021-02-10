@@ -14,5 +14,16 @@ namespace SalesInMove.Models
         public string LastName { get; set; }
         [Required]
         public string Password { get; set; }
+
+        public string City { get; set; }
+        public string Expertise { get; set; }
+        public string BachelorDegree { get; set; }
+        public string EnglishSpeaker { get; set; }
+        public List<string> Languages { get; set; }
+        public bool DriverLicense { get; set; }
+        public bool SalesCourseSubscription { get; set; }
+        public int GeneratedSalesInForint { get; set; }
+
+
     }
 }

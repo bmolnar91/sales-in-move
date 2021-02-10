@@ -41,7 +41,6 @@ namespace SalesInMove.DatabaseRelated
                 {
                     _context.Dispose();
                 }
-
                 disposedValue = true;
             }
         }

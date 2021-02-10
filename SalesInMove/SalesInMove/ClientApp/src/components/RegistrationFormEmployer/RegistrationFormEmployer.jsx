@@ -45,7 +45,11 @@ export function RegistrationFormEmployer() {
         <Typography component="h1" variant="h5">
           Regisztráció munkáltatóként
         </Typography>
-        <form className={classes.form} noValidate>
+        <form
+          method='post'
+          action='/api/company'
+          className={classes.form} 
+          noValidate>
           <Grid container spacing={2}>
             <Grid item xs={12}>
               <TextField

@@ -1,14 +1,12 @@
 using System;
-using System.Linq;
 using System.Collections.Generic;
-using System.Threading.Tasks;
+using System.Linq;
 using SalesInMove.Models;
 
 namespace SalesInMove.DatabaseRelated
 {
-    public class SQLCompanyRepositoryAsync : ICompanyRepository, IDisposable
+    public class SQLCompanyRepositoryAsync : ICompanyRepository
     {
-        private bool disposedValue;
         private SalesmenDbContext _context;
 
         public SQLCompanyRepositoryAsync(SalesmenDbContext context)
@@ -23,7 +21,7 @@ namespace SalesInMove.DatabaseRelated
             if (reference == null)
             {
                 await _context.Companies.AddAsync(entity);
-                SaveAsync();
+                Save();
             }
             else
             {
@@ -35,7 +33,7 @@ namespace SalesInMove.DatabaseRelated
         {
             Company toDelete = GetCompanyByName(companyName);
             _context.Companies.Remove(toDelete);
-            SaveAsync();
+            Save();
         }
 
         public IEnumerable<Company> GetAllEntities()
@@ -56,35 +54,15 @@ namespace SalesInMove.DatabaseRelated
         {
             var changedEntity = _context.Companies.Attach(entity);
             changedEntity.State = Microsoft.EntityFrameworkCore.EntityState.Modified;
-            SaveAsync();
+            Save();
 
         }
 
-         private async void SaveAsync()
+         private void Save()
         {
-            await _context.SaveChangesAsync();
+            _context.SaveChanges();
         }
         
-
-        protected virtual void Dispose(bool disposing)
-        {
-            if (!disposedValue)
-            {
-                if (disposing)
-                {
-                    _context.Dispose();
-                }
-
-                disposedValue = true;
-            }
-        }
-
-        public void Dispose()
-        {
-            // Do not change this code. Put cleanup code in 'Dispose(bool disposing)' method
-            Dispose(disposing: true);
-            GC.SuppressFinalize(this);
-        }
 
     }
 }

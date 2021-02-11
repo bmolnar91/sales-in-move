@@ -16,6 +16,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.IdentityModel.Tokens;
 using SalesInMove.Services;
 using SalesInMove.ViewModels;
+using SalesInMove.DatabaseRelated;
 
 namespace SalesInMove.Controllers
 {
@@ -27,15 +28,17 @@ namespace SalesInMove.Controllers
         private readonly SignInManager<IdentityUser> _signInManager;
         private readonly SmtpClient _emailService;
         private readonly IEmployeeFactory _employeeFactory;
+        private readonly ISalesmenRepository _repo;
 
         public AccountController(UserManager<IdentityUser> userManager, SignInManager<IdentityUser> signInManager, 
-            SmtpClient emailService, IEmployeeFactory employeeFactory)
+            SmtpClient emailService, IEmployeeFactory employeeFactory, ISalesmenRepository repo)
         {
             //register some services throughout the IOC
             _userManager = userManager;
             _signInManager = signInManager;
             _emailService = emailService; 
             _employeeFactory = employeeFactory;
+            _repo = repo;
         }
 
         [HttpPost("login")]
@@ -116,12 +119,11 @@ namespace SalesInMove.Controllers
         }
 
         // TODO: delete this endpoint
-        [HttpGet("customers")]
-        [Authorize]
-        public string Customers()
+        public string GetEmployee(string email)
         {
-            Console.WriteLine("bob");
-            return "bob";
+            Employee toReturn = _repo.GetAccount(email);
+
+            return AppJson.CreateJson(toReturn);
         }
     }
 }

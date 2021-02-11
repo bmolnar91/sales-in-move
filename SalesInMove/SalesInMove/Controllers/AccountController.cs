@@ -24,9 +24,11 @@ namespace SalesInMove.Controllers
         private readonly SmtpClient _emailService;
         private readonly IEmployeeFactory _employeeFactory;
         private readonly ISalesmenRepository _repo;
+        private readonly IEmployeeSearchService _searchService;
 
         public AccountController(UserManager<IdentityUser> userManager, SignInManager<IdentityUser> signInManager, 
-            SmtpClient emailService, IEmployeeFactory employeeFactory, ISalesmenRepository repo)
+            SmtpClient emailService, IEmployeeFactory employeeFactory, ISalesmenRepository repo,
+            IEmployeeSearchService searchService)
         {
             //register some services throughout the IOC
             _userManager = userManager;
@@ -34,6 +36,7 @@ namespace SalesInMove.Controllers
             _emailService = emailService; 
             _employeeFactory = employeeFactory;
             _repo = repo;
+            _searchService = searchService;
         }
 
 
@@ -95,9 +98,10 @@ namespace SalesInMove.Controllers
         }
 
         [HttpGet("search")]
-        public SearchFormVM Search([FromHeader]SearchFormVM datas)
+        public List<EmployeeSearchVM> Search([FromHeader]SearchFormVM datas)
         {
-            return datas;
+            return _searchService.GetEmployees(datas);
+            //return _searchService.GetString(datas);
         }
 
         public string GetEmployee(string email)

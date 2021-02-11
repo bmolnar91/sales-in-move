@@ -2,7 +2,10 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using NETCore.MailKit.Core;
+using SalesInMove.DatabaseRelated;
 using SalesInMove.Models;
+using SalesInMove.Services;
+using SalesInMove.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,17 +22,26 @@ namespace SalesInMove.Controllers
         private readonly UserManager<IdentityUser> _userManager;
         private readonly SignInManager<IdentityUser> _signInManager;
         private readonly SmtpClient _emailService;
+        private readonly IEmployeeFactory _employeeFactory;
+        private readonly ISalesmenRepository _repo;
+        private readonly IEmployeeSearchService _searchService;
 
-        public AccountController(UserManager<IdentityUser> userManager, SignInManager<IdentityUser> signInManager, SmtpClient emailService)
+        public AccountController(UserManager<IdentityUser> userManager, SignInManager<IdentityUser> signInManager, 
+            SmtpClient emailService, IEmployeeFactory employeeFactory, ISalesmenRepository repo,
+            IEmployeeSearchService searchService)
         {
             //register some services throughout the IOC
             _userManager = userManager;
             _signInManager = signInManager;
             _emailService = emailService; 
+            _employeeFactory = employeeFactory;
+            _repo = repo;
+            _searchService = searchService;
         }
 
+
         [HttpPost("login")]
-        public async Task<Microsoft.AspNetCore.Identity.SignInResult> Login([FromForm] Account model)
+        public async Task<Microsoft.AspNetCore.Identity.SignInResult> Login([FromForm] EmployeeVM model)
         {
             //1.getting a request from frontend, and generating a model object from JSON by it
             //2. getting an identityuser from the database which matches with we got from the JSON by email adress
@@ -65,31 +77,38 @@ namespace SalesInMove.Controllers
 
 
         [HttpPost("register")]
-        public async Task<IdentityResult> Register([FromForm] Account model)
+        public async Task<IdentityResult> Register([FromForm] EmployeeVM model)
         {
             // registers users in the database. we get an account form which we are converting into an IdentityUser
             //also using the SMTP protocal (if we are able to create user) to send comfirmation email to the user's email
-            var user = new Account
-            {
-                FirstName = model.FirstName,
-                LastName = model.LastName,
-                UserName = model.FirstName + model.LastName,
-                Email = model.Email,
-                PasswordHash = model.Password
-            };
+             Employee newEmployee = _employeeFactory.CreateRegisterEntity(model.Email, model.FirstName, model.LastName, model.Password);
 
-            var result = await _userManager.CreateAsync(user, model.Password);
+            var result = await _userManager.CreateAsync(newEmployee.User, model.Password);
             if (result.Succeeded)
             {
-                var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);
-                var link = Url.Action(nameof(VerifyEmail), "Account", new { user.Id, code }, Request.Scheme, Request.Host.ToString());
+                var code = await _userManager.GenerateEmailConfirmationTokenAsync(newEmployee.User);
+                var link = Url.Action(nameof(VerifyEmail), "Account", new { newEmployee.User.Id, code }, Request.Scheme, Request.Host.ToString());
 
-                var msg = new MailMessage(from: "csharptw5@gmail.com", to: user.Email, subject: "Email Verification", body: $"<a href=\"{link}\">Verify your email</a>");
+                var msg = new MailMessage(from: "csharptw5@gmail.com", to: newEmployee.User.Email, subject: "Email Verification", body: $"<a href=\"{link}\">Verify your email</a>");
                 msg.IsBodyHtml = true;
                 await _emailService.SendMailAsync(msg);
             }
 
             return result;
+        }
+
+        [HttpGet("search")]
+        public List<EmployeeSearchVM> Search([FromHeader]SearchFormVM datas)
+        {
+            return _searchService.GetEmployees(datas);
+            //return _searchService.GetString(datas);
+        }
+
+        public string GetEmployee(string email)
+        {
+            Employee toReturn = _repo.GetAccount(email);
+
+            return AppJson.CreateJson(toReturn);
         }
     }
 }

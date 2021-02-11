@@ -24,7 +24,7 @@ namespace SalesInMove.DatabaseRelated
 
         public Account GetAccount(string email)
         {
-            return _context.Accounts.Where(x => x.Email.Equals(email)).FirstOrDefault();
+            return _context.Accounts.Where(x => x.User.Email.Equals(email)).FirstOrDefault();
         }
 
         private async void SaveAsync()

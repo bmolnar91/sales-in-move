@@ -2,18 +2,17 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
 
 namespace SalesInMove.Models
 {
-    public class Account: IdentityUser 
+    public class Account 
     {
-        // //model class of account who seeks to work
-        // public string FirstName { get; set; }
-        // public string LastName { get; set; }
-        // [Required]
-        // public string Password { get; set; }
+        [Key]
+        public int EmployeeId { get; set; }
+        public string UserId { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
         [Required]
@@ -27,10 +26,23 @@ namespace SalesInMove.Models
         public string ProfileVideo { get; set; }
         public bool IsSubscribed { get; set; } = false;
         public bool HasPersonalityTest { get; set; } = false;
-        public int Eletkor{ get; set; }
-        public string Varos { get; set; }
-        public bool Jogositvany { get; set; }
-        public bool SalesKurzusElofizetes { get; set; }
-        public int ErtekesitoiForgalom { get; set; }
+        public int Age { get; set; }
+        public string City { get; set; }
+        public bool DrivingLicence { get; set; }
+        public bool SalesCourseSubscription { get; set; }
+        public int SalesTurnOver { get; set; }
+        public string Specialisation { get; set; }
+        public string PreviousCompany { get; set; }
+        public string[] OtherCertificates { get; set; }
+        public string[] Pros { get; set; }
+        public string[] Cons { get; set; }
+
+        // Amikben fejlődni szeretnék
+        public string[] ProgressionIntetions { get; set; }
+        public string Motto { get; set; }
+        
+        [Required]
+        [ForeignKey("UserId")]
+        public User User { get; set; }
     }
 }

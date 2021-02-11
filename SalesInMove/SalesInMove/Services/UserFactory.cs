@@ -2,9 +2,9 @@ using SalesInMove.Models;
 
 namespace SalesInMove.Services
 {
-    public class UserFactory : IUserFactory
+    public abstract class UserFactory
     {
-        public User CreateUser(int userType, string emailAddress, string password)
+        private protected User CreateUser(int userType, string emailAddress, string password)
         {
             return new User {
                 UserType = userType,

@@ -34,11 +34,11 @@ namespace SalesInMove.DatabaseRelated
                     Varos = "Budapest",
                     Szakterulet = "Sales specialist",
                     Vegzettseg = "Marketing BA",
-                    Nyelvek = new List<string>() { "kinai", "angol"},
+                    Nyelvek = new string[]{ "kinai", "angol"},
                     Jogositvany = true,
                     SalesKurzusElofizetes = true,
                     SzemelyisegTeszt = true,
-                    ErtékesitoiForgalom = 50000000,
+                    ErtekesitoiForgalom = 50000000,
                     Picture = "https://images.generated.photos/iZOX8m9z2zgSg7_qWRSr4wBWJLfNkbdeofALD6dRIVU/rs:fit:512:512/wm:0.95:sowe:18:18:0.33/Z3M6Ly9nZW5lcmF0/ZWQtcGhvdG9zL3Yz/XzA1NDIxMzguanBn.jpg"
                 }
             );
@@ -54,11 +54,11 @@ namespace SalesInMove.DatabaseRelated
                     Varos = "DunaHaraszti",
                     Szakterulet = "Sales Support",
                     Vegzettseg = "Foiskola",
-                    Nyelvek = new List<string>() { "nemet", "angol" },
+                    Nyelvek = new string[]{ "nemet", "angol" },
                     Jogositvany = true,
                     SalesKurzusElofizetes = false,
                     SzemelyisegTeszt = false,
-                    ErtékesitoiForgalom = 30000000,
+                    ErtekesitoiForgalom = 30000000,
                     Picture = "https://images.generated.photos/DThx55Jct9pbzh0tEWKAH9ilBwpKhHfPL0f0B6umGxU/rs:fit:512:512/wm:0.95:sowe:18:18:0.33/Z3M6Ly9nZW5lcmF0/ZWQtcGhvdG9zL3Yz/XzA4NDk3MjcuanBn.jpg"
 
                 }
@@ -75,11 +75,11 @@ namespace SalesInMove.DatabaseRelated
                     Varos = "Erd",
                     Szakterulet = "Sales adminisztracio",
                     Vegzettseg = "egyetem",
-                    Nyelvek = new List<string>() { "nemet", "angol" },
+                    Nyelvek = new string[]{ "nemet", "angol" },
                     Jogositvany = false,
                     SalesKurzusElofizetes = true,
                     SzemelyisegTeszt = false,
-                    ErtékesitoiForgalom = 50000000,
+                    ErtekesitoiForgalom = 50000000,
                     Picture = "https://images.generated.photos/1k3lzxgEtWeS2mefKNXprUfn-kPpzyz3QJ0xuizOQrE/rs:fit:512:512/wm:0.95:sowe:18:18:0.33/Z3M6Ly9nZW5lcmF0/ZWQtcGhvdG9zL3Yz/XzA3NzkzMDkuanBn.jpg"
                 }
             );
@@ -95,11 +95,11 @@ namespace SalesInMove.DatabaseRelated
                     Varos = "Budapest",
                     Szakterulet = "Sales adminisztracio",
                     Vegzettseg = "egyetem",
-                    Nyelvek = new List<string>() { "kinai", "angol" },
+                    Nyelvek = new string[]{ "kinai", "angol" },
                     Jogositvany = false,
                     SalesKurzusElofizetes = false,
                     SzemelyisegTeszt = false,
-                    ErtékesitoiForgalom = 30000000,
+                    ErtekesitoiForgalom = 30000000,
                     Picture = "https://images.generated.photos/jEnG00iXVCxYx24J4dFGMRWTkSaYGOR6-Igumi2VP3w/rs:fit:512:512/wm:0.95:sowe:18:18:0.33/Z3M6Ly9nZW5lcmF0/ZWQtcGhvdG9zL3Yz/XzA5Nzg0MzkuanBn.jpg"
                 }
             );
@@ -115,11 +115,11 @@ namespace SalesInMove.DatabaseRelated
                     Varos = "Budapest",
                     Szakterulet = "Sales szaktanacsado",
                     Vegzettseg = "PhD",
-                    Nyelvek = new List<string>() { "orosz", "angol" },
+                    Nyelvek = new string[]{ "orosz", "angol" },
                     Jogositvany = false,
                     SalesKurzusElofizetes = false,
                     SzemelyisegTeszt = true,
-                    ErtékesitoiForgalom = 40000000,
+                    ErtekesitoiForgalom = 40000000,
                     Picture = "https://images.generated.photos/GmWEUKjveqsM5x3TsJVABoSyjilRB6Tz2Z-Auc9p-8Y/rs:fit:512:512/wm:0.95:sowe:18:18:0.33/Z3M6Ly9nZW5lcmF0/ZWQtcGhvdG9zL3Yz/XzA2MTI4NTcuanBn.jpg"
                 }
             );
@@ -135,11 +135,11 @@ namespace SalesInMove.DatabaseRelated
                     Varos = "Kecsekemet",
                     Szakterulet = "Sales specialist",
                     Vegzettseg = "DLA",
-                    Nyelvek = new List<string>() {"angol" },
+                    Nyelvek = new string[]{"angol" },
                     Jogositvany = true,
                     SalesKurzusElofizetes = true,
                     SzemelyisegTeszt = false,
-                    ErtékesitoiForgalom = 50000000,
+                    ErtekesitoiForgalom = 50000000,
                     Picture = "https://images.generated.photos/qvPRjAxXrZdLdgSDd6yk2I7ni0a1LAwFWZBNfvYNMdo/rs:fit:512:512/wm:0.95:sowe:18:18:0.33/Z3M6Ly9nZW5lcmF0/ZWQtcGhvdG9zL3Yz/XzA4MjM3ODkuanBn.jpg"
                 }
             );
@@ -155,11 +155,11 @@ namespace SalesInMove.DatabaseRelated
                     Varos = "Erd",
                     Szakterulet = "Sales Support",
                     Vegzettseg = "Foiskola",
-                    Nyelvek = new List<string>() { "angol" },
+                    Nyelvek = new string[]{ "angol" },
                     Jogositvany = false,
                     SalesKurzusElofizetes = true,
                     SzemelyisegTeszt = false,
-                    ErtékesitoiForgalom = 30000000,
+                    ErtekesitoiForgalom = 30000000,
                     Picture= "https://images.generated.photos/YFrGWaIDMHGU5HoB3GxLFJ_jXTE8S8gpstIs3Pm9dHE/rs:fit:512:512/wm:0.95:sowe:18:18:0.33/Z3M6Ly9nZW5lcmF0/ZWQtcGhvdG9zL3Yz/XzA3ODQ4MzYuanBn.jpg"
                 }
             );
@@ -174,11 +174,11 @@ namespace SalesInMove.DatabaseRelated
                     Varos = "Dunaharaszti",
                     Szakterulet = "Sales support",
                     Vegzettseg = "egyetem",
-                    Nyelvek = new List<string>() { "ukran", "angol" },
+                    Nyelvek = new string[]{ "ukran", "angol" },
                     Jogositvany = true,
                     SalesKurzusElofizetes = false,
                     SzemelyisegTeszt = true,
-                    ErtékesitoiForgalom = 40000000,
+                    ErtekesitoiForgalom = 40000000,
                     Picture = "https://images.generated.photos/aKjcATGNs_-Y5cyzeAdjL3N-cRWqUh7hKjds4pOytgw/rs:fit:512:512/wm:0.95:sowe:18:18:0.33/Z3M6Ly9nZW5lcmF0/ZWQtcGhvdG9zL3Yz/XzA2ODM0NDMuanBn.jpg"
                 }
             );
@@ -194,11 +194,11 @@ namespace SalesInMove.DatabaseRelated
                     Varos = "Dunaharaszti",
                     Szakterulet = "Sales support",
                     Vegzettseg = "egyetem",
-                    Nyelvek = new List<string>() { "ukran", "angol" },
+                    Nyelvek = new string[]{ "ukran", "angol" },
                     Jogositvany = true,
                     SalesKurzusElofizetes = false,
                     SzemelyisegTeszt = true,
-                    ErtékesitoiForgalom = 40000000,
+                    ErtekesitoiForgalom = 40000000,
                     Picture = "https://images.generated.photos/aKjcATGNs_-Y5cyzeAdjL3N-cRWqUh7hKjds4pOytgw/rs:fit:512:512/wm:0.95:sowe:18:18:0.33/Z3M6Ly9nZW5lcmF0/ZWQtcGhvdG9zL3Yz/XzA2ODM0NDMuanBn.jpg"
                 }
             ); 

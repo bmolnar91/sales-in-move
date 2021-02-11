@@ -19,10 +19,10 @@ namespace SalesInMove.Models
         public string Varos { get; set; }
         public string Szakterulet { get; set; }
         public string Vegzettseg { get; set; }
-        public List<string> Nyelvek { get; set; }
+        public string[] Nyelvek { get; set; }
         public bool Jogositvany { get; set; }
         public bool SalesKurzusElofizetes { get; set; }
-        public int ErtékesitoiForgalom { get; set; }
+        public int ErtekesitoiForgalom { get; set; }
         public bool SzemelyisegTeszt { get; set; }
         public string Picture { get; set; }
 

@@ -34,7 +34,7 @@ namespace SalesInMove.Controllers
         }
 
         [HttpPost("login")]
-        public async Task<IActionResult> Login([FromForm] Account model)
+        public async Task<IActionResult> Login([FromForm] Employee model)
         {
             //1.getting a request from frontend, and generating a model object from JSON by it
             //2. getting an identityuser from the database which matches with we got from the JSON by email adress
@@ -89,11 +89,11 @@ namespace SalesInMove.Controllers
 
 
         [HttpPost("register")]
-        public async Task<IdentityResult> Register([FromForm] Account model)
+        public async Task<IdentityResult> Register([FromForm] Employee model)
         {
             // registers users in the database. we get an account form which we are converting into an IdentityUser
             //also using the SMTP protocal (if we are able to create user) to send comfirmation email to the user's email
-            var user = new Account
+            var user = new Employee
             {
                 UserName = model.Email,
                 FirstName = model.FirstName,

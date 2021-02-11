@@ -8,7 +8,7 @@ namespace SalesInMove.Services
 {
     public class SearchForPotentialWorker : ISearch
     {
-        public List<Account> Search(Company company, Dictionary<string, bool> parameters)
+        public List<Employee> Search(Company company, Dictionary<string, bool> parameters)
         {
 
 

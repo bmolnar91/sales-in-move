@@ -8,15 +8,13 @@ using System.Threading.Tasks;
 
 namespace SalesInMove.Models
 {
-    public class Account 
+    public class Employee 
     {
         [Key]
         public int EmployeeId { get; set; }
         public string UserId { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
-        [Required]
-        public string Password { get; set; }
         public string JobTitle { get; set; }
         public string Education { get; set; }
         public string[] Languages { get; set; }

@@ -16,7 +16,7 @@ namespace SalesInMove.DatabaseRelated
 
         public DbSet<Company> Companies { get; set; }
 
-        public DbSet<Account> Accounts { get; set; }
+        public DbSet<Employee> Accounts { get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
@@ -32,8 +32,8 @@ namespace SalesInMove.DatabaseRelated
                 }
             );
 
-            builder.Entity<Account>().HasData(
-                new Account
+            builder.Entity<Employee>().HasData(
+                new Employee
                 {
 
                     Password = "erzsebetchen",
@@ -60,8 +60,8 @@ namespace SalesInMove.DatabaseRelated
                 }
             );
 
-            builder.Entity<Account>().HasData(
-                new Account
+            builder.Entity<Employee>().HasData(
+                new Employee
                 {
                     UserId = "dummy1",
                     Password = "marjoiretierney",
@@ -89,8 +89,8 @@ namespace SalesInMove.DatabaseRelated
                 }
             );
 
-            builder.Entity<Account>().HasData(
-                new Account
+            builder.Entity<Employee>().HasData(
+                new Employee
                 {
                     UserId = "dummy2",
                     Password = "maigriffiths",
@@ -117,8 +117,8 @@ namespace SalesInMove.DatabaseRelated
                 }
             );
 
-            builder.Entity<Account>().HasData(
-                new Account
+            builder.Entity<Employee>().HasData(
+                new Employee
                 {
                     UserId = "dummy3",
                     Password = "joannemanning",
@@ -145,8 +145,8 @@ namespace SalesInMove.DatabaseRelated
                 }
             );
 
-            builder.Entity<Account>().HasData(
-                new Account
+            builder.Entity<Employee>().HasData(
+                new Employee
                 {
                     UserId = "dummy4",
                     Password = "keaneboyd",
@@ -173,8 +173,8 @@ namespace SalesInMove.DatabaseRelated
                 }
             );
 
-            builder.Entity<Account>().HasData(
-                new Account
+            builder.Entity<Employee>().HasData(
+                new Employee
                 {
                     UserId = "dummy5",
                     Password = "aneekaeaton",
@@ -201,8 +201,8 @@ namespace SalesInMove.DatabaseRelated
                 }
             );
 
-            builder.Entity<Account>().HasData(
-                new Account
+            builder.Entity<Employee>().HasData(
+                new Employee
                 {
                     UserId = "dummy6",
                     Password = "bobacosta",
@@ -229,8 +229,8 @@ namespace SalesInMove.DatabaseRelated
                 }
             );
 
-            builder.Entity<Account>().HasData(
-                new Account
+            builder.Entity<Employee>().HasData(
+                new Employee
                 {
                     UserId = "dummy7",
                     Password = "eoinlynn",

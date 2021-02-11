@@ -27,5 +27,10 @@ namespace SalesInMove.Models
         public string ProfileVideo { get; set; }
         public bool IsSubscribed { get; set; } = false;
         public bool HasPersonalityTest { get; set; } = false;
+        public int Eletkor{ get; set; }
+        public string Varos { get; set; }
+        public bool Jogositvany { get; set; }
+        public bool SalesKurzusElofizetes { get; set; }
+        public int ErtekesitoiForgalom { get; set; }
     }
 }

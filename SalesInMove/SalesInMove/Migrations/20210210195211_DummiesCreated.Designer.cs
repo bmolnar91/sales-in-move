@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 using SalesInMove.DatabaseRelated;
@@ -9,9 +10,10 @@ using SalesInMove.DatabaseRelated;
 namespace SalesInMove.Migrations
 {
     [DbContext(typeof(SalesmenDbContext))]
-    partial class SalesmenDbContextModelSnapshot : ModelSnapshot
+    [Migration("20210210195211_DummiesCreated")]
+    partial class DummiesCreated
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -391,36 +393,19 @@ namespace SalesInMove.Migrations
                 {
                     b.HasBaseType("Microsoft.AspNetCore.Identity.IdentityUser");
 
-                    b.Property<DateTime?>("BirthDate")
-                        .HasColumnType("timestamp without time zone");
-
-                    b.Property<string>("Education")
-                        .HasColumnType("text");
-
                     b.Property<int>("Eletkor")
                         .HasColumnType("integer");
 
+                    b.Property<int>("ErtékesitoiForgalom")
+                        .HasColumnType("integer");
+
                     b.Property<string>("FirstName")
-                        .IsRequired()
                         .HasColumnType("text");
 
                     b.Property<bool>("Jogositvany")
                         .HasColumnType("boolean");
 
-                    b.Property<bool>("HasPersonalityTest")
-                        .HasColumnType("boolean");
-
-                    b.Property<bool>("IsSubscribed")
-                        .HasColumnType("boolean");
-
-                    b.Property<string>("JobTitle")
-                        .HasColumnType("text");
-
-                    b.Property<string[]>("Languages")
-                        .HasColumnType("text[]");
-
                     b.Property<string>("LastName")
-                        .IsRequired()
                         .HasColumnType("text");
 
                     b.Property<string[]>("Nyelvek")
@@ -430,14 +415,8 @@ namespace SalesInMove.Migrations
                         .IsRequired()
                         .HasColumnType("text");
 
-                    b.Property<string>("ProfilePicture")
+                    b.Property<string>("Picture")
                         .HasColumnType("text");
-
-                    b.Property<string>("ProfileVideo")
-                        .HasColumnType("text");
-
-                    b.Property<int?>("TurnoverLastYear")
-                        .HasColumnType("integer");
 
                     b.Property<bool>("SalesKurzusElofizetes")
                         .HasColumnType("boolean");
@@ -459,17 +438,18 @@ namespace SalesInMove.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "070e95b1-d4dc-4d25-8879-f5c3b979ce7f",
+                            Id = "d4ce3ca7-a539-4831-957e-083c0978b4c9",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "f421e8f9-544d-421a-b127-215d1c91322e",
+                            ConcurrencyStamp = "f3332d6e-0515-4cfa-88d6-9c597fedc9f0",
                             Email = "erzsebetchen@gmail.com",
                             EmailConfirmed = true,
                             LockoutEnabled = false,
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "37f93fb6-d6c7-41ba-8cbe-298051837664",
+                            SecurityStamp = "bb9ed458-68b4-4af6-ba15-11b4201c3494",
                             TwoFactorEnabled = false,
                             UserName = "Erzsebet Chen",
                             Eletkor = 28,
+                            ErtékesitoiForgalom = 50000000,
                             Jogositvany = true,
                             Nyelvek = new[] { "kinai", "angol" },
                             Password = "erzsebetchen",
@@ -482,17 +462,18 @@ namespace SalesInMove.Migrations
                         },
                         new
                         {
-                            Id = "28014d56-ff08-4ada-a86f-90f979c58355",
+                            Id = "c62abf04-501b-4aed-92a9-cd047ccc8f4d",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "bd0a6f15-a961-4c8a-9dc1-88a1044fd3fb",
+                            ConcurrencyStamp = "ea13d1db-c5a7-43b7-b7f0-358fcb673d48",
                             Email = "marjoiretierney@gmail.com",
                             EmailConfirmed = true,
                             LockoutEnabled = false,
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "e3994b92-607c-45f8-b86c-b58b9d8ae985",
+                            SecurityStamp = "47819e05-6e15-4efd-a75b-1ea59e3b82eb",
                             TwoFactorEnabled = false,
                             UserName = "Marjorie Tierney",
                             Eletkor = 30,
+                            ErtékesitoiForgalom = 30000000,
                             Jogositvany = true,
                             Nyelvek = new[] { "nemet", "angol" },
                             Password = "marjoiretierney",
@@ -505,17 +486,18 @@ namespace SalesInMove.Migrations
                         },
                         new
                         {
-                            Id = "2ca11fc1-3b5f-4107-9b8a-12c183fdd9ba",
+                            Id = "d3c94edf-8957-41a3-b502-7f4de5723e75",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "b232931d-59ed-49a2-a62c-fa9d4422c766",
+                            ConcurrencyStamp = "46967a4f-893e-47fc-81f6-457cc3bc9584",
                             Email = "maigriffiths@gmail.com",
                             EmailConfirmed = true,
                             LockoutEnabled = false,
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "719aa919-4d80-4028-8376-50b797029cf5",
+                            SecurityStamp = "f27c53bb-93ae-4113-9805-0ac77b7bc62b",
                             TwoFactorEnabled = false,
                             UserName = "Mai Griffits",
                             Eletkor = 34,
+                            ErtékesitoiForgalom = 50000000,
                             Jogositvany = false,
                             Nyelvek = new[] { "nemet", "angol" },
                             Password = "maigriffiths",
@@ -528,17 +510,18 @@ namespace SalesInMove.Migrations
                         },
                         new
                         {
-                            Id = "9a9df8d2-c7c2-406a-ac3e-af657097e562",
+                            Id = "33ef471b-6b19-4320-b344-72495dba98ea",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "b4a49285-f38a-4559-8125-5cb2607be2d8",
+                            ConcurrencyStamp = "ecf5cfa1-f181-4464-ba69-dcc6201a3d82",
                             Email = "joannemanning@gmail.com",
                             EmailConfirmed = true,
                             LockoutEnabled = false,
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "ee13a393-0a58-443f-a96f-bab33c680862",
+                            SecurityStamp = "a7ff958b-aadd-43d5-86c8-d1bba936b802",
                             TwoFactorEnabled = false,
                             UserName = "Joanne Manning",
                             Eletkor = 20,
+                            ErtékesitoiForgalom = 30000000,
                             Jogositvany = false,
                             Nyelvek = new[] { "kinai", "angol" },
                             Password = "joannemanning",
@@ -551,17 +534,18 @@ namespace SalesInMove.Migrations
                         },
                         new
                         {
-                            Id = "e8bbb611-b820-4dc2-b302-976b0d04c1af",
+                            Id = "aa8ffda2-1da3-4d21-a276-6b16aaec41e2",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "3857459c-dd54-4896-8eeb-b0081066d3c9",
+                            ConcurrencyStamp = "daab6860-28b3-40c7-b083-ab2afc91713f",
                             Email = "keaneboyd@gmail.com",
                             EmailConfirmed = true,
                             LockoutEnabled = false,
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "2a28f9e4-2b68-4697-924f-3a1fd47ec18f",
+                            SecurityStamp = "c3baf0e1-db55-4ee1-b983-c63bd2f45a1f",
                             TwoFactorEnabled = false,
                             UserName = "Keane Boyd",
                             Eletkor = 22,
+                            ErtékesitoiForgalom = 40000000,
                             Jogositvany = false,
                             Nyelvek = new[] { "orosz", "angol" },
                             Password = "keaneboyd",
@@ -574,17 +558,18 @@ namespace SalesInMove.Migrations
                         },
                         new
                         {
-                            Id = "0c5e6a14-4d64-481b-889e-6edb7e16362d",
+                            Id = "127cc818-4212-42a1-a2c2-b887a10a3bca",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "ec2fe587-c1f9-45fe-bbaa-c94377537c92",
+                            ConcurrencyStamp = "0ce5e00a-a1c1-48bd-89cb-76896f72e539",
                             Email = "aneekaeaton@gmail.com",
                             EmailConfirmed = true,
                             LockoutEnabled = false,
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "0c7c0472-39cb-4cae-a93a-ecf98ac45d53",
+                            SecurityStamp = "c590113e-bc77-49ac-a5b5-50279c5786a2",
                             TwoFactorEnabled = false,
                             UserName = "Aneeka Eaton",
                             Eletkor = 34,
+                            ErtékesitoiForgalom = 50000000,
                             Jogositvany = true,
                             Nyelvek = new[] { "angol" },
                             Password = "aneekaeaton",
@@ -597,17 +582,18 @@ namespace SalesInMove.Migrations
                         },
                         new
                         {
-                            Id = "35a90338-e54e-4b91-8d9a-9a880759f3cd",
+                            Id = "f10f9596-f3f3-42c7-98ae-e297c81c353e",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "9af4452b-f618-4d6b-ad72-7457859f92c0",
+                            ConcurrencyStamp = "574858e7-d34b-4f51-9bbe-722e2a49743c",
                             Email = "bobacosta@gmail.com",
                             EmailConfirmed = true,
                             LockoutEnabled = false,
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "81f717cd-fb83-439d-84f8-c20e22fb2229",
+                            SecurityStamp = "e490662c-4071-4996-9d42-0671ab79dccb",
                             TwoFactorEnabled = false,
                             UserName = "Bob Acosta",
                             Eletkor = 30,
+                            ErtékesitoiForgalom = 30000000,
                             Jogositvany = false,
                             Nyelvek = new[] { "angol" },
                             Password = "bobacosta",
@@ -620,17 +606,18 @@ namespace SalesInMove.Migrations
                         },
                         new
                         {
-                            Id = "775d0a7b-a5e6-4662-9bd0-18ad682beaa3",
+                            Id = "a072e6be-bebf-42ef-97ac-e4433d3afad8",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "5163710a-c562-4fe3-8cbd-a00a546df14a",
+                            ConcurrencyStamp = "e2ff7f77-5e30-4cbb-b981-a967a095f7fb",
                             Email = "eoinlynn@gmail.com",
                             EmailConfirmed = true,
                             LockoutEnabled = false,
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "9849731f-9db8-4eb4-8f3a-566ed7b2af90",
+                            SecurityStamp = "7da53e18-a1e1-459b-8bfe-99047ae38a67",
                             TwoFactorEnabled = false,
                             UserName = "Eoin Lynn",
                             Eletkor = 19,
+                            ErtékesitoiForgalom = 40000000,
                             Jogositvany = true,
                             Nyelvek = new[] { "ukran", "angol" },
                             Password = "eoinlynn",
@@ -643,17 +630,18 @@ namespace SalesInMove.Migrations
                         },
                         new
                         {
-                            Id = "92cb73c7-84f5-4b8c-8cb4-6b0c6e152c24",
+                            Id = "d32c9bce-0b33-45ac-ab62-c468ffed9c07",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "22b2e94f-7014-4bcb-a279-2f703ccef2fd",
+                            ConcurrencyStamp = "ff91a733-3b2b-4b1c-ad8b-6b9caca56020",
                             Email = "eoinlynn@gmail.com",
                             EmailConfirmed = true,
                             LockoutEnabled = false,
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "51aff7bf-9c11-4ac2-8697-3586aa126e95",
+                            SecurityStamp = "e6c52a29-bc4f-4bc8-9b50-6420057d1f57",
                             TwoFactorEnabled = false,
                             UserName = "Eoin Lynn",
                             Eletkor = 19,
+                            ErtékesitoiForgalom = 40000000,
                             Jogositvany = true,
                             Nyelvek = new[] { "ukran", "angol" },
                             Password = "eoinlynn",
@@ -685,12 +673,12 @@ namespace SalesInMove.Migrations
                         {
                             Id = "0",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "1a112d90-a761-41c6-8f65-2a0c5724325b",
+                            ConcurrencyStamp = "aa2e1a96-cc22-4dcb-b246-6bed69bc2aae",
                             Email = "marko@gmail.com",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "eadd8dc6-65d3-417d-9a99-df7343a53242",
+                            SecurityStamp = "db87ac3c-ad51-4d26-b84e-42d6addcc3af",
                             TwoFactorEnabled = false,
                             Password = "Asd123",
                             UserType = 2

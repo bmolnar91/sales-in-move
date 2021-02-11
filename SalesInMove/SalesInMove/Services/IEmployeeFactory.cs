@@ -4,8 +4,7 @@ namespace SalesInMove.Services
 {
     public interface IEmployeeFactory
     {
-        Employee CreateEntity
-        (
+        Employee CreateEntity(
             int userType, string emailAddress, string password, string firstName,
             string lastName, string jobTitle, string education, string[] languages,
             string birthDate, int turnoverLastYear, string profilePicture, string profileVideo,
@@ -14,5 +13,7 @@ namespace SalesInMove.Services
             string[] otherCertificates, string[] pros, string[] cons, string[] progressionIntensions,
             string Motto
         );
+
+        Employee CreateRegisterEntity(string email, string firstName, string lastName, string password);
     }
 }

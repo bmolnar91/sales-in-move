@@ -14,6 +14,8 @@ using System.Threading.Tasks;
 using System.Web;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.IdentityModel.Tokens;
+using SalesInMove.Services;
+using SalesInMove.ViewModels;
 
 namespace SalesInMove.Controllers
 {
@@ -24,17 +26,20 @@ namespace SalesInMove.Controllers
         private readonly UserManager<IdentityUser> _userManager;
         private readonly SignInManager<IdentityUser> _signInManager;
         private readonly SmtpClient _emailService;
+        private readonly IEmployeeFactory _employeeFactory;
 
-        public AccountController(UserManager<IdentityUser> userManager, SignInManager<IdentityUser> signInManager, SmtpClient emailService)
+        public AccountController(UserManager<IdentityUser> userManager, SignInManager<IdentityUser> signInManager, 
+            SmtpClient emailService, IEmployeeFactory employeeFactory)
         {
             //register some services throughout the IOC
             _userManager = userManager;
             _signInManager = signInManager;
             _emailService = emailService; 
+            _employeeFactory = employeeFactory;
         }
 
         [HttpPost("login")]
-        public async Task<IActionResult> Login([FromForm] Employee model)
+        public async Task<IActionResult> Login([FromForm] EmployeeVM model)
         {
             //1.getting a request from frontend, and generating a model object from JSON by it
             //2. getting an identityuser from the database which matches with we got from the JSON by email adress
@@ -89,26 +94,20 @@ namespace SalesInMove.Controllers
 
 
         [HttpPost("register")]
-        public async Task<IdentityResult> Register([FromForm] Employee model)
+        public async Task<IdentityResult> Register([FromForm] EmployeeVM model)
         {
             // registers users in the database. we get an account form which we are converting into an IdentityUser
             //also using the SMTP protocal (if we are able to create user) to send comfirmation email to the user's email
-            var user = new Employee
-            {
-                UserName = model.Email,
-                FirstName = model.FirstName,
-                LastName = model.LastName,
-                Email = model.Email,
-                PasswordHash = model.Password
-            };
 
-            var result = await _userManager.CreateAsync(user, model.Password);
+            Employee newEmployee = _employeeFactory.CreateRegisterEntity(model.Email, model.FirstName, model.LastName, model.Password);
+
+            var result = await _userManager.CreateAsync(newEmployee.User, model.Password);
             if (result.Succeeded)
             {
-                var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);
-                var link = Url.Action(nameof(VerifyEmail), "Account", new { user.Id, code }, Request.Scheme, Request.Host.ToString());
+                var code = await _userManager.GenerateEmailConfirmationTokenAsync(newEmployee.User);
+                var link = Url.Action(nameof(VerifyEmail), "Account", new { newEmployee.User.Id, code }, Request.Scheme, Request.Host.ToString());
 
-                var msg = new MailMessage(from: "csharptw5@gmail.com", to: user.Email, subject: "Email Verification", body: $"<a href=\"{link}\">Verify your email</a>");
+                var msg = new MailMessage(from: "csharptw5@gmail.com", to: newEmployee.User.Email, subject: "Email Verification", body: $"<a href=\"{link}\">Verify your email</a>");
                 msg.IsBodyHtml = true;
                 await _emailService.SendMailAsync(msg);
             }

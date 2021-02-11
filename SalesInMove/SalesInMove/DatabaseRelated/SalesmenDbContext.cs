@@ -26,17 +26,19 @@ namespace SalesInMove.DatabaseRelated
             builder.Entity<User>().HasData(
                 new User
                 {
+                    Id = "dummy0",
                     Email = "erzsebetchen@gmail.com",
                     EmailConfirmed = true,
                     UserName = "Erzsebet Chen",
+                    Password = "erzsebetchen",
+                    
                 }
             );
 
             builder.Entity<Employee>().HasData(
                 new Employee
                 {
-
-                    Password = "erzsebetchen",
+                    UserId = "dummy0",                    
                     Age = 28,
                     City = "Budapest",
                     Specialisation = "Sales specialist",
@@ -57,6 +59,7 @@ namespace SalesInMove.DatabaseRelated
                     Email = "marjoiretierney@gmail.com",
                     EmailConfirmed = true,
                     UserName = "Marjorie Tierney",
+                    Password = "marjoiretierney",
                 }
             );
 
@@ -64,7 +67,6 @@ namespace SalesInMove.DatabaseRelated
                 new Employee
                 {
                     UserId = "dummy1",
-                    Password = "marjoiretierney",
                     Age = 30,
                     City = "DunaHaraszti",
                     Specialisation = "Sales Support",
@@ -86,6 +88,7 @@ namespace SalesInMove.DatabaseRelated
                     Email = "maigriffiths@gmail.com",
                     EmailConfirmed = true,
                     UserName = "Mai Griffits",
+                    Password = "maigriffiths",
                 }
             );
 
@@ -93,7 +96,6 @@ namespace SalesInMove.DatabaseRelated
                 new Employee
                 {
                     UserId = "dummy2",
-                    Password = "maigriffiths",
                     Age = 34,
                     City = "Erd",
                     Specialisation = "Sales adminisztracio",
@@ -114,6 +116,7 @@ namespace SalesInMove.DatabaseRelated
                     Email = "joannemanning@gmail.com",
                     EmailConfirmed = true,
                     UserName = "Joanne Manning",
+                    Password = "joannemanning",
                 }
             );
 
@@ -121,7 +124,6 @@ namespace SalesInMove.DatabaseRelated
                 new Employee
                 {
                     UserId = "dummy3",
-                    Password = "joannemanning",
                     Age = 20,
                     City = "Budapest",
                     Specialisation = "Sales adminisztracio",
@@ -141,7 +143,8 @@ namespace SalesInMove.DatabaseRelated
                     Id = "dummy4",
                     Email = "keaneboyd@gmail.com",
                     EmailConfirmed = true,
-                    UserName = "Keane Boyd"
+                    UserName = "Keane Boyd",
+                    Password = "keaneboyd",
                 }
             );
 
@@ -149,7 +152,6 @@ namespace SalesInMove.DatabaseRelated
                 new Employee
                 {
                     UserId = "dummy4",
-                    Password = "keaneboyd",
                     Age = 22,
                     City = "Budapest",
                     Specialisation = "Sales szaktanacsado",
@@ -169,7 +171,8 @@ namespace SalesInMove.DatabaseRelated
                     Id = "dummy5",
                     Email = "aneekaeaton@gmail.com",
                     EmailConfirmed = true,
-                    UserName = "Aneeka Eaton"
+                    UserName = "Aneeka Eaton",
+                    Password = "aneekaeaton",
                 }
             );
 
@@ -177,7 +180,6 @@ namespace SalesInMove.DatabaseRelated
                 new Employee
                 {
                     UserId = "dummy5",
-                    Password = "aneekaeaton",
                     Age = 34,
                     City = "Kecsekemet",
                     Specialisation = "Sales specialist",
@@ -198,6 +200,7 @@ namespace SalesInMove.DatabaseRelated
                     Email = "bobacosta@gmail.com",
                     EmailConfirmed = true,
                     UserName = "Bob Acosta",
+                    Password = "bobacosta",
                 }
             );
 
@@ -205,7 +208,6 @@ namespace SalesInMove.DatabaseRelated
                 new Employee
                 {
                     UserId = "dummy6",
-                    Password = "bobacosta",
                     Age = 30,
                     City = "Erd",
                     Specialisation = "Sales Support",
@@ -225,7 +227,8 @@ namespace SalesInMove.DatabaseRelated
                     Id = "dummy7",
                     Email = "eoinlynn@gmail.com",
                     EmailConfirmed = true,
-                    UserName = "Eoin Lynn"
+                    UserName = "Eoin Lynn",
+                    Password = "eoinlynn",
                 }
             );
 
@@ -233,7 +236,6 @@ namespace SalesInMove.DatabaseRelated
                 new Employee
                 {
                     UserId = "dummy7",
-                    Password = "eoinlynn",
                     Age = 19,
                     City = "Dunaharaszti",
                     Specialisation = "Sales support",

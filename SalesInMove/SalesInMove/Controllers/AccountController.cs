@@ -94,6 +94,12 @@ namespace SalesInMove.Controllers
             return result;
         }
 
+        [HttpGet("search")]
+        public SearchFormVM Search([FromHeader]SearchFormVM datas)
+        {
+            return datas;
+        }
+
         public string GetEmployee(string email)
         {
             Employee toReturn = _repo.GetAccount(email);

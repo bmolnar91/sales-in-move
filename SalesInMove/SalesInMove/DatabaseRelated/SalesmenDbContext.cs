@@ -31,7 +31,6 @@ namespace SalesInMove.DatabaseRelated
                     EmailConfirmed = true,
                     UserName = "Erzsebet Chen",
                     Password = "erzsebetchen",
-                    
                 }
             );
 

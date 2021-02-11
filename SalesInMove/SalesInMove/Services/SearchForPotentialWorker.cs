@@ -3,11 +3,13 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using System.Configuration;
 
 namespace SalesInMove.Services
 {
     public class SearchForPotentialWorker : ISearch
     {
+        private string connection = ConfigurationManager.ConnectionStrings["SalesmanConnection"].ToString();
         private List<SearchRequest> requestes = new List<SearchRequest>
         {
             new SearchRequest

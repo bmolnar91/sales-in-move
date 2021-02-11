@@ -38,7 +38,8 @@ namespace SalesInMove.DatabaseRelated
             builder.Entity<Employee>().HasData(
                 new Employee
                 {
-                    UserId = "dummy0",                    
+                    UserId = "dummy0",
+                    EmployeeId = 10,                    
                     Age = 28,
                     City = "Budapest",
                     Specialisation = "Sales specialist",
@@ -67,6 +68,7 @@ namespace SalesInMove.DatabaseRelated
                 new Employee
                 {
                     UserId = "dummy1",
+                    EmployeeId = 1, 
                     Age = 30,
                     City = "DunaHaraszti",
                     Specialisation = "Sales Support",
@@ -96,6 +98,7 @@ namespace SalesInMove.DatabaseRelated
                 new Employee
                 {
                     UserId = "dummy2",
+                    EmployeeId = 2, 
                     Age = 34,
                     City = "Erd",
                     Specialisation = "Sales adminisztracio",
@@ -124,6 +127,7 @@ namespace SalesInMove.DatabaseRelated
                 new Employee
                 {
                     UserId = "dummy3",
+                    EmployeeId = 3, 
                     Age = 20,
                     City = "Budapest",
                     Specialisation = "Sales adminisztracio",
@@ -152,6 +156,7 @@ namespace SalesInMove.DatabaseRelated
                 new Employee
                 {
                     UserId = "dummy4",
+                    EmployeeId = 4, 
                     Age = 22,
                     City = "Budapest",
                     Specialisation = "Sales szaktanacsado",
@@ -180,6 +185,7 @@ namespace SalesInMove.DatabaseRelated
                 new Employee
                 {
                     UserId = "dummy5",
+                    EmployeeId = 5, 
                     Age = 34,
                     City = "Kecsekemet",
                     Specialisation = "Sales specialist",
@@ -208,6 +214,7 @@ namespace SalesInMove.DatabaseRelated
                 new Employee
                 {
                     UserId = "dummy6",
+                    EmployeeId = 6,
                     Age = 30,
                     City = "Erd",
                     Specialisation = "Sales Support",
@@ -236,6 +243,7 @@ namespace SalesInMove.DatabaseRelated
                 new Employee
                 {
                     UserId = "dummy7",
+                    EmployeeId = 7, 
                     Age = 19,
                     City = "Dunaharaszti",
                     Specialisation = "Sales support",

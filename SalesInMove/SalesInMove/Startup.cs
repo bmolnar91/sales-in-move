@@ -17,6 +17,7 @@ using System.Net.Mail;
 using System.Text;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
+using SalesInMove.Services;
 
 namespace SalesInMove
 {
@@ -101,6 +102,8 @@ namespace SalesInMove
            });
 
            services.AddScoped<ICompanyRepository, SQLCompanyRepositoryAsync>();
+           services.AddScoped<IEmployeeFactory, EmployeeFactory>();
+           services.AddScoped<ISalesmenRepository, SQLSalesmenRepository>();
 
         }
 

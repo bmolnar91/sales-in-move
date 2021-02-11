@@ -83,6 +83,9 @@ namespace SalesInMove
            services.AddScoped<ICompanyFactory, CompanyFactory>();
            services.AddScoped<IEmployeeFactory, EmployeeFactory>();
            services.AddScoped<ISalesmenRepository, SQLSalesmenRepository>();
+           services.AddScoped<IEmployeeSearchService, EmployeeSearch>();
+           services.AddScoped<IEmployeeSearchRepository, SQLEmployeeSearchRepository>();
+           services.AddScoped<IEmployeeSearchVMFactory, EmployeeSearchVMFactory>();
 
         }
 

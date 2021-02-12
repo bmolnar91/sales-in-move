@@ -112,6 +112,14 @@ namespace SalesInMove.Controllers
             //return _searchService.GetString(datas);
         }
 
+        public SearchResultVM GetAll()
+        {
+            IEnumerable<Employee> employees = _repo.GetAllEmployees();
+
+            return _searchService.GetEmployeeSearchResultVMs(employees);
+        }
+
+        [HttpGet("{email}")]
         public string GetEmployee(string email)
         {
             Employee toReturn = _repo.GetAccount(email);

@@ -11,6 +11,7 @@ import { CheckboxesGroup } from '../CheckboxesGroup';
 import Grid from '@material-ui/core/Grid';
 import FormGroup from '@material-ui/core/FormGroup';
 import Checkbox from '@material-ui/core/Checkbox';
+import axios from 'axios';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -76,6 +77,8 @@ export const SearchEmployees = () => {
   const [ageLic, setAgeLic] = React.useState('');
   const [openLic, setOpenLic] = React.useState(false);
   const [languages, setLanguages] = React.useState([]);
+  const [searchResults, setSearchReults] = React.useState();
+
   //select education
   const handleChange = (event) => {
     setAge(event.target.value);
@@ -112,6 +115,19 @@ export const SearchEmployees = () => {
   const handleOpenLic = () => {
     setOpenLic(true);
   };
+
+  const axios = require('axios').default;
+
+  const sendRequest = () => {
+    const resp = axios.get(`/api/account/search?Education=${age}&City=${ager}&DrivingLicence=${ageLic}`, {
+      headers: {
+        'Education': age,
+        'City': ager,
+        'DrivingLicence': ageLic 
+      }
+    }).then(resp => console.log(resp));
+    console.log(resp);
+  }
 
   //chekcbox language
   const changeLang = (e) => {
@@ -205,6 +221,11 @@ export const SearchEmployees = () => {
               </MenuItem>
             </Select>
           </Grid>
+          <Button
+            onClick={sendRequest}
+          >
+            lol
+          </Button>
           <Button
             style={{ marginTop: '30px' }}
             variant='contained'

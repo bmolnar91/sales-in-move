@@ -10,8 +10,8 @@ using SalesInMove.DatabaseRelated;
 namespace SalesInMove.Migrations
 {
     [DbContext(typeof(SalesmenDbContext))]
-    [Migration("20210211090738_Init")]
-    partial class Init
+    [Migration("20210211214737_init")]
+    partial class init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -231,8 +231,11 @@ namespace SalesInMove.Migrations
                     b.Property<long>("AnnualNettoIncome")
                         .HasColumnType("bigint");
 
-                    b.Property<string[]>("EmployeeOpinions")
-                        .HasColumnType("text[]");
+                    b.Property<string>("CompanyProfile")
+                        .HasColumnType("text");
+
+                    b.Property<string>("EmployeeOpinions")
+                        .HasColumnType("text");
 
                     b.Property<string>("Headquarter")
                         .HasColumnType("text");
@@ -278,7 +281,7 @@ namespace SalesInMove.Migrations
                         {
                             CompanyId = 12,
                             AnnualNettoIncome = 2000321865L,
-                            EmployeeOpinions = new[] { "Good", "Bad", "Terrific!", "Horrific!" },
+                            EmployeeOpinions = "Good;Bad;Terrific!;Horrific!",
                             Headquarter = "Halásztelek",
                             Name = "Markoó Kft.",
                             NumberOfSalesman = 10,
@@ -288,6 +291,223 @@ namespace SalesInMove.Migrations
                             TaxNumber = 24767107243L,
                             UserId = "0",
                             YearOfFoundation = new DateTime(2000, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                        });
+                });
+
+            modelBuilder.Entity("SalesInMove.Models.Employee", b =>
+                {
+                    b.Property<int>("EmployeeId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer")
+                        .UseIdentityByDefaultColumn();
+
+                    b.Property<int>("Age")
+                        .HasColumnType("integer");
+
+                    b.Property<DateTime?>("BirthDate")
+                        .HasColumnType("timestamp without time zone");
+
+                    b.Property<string>("City")
+                        .HasColumnType("text");
+
+                    b.Property<string[]>("Cons")
+                        .HasColumnType("text[]");
+
+                    b.Property<bool>("DrivingLicence")
+                        .HasColumnType("boolean");
+
+                    b.Property<string>("Education")
+                        .HasColumnType("text");
+
+                    b.Property<string>("FirstName")
+                        .HasColumnType("text");
+
+                    b.Property<bool>("HasPersonalityTest")
+                        .HasColumnType("boolean");
+
+                    b.Property<bool>("IsSubscribed")
+                        .HasColumnType("boolean");
+
+                    b.Property<string>("JobTitle")
+                        .HasColumnType("text");
+
+                    b.Property<string[]>("Languages")
+                        .HasColumnType("text[]");
+
+                    b.Property<string>("LastName")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Motto")
+                        .HasColumnType("text");
+
+                    b.Property<string[]>("OtherCertificates")
+                        .HasColumnType("text[]");
+
+                    b.Property<string>("PreviousCompany")
+                        .HasColumnType("text");
+
+                    b.Property<string>("ProfilePicture")
+                        .HasColumnType("text");
+
+                    b.Property<string>("ProfileVideo")
+                        .HasColumnType("text");
+
+                    b.Property<string[]>("ProgressionIntetions")
+                        .HasColumnType("text[]");
+
+                    b.Property<string[]>("Pros")
+                        .HasColumnType("text[]");
+
+                    b.Property<bool>("SalesCourseSubscription")
+                        .HasColumnType("boolean");
+
+                    b.Property<int>("SalesTurnOver")
+                        .HasColumnType("integer");
+
+                    b.Property<string>("Specialisation")
+                        .HasColumnType("text");
+
+                    b.Property<int?>("TurnoverLastYear")
+                        .HasColumnType("integer");
+
+                    b.Property<string>("UserId")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.HasKey("EmployeeId");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("Accounts");
+
+                    b.HasData(
+                        new
+                        {
+                            EmployeeId = 10,
+                            Age = 28,
+                            City = "Budapest",
+                            DrivingLicence = true,
+                            Education = "Marketing BA",
+                            HasPersonalityTest = true,
+                            IsSubscribed = false,
+                            Languages = new[] { "kinai", "angol" },
+                            ProfilePicture = "https://images.generated.photos/iZOX8m9z2zgSg7_qWRSr4wBWJLfNkbdeofALD6dRIVU/rs:fit:512:512/wm:0.95:sowe:18:18:0.33/Z3M6Ly9nZW5lcmF0/ZWQtcGhvdG9zL3Yz/XzA1NDIxMzguanBn.jpg",
+                            SalesCourseSubscription = true,
+                            SalesTurnOver = 50000000,
+                            Specialisation = "Sales specialist",
+                            UserId = "dummy0"
+                        },
+                        new
+                        {
+                            EmployeeId = 1,
+                            Age = 30,
+                            City = "Budapest",
+                            DrivingLicence = true,
+                            Education = "Marketing BA",
+                            HasPersonalityTest = false,
+                            IsSubscribed = false,
+                            Languages = new[] { "nemet", "angol" },
+                            ProfilePicture = "https://images.generated.photos/DThx55Jct9pbzh0tEWKAH9ilBwpKhHfPL0f0B6umGxU/rs:fit:512:512/wm:0.95:sowe:18:18:0.33/Z3M6Ly9nZW5lcmF0/ZWQtcGhvdG9zL3Yz/XzA4NDk3MjcuanBn.jpg",
+                            SalesCourseSubscription = false,
+                            SalesTurnOver = 30000000,
+                            Specialisation = "Sales Support",
+                            UserId = "dummy1"
+                        },
+                        new
+                        {
+                            EmployeeId = 2,
+                            Age = 34,
+                            City = "Budapest",
+                            DrivingLicence = false,
+                            Education = "Marketing BA",
+                            HasPersonalityTest = false,
+                            IsSubscribed = false,
+                            Languages = new[] { "kinai", "angol, német" },
+                            ProfilePicture = "https://images.generated.photos/1k3lzxgEtWeS2mefKNXprUfn-kPpzyz3QJ0xuizOQrE/rs:fit:512:512/wm:0.95:sowe:18:18:0.33/Z3M6Ly9nZW5lcmF0/ZWQtcGhvdG9zL3Yz/XzA3NzkzMDkuanBn.jpg",
+                            SalesCourseSubscription = true,
+                            SalesTurnOver = 50000000,
+                            Specialisation = "Sales adminisztracio",
+                            UserId = "dummy2"
+                        },
+                        new
+                        {
+                            EmployeeId = 3,
+                            Age = 20,
+                            City = "Budapest",
+                            DrivingLicence = false,
+                            Education = "Marketing BA",
+                            HasPersonalityTest = false,
+                            IsSubscribed = false,
+                            Languages = new[] { "kinai", "angol" },
+                            ProfilePicture = "https://images.generated.photos/jEnG00iXVCxYx24J4dFGMRWTkSaYGOR6-Igumi2VP3w/rs:fit:512:512/wm:0.95:sowe:18:18:0.33/Z3M6Ly9nZW5lcmF0/ZWQtcGhvdG9zL3Yz/XzA5Nzg0MzkuanBn.jpg",
+                            SalesCourseSubscription = false,
+                            SalesTurnOver = 30000000,
+                            Specialisation = "Sales adminisztracio",
+                            UserId = "dummy3"
+                        },
+                        new
+                        {
+                            EmployeeId = 4,
+                            Age = 22,
+                            City = "Budapest",
+                            DrivingLicence = false,
+                            Education = "Marketing BA",
+                            HasPersonalityTest = true,
+                            IsSubscribed = false,
+                            Languages = new[] { "kinai" },
+                            ProfilePicture = "https://images.generated.photos/GmWEUKjveqsM5x3TsJVABoSyjilRB6Tz2Z-Auc9p-8Y/rs:fit:512:512/wm:0.95:sowe:18:18:0.33/Z3M6Ly9nZW5lcmF0/ZWQtcGhvdG9zL3Yz/XzA2MTI4NTcuanBn.jpg",
+                            SalesCourseSubscription = false,
+                            SalesTurnOver = 40000000,
+                            Specialisation = "Sales szaktanacsado",
+                            UserId = "dummy4"
+                        },
+                        new
+                        {
+                            EmployeeId = 5,
+                            Age = 34,
+                            City = "Kecsekemet",
+                            DrivingLicence = true,
+                            Education = "DLA",
+                            HasPersonalityTest = false,
+                            IsSubscribed = false,
+                            Languages = new[] { "angol" },
+                            ProfilePicture = "https://images.generated.photos/qvPRjAxXrZdLdgSDd6yk2I7ni0a1LAwFWZBNfvYNMdo/rs:fit:512:512/wm:0.95:sowe:18:18:0.33/Z3M6Ly9nZW5lcmF0/ZWQtcGhvdG9zL3Yz/XzA4MjM3ODkuanBn.jpg",
+                            SalesCourseSubscription = true,
+                            SalesTurnOver = 50000000,
+                            Specialisation = "Sales specialist",
+                            UserId = "dummy5"
+                        },
+                        new
+                        {
+                            EmployeeId = 6,
+                            Age = 30,
+                            City = "Erd",
+                            DrivingLicence = false,
+                            Education = "Foiskola",
+                            HasPersonalityTest = false,
+                            IsSubscribed = false,
+                            Languages = new[] { "angol" },
+                            ProfilePicture = "https://images.generated.photos/YFrGWaIDMHGU5HoB3GxLFJ_jXTE8S8gpstIs3Pm9dHE/rs:fit:512:512/wm:0.95:sowe:18:18:0.33/Z3M6Ly9nZW5lcmF0/ZWQtcGhvdG9zL3Yz/XzA3ODQ4MzYuanBn.jpg",
+                            SalesCourseSubscription = true,
+                            SalesTurnOver = 30000000,
+                            Specialisation = "Sales Support",
+                            UserId = "dummy6"
+                        },
+                        new
+                        {
+                            EmployeeId = 7,
+                            Age = 19,
+                            City = "Dunaharaszti",
+                            DrivingLicence = true,
+                            Education = "egyetem",
+                            HasPersonalityTest = true,
+                            IsSubscribed = false,
+                            Languages = new[] { "ukran", "angol" },
+                            ProfilePicture = "https://images.generated.photos/aKjcATGNs_-Y5cyzeAdjL3N-cRWqUh7hKjds4pOytgw/rs:fit:512:512/wm:0.95:sowe:18:18:0.33/Z3M6Ly9nZW5lcmF0/ZWQtcGhvdG9zL3Yz/XzA2ODM0NDMuanBn.jpg",
+                            SalesCourseSubscription = false,
+                            SalesTurnOver = 40000000,
+                            Specialisation = "Sales support",
+                            UserId = "dummy7"
                         });
                 });
 
@@ -389,279 +609,13 @@ namespace SalesInMove.Migrations
                         });
                 });
 
-            modelBuilder.Entity("SalesInMove.Models.Account", b =>
-                {
-                    b.HasBaseType("Microsoft.AspNetCore.Identity.IdentityUser");
-
-                    b.Property<int>("Eletkor")
-                        .HasColumnType("integer");
-
-                    b.Property<int>("ErtekesitoiForgalom")
-                        .HasColumnType("integer");
-
-                    b.Property<string>("FirstName")
-                        .HasColumnType("text");
-
-                    b.Property<bool>("Jogositvany")
-                        .HasColumnType("boolean");
-
-                    b.Property<string>("LastName")
-                        .HasColumnType("text");
-
-                    b.Property<string[]>("Nyelvek")
-                        .HasColumnType("text[]");
-
-                    b.Property<string>("Password")
-                        .IsRequired()
-                        .HasColumnType("text");
-
-                    b.Property<string>("Picture")
-                        .HasColumnType("text");
-
-                    b.Property<bool>("SalesKurzusElofizetes")
-                        .HasColumnType("boolean");
-
-                    b.Property<string>("Szakterulet")
-                        .HasColumnType("text");
-
-                    b.Property<bool>("SzemelyisegTeszt")
-                        .HasColumnType("boolean");
-
-                    b.Property<string>("Varos")
-                        .HasColumnType("text");
-
-                    b.Property<string>("Vegzettseg")
-                        .HasColumnType("text");
-
-                    b.HasDiscriminator().HasValue("Account");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = "2fdb863b-66b3-4e11-94d0-5459e330f234",
-                            AccessFailedCount = 0,
-                            ConcurrencyStamp = "b38c2c3c-0110-43f2-b937-10de10a437bf",
-                            Email = "erzsebetchen@gmail.com",
-                            EmailConfirmed = true,
-                            LockoutEnabled = false,
-                            PhoneNumberConfirmed = false,
-                            SecurityStamp = "8b6d8560-392b-4522-91c8-6453a6d02b9e",
-                            TwoFactorEnabled = false,
-                            UserName = "Erzsebet Chen",
-                            Eletkor = 28,
-                            ErtekesitoiForgalom = 50000000,
-                            Jogositvany = true,
-                            Nyelvek = new[] { "kinai", "angol" },
-                            Password = "erzsebetchen",
-                            Picture = "https://images.generated.photos/iZOX8m9z2zgSg7_qWRSr4wBWJLfNkbdeofALD6dRIVU/rs:fit:512:512/wm:0.95:sowe:18:18:0.33/Z3M6Ly9nZW5lcmF0/ZWQtcGhvdG9zL3Yz/XzA1NDIxMzguanBn.jpg",
-                            SalesKurzusElofizetes = true,
-                            Szakterulet = "Sales specialist",
-                            SzemelyisegTeszt = true,
-                            Varos = "Budapest",
-                            Vegzettseg = "Marketing BA"
-                        },
-                        new
-                        {
-                            Id = "98ba488d-f640-4974-9a9a-b4c2900a2fef",
-                            AccessFailedCount = 0,
-                            ConcurrencyStamp = "4c332a34-4f0a-4cb1-806b-5208b096cb94",
-                            Email = "marjoiretierney@gmail.com",
-                            EmailConfirmed = true,
-                            LockoutEnabled = false,
-                            PhoneNumberConfirmed = false,
-                            SecurityStamp = "7c7e0717-3982-4bcc-bd71-a8421fc6e37f",
-                            TwoFactorEnabled = false,
-                            UserName = "Marjorie Tierney",
-                            Eletkor = 30,
-                            ErtekesitoiForgalom = 30000000,
-                            Jogositvany = true,
-                            Nyelvek = new[] { "nemet", "angol" },
-                            Password = "marjoiretierney",
-                            Picture = "https://images.generated.photos/DThx55Jct9pbzh0tEWKAH9ilBwpKhHfPL0f0B6umGxU/rs:fit:512:512/wm:0.95:sowe:18:18:0.33/Z3M6Ly9nZW5lcmF0/ZWQtcGhvdG9zL3Yz/XzA4NDk3MjcuanBn.jpg",
-                            SalesKurzusElofizetes = false,
-                            Szakterulet = "Sales Support",
-                            SzemelyisegTeszt = false,
-                            Varos = "DunaHaraszti",
-                            Vegzettseg = "Foiskola"
-                        },
-                        new
-                        {
-                            Id = "998f19bd-6923-4f20-b453-7dde21db3898",
-                            AccessFailedCount = 0,
-                            ConcurrencyStamp = "b172f10d-d5ee-45ab-893e-f945c24818df",
-                            Email = "maigriffiths@gmail.com",
-                            EmailConfirmed = true,
-                            LockoutEnabled = false,
-                            PhoneNumberConfirmed = false,
-                            SecurityStamp = "603d4961-5c26-47f8-8a54-fb294afbd052",
-                            TwoFactorEnabled = false,
-                            UserName = "Mai Griffits",
-                            Eletkor = 34,
-                            ErtekesitoiForgalom = 50000000,
-                            Jogositvany = false,
-                            Nyelvek = new[] { "nemet", "angol" },
-                            Password = "maigriffiths",
-                            Picture = "https://images.generated.photos/1k3lzxgEtWeS2mefKNXprUfn-kPpzyz3QJ0xuizOQrE/rs:fit:512:512/wm:0.95:sowe:18:18:0.33/Z3M6Ly9nZW5lcmF0/ZWQtcGhvdG9zL3Yz/XzA3NzkzMDkuanBn.jpg",
-                            SalesKurzusElofizetes = true,
-                            Szakterulet = "Sales adminisztracio",
-                            SzemelyisegTeszt = false,
-                            Varos = "Erd",
-                            Vegzettseg = "egyetem"
-                        },
-                        new
-                        {
-                            Id = "683c3cc6-6e13-4d85-9e1e-ab5a31525fdc",
-                            AccessFailedCount = 0,
-                            ConcurrencyStamp = "414bd55e-8e5f-4fb1-b904-0ec42e58169f",
-                            Email = "joannemanning@gmail.com",
-                            EmailConfirmed = true,
-                            LockoutEnabled = false,
-                            PhoneNumberConfirmed = false,
-                            SecurityStamp = "805d13c6-a038-409e-a2ec-107ba9d263c3",
-                            TwoFactorEnabled = false,
-                            UserName = "Joanne Manning",
-                            Eletkor = 20,
-                            ErtekesitoiForgalom = 30000000,
-                            Jogositvany = false,
-                            Nyelvek = new[] { "kinai", "angol" },
-                            Password = "joannemanning",
-                            Picture = "https://images.generated.photos/jEnG00iXVCxYx24J4dFGMRWTkSaYGOR6-Igumi2VP3w/rs:fit:512:512/wm:0.95:sowe:18:18:0.33/Z3M6Ly9nZW5lcmF0/ZWQtcGhvdG9zL3Yz/XzA5Nzg0MzkuanBn.jpg",
-                            SalesKurzusElofizetes = false,
-                            Szakterulet = "Sales adminisztracio",
-                            SzemelyisegTeszt = false,
-                            Varos = "Budapest",
-                            Vegzettseg = "egyetem"
-                        },
-                        new
-                        {
-                            Id = "ed42e67f-329c-4079-ab9c-64b1b622c73b",
-                            AccessFailedCount = 0,
-                            ConcurrencyStamp = "a1586d44-6d89-4f0f-bfc5-87cc67522a67",
-                            Email = "keaneboyd@gmail.com",
-                            EmailConfirmed = true,
-                            LockoutEnabled = false,
-                            PhoneNumberConfirmed = false,
-                            SecurityStamp = "90e490f9-ac3a-4918-8b2a-b00f3a3567f3",
-                            TwoFactorEnabled = false,
-                            UserName = "Keane Boyd",
-                            Eletkor = 22,
-                            ErtekesitoiForgalom = 40000000,
-                            Jogositvany = false,
-                            Nyelvek = new[] { "orosz", "angol" },
-                            Password = "keaneboyd",
-                            Picture = "https://images.generated.photos/GmWEUKjveqsM5x3TsJVABoSyjilRB6Tz2Z-Auc9p-8Y/rs:fit:512:512/wm:0.95:sowe:18:18:0.33/Z3M6Ly9nZW5lcmF0/ZWQtcGhvdG9zL3Yz/XzA2MTI4NTcuanBn.jpg",
-                            SalesKurzusElofizetes = false,
-                            Szakterulet = "Sales szaktanacsado",
-                            SzemelyisegTeszt = true,
-                            Varos = "Budapest",
-                            Vegzettseg = "PhD"
-                        },
-                        new
-                        {
-                            Id = "7debd1a8-1c65-4cff-ae15-17b7f3f622b3",
-                            AccessFailedCount = 0,
-                            ConcurrencyStamp = "8c51d7ca-ea82-4792-b830-1749fddf3c61",
-                            Email = "aneekaeaton@gmail.com",
-                            EmailConfirmed = true,
-                            LockoutEnabled = false,
-                            PhoneNumberConfirmed = false,
-                            SecurityStamp = "e8cdc6db-d602-4aa0-a55e-15b45ed1fa3e",
-                            TwoFactorEnabled = false,
-                            UserName = "Aneeka Eaton",
-                            Eletkor = 34,
-                            ErtekesitoiForgalom = 50000000,
-                            Jogositvany = true,
-                            Nyelvek = new[] { "angol" },
-                            Password = "aneekaeaton",
-                            Picture = "https://images.generated.photos/qvPRjAxXrZdLdgSDd6yk2I7ni0a1LAwFWZBNfvYNMdo/rs:fit:512:512/wm:0.95:sowe:18:18:0.33/Z3M6Ly9nZW5lcmF0/ZWQtcGhvdG9zL3Yz/XzA4MjM3ODkuanBn.jpg",
-                            SalesKurzusElofizetes = true,
-                            Szakterulet = "Sales specialist",
-                            SzemelyisegTeszt = false,
-                            Varos = "Kecsekemet",
-                            Vegzettseg = "DLA"
-                        },
-                        new
-                        {
-                            Id = "76ee9c8d-0cd3-404b-822e-4bad9478dbfd",
-                            AccessFailedCount = 0,
-                            ConcurrencyStamp = "69e9cbb8-effa-4b2a-adc1-a06f5a637162",
-                            Email = "bobacosta@gmail.com",
-                            EmailConfirmed = true,
-                            LockoutEnabled = false,
-                            PhoneNumberConfirmed = false,
-                            SecurityStamp = "6bf92391-a085-462b-b30c-1a605a2f992c",
-                            TwoFactorEnabled = false,
-                            UserName = "Bob Acosta",
-                            Eletkor = 30,
-                            ErtekesitoiForgalom = 30000000,
-                            Jogositvany = false,
-                            Nyelvek = new[] { "angol" },
-                            Password = "bobacosta",
-                            Picture = "https://images.generated.photos/YFrGWaIDMHGU5HoB3GxLFJ_jXTE8S8gpstIs3Pm9dHE/rs:fit:512:512/wm:0.95:sowe:18:18:0.33/Z3M6Ly9nZW5lcmF0/ZWQtcGhvdG9zL3Yz/XzA3ODQ4MzYuanBn.jpg",
-                            SalesKurzusElofizetes = true,
-                            Szakterulet = "Sales Support",
-                            SzemelyisegTeszt = false,
-                            Varos = "Erd",
-                            Vegzettseg = "Foiskola"
-                        },
-                        new
-                        {
-                            Id = "147d42f1-68f0-4252-a531-ecc37da34c0c",
-                            AccessFailedCount = 0,
-                            ConcurrencyStamp = "56862338-02b4-4867-ae09-0d96523b5ce5",
-                            Email = "eoinlynn@gmail.com",
-                            EmailConfirmed = true,
-                            LockoutEnabled = false,
-                            PhoneNumberConfirmed = false,
-                            SecurityStamp = "b48d6835-772d-4646-9d09-853201e297cb",
-                            TwoFactorEnabled = false,
-                            UserName = "Eoin Lynn",
-                            Eletkor = 19,
-                            ErtekesitoiForgalom = 40000000,
-                            Jogositvany = true,
-                            Nyelvek = new[] { "ukran", "angol" },
-                            Password = "eoinlynn",
-                            Picture = "https://images.generated.photos/aKjcATGNs_-Y5cyzeAdjL3N-cRWqUh7hKjds4pOytgw/rs:fit:512:512/wm:0.95:sowe:18:18:0.33/Z3M6Ly9nZW5lcmF0/ZWQtcGhvdG9zL3Yz/XzA2ODM0NDMuanBn.jpg",
-                            SalesKurzusElofizetes = false,
-                            Szakterulet = "Sales support",
-                            SzemelyisegTeszt = true,
-                            Varos = "Dunaharaszti",
-                            Vegzettseg = "egyetem"
-                        },
-                        new
-                        {
-                            Id = "84bed6d9-4d39-48be-ab68-ec7d7489baef",
-                            AccessFailedCount = 0,
-                            ConcurrencyStamp = "022e79c8-4524-4629-9949-b630400cad9c",
-                            Email = "eoinlynn@gmail.com",
-                            EmailConfirmed = true,
-                            LockoutEnabled = false,
-                            PhoneNumberConfirmed = false,
-                            SecurityStamp = "1918f8a0-15e0-42ad-aa17-9081fead90c0",
-                            TwoFactorEnabled = false,
-                            UserName = "Eoin Lynn",
-                            Eletkor = 19,
-                            ErtekesitoiForgalom = 40000000,
-                            Jogositvany = true,
-                            Nyelvek = new[] { "ukran", "angol" },
-                            Password = "eoinlynn",
-                            Picture = "https://images.generated.photos/aKjcATGNs_-Y5cyzeAdjL3N-cRWqUh7hKjds4pOytgw/rs:fit:512:512/wm:0.95:sowe:18:18:0.33/Z3M6Ly9nZW5lcmF0/ZWQtcGhvdG9zL3Yz/XzA2ODM0NDMuanBn.jpg",
-                            SalesKurzusElofizetes = false,
-                            Szakterulet = "Sales support",
-                            SzemelyisegTeszt = true,
-                            Varos = "Dunaharaszti",
-                            Vegzettseg = "egyetem"
-                        });
-                });
-
             modelBuilder.Entity("SalesInMove.Models.User", b =>
                 {
                     b.HasBaseType("Microsoft.AspNetCore.Identity.IdentityUser");
 
                     b.Property<string>("Password")
                         .IsRequired()
-                        .HasColumnType("text")
-                        .HasColumnName("User_Password");
+                        .HasColumnType("text");
 
                     b.Property<int>("UserType")
                         .HasColumnType("integer");
@@ -671,14 +625,134 @@ namespace SalesInMove.Migrations
                     b.HasData(
                         new
                         {
+                            Id = "dummy0",
+                            AccessFailedCount = 0,
+                            ConcurrencyStamp = "d4a3e9a9-dea3-49b0-ba16-b09d880cb47d",
+                            Email = "erzsebetchen@gmail.com",
+                            EmailConfirmed = true,
+                            LockoutEnabled = false,
+                            PhoneNumberConfirmed = false,
+                            SecurityStamp = "0e0aa504-4805-4f65-b80f-71940609e17c",
+                            TwoFactorEnabled = false,
+                            UserName = "Erzsebet Chen",
+                            Password = "erzsebetchen",
+                            UserType = 0
+                        },
+                        new
+                        {
+                            Id = "dummy1",
+                            AccessFailedCount = 0,
+                            ConcurrencyStamp = "bb7e60a1-fb60-4052-8748-1010c29dc1d5",
+                            Email = "marjoiretierney@gmail.com",
+                            EmailConfirmed = true,
+                            LockoutEnabled = false,
+                            PhoneNumberConfirmed = false,
+                            SecurityStamp = "54d0d82c-6dd8-4d75-bf1d-b46ad50af403",
+                            TwoFactorEnabled = false,
+                            UserName = "Marjorie Tierney",
+                            Password = "marjoiretierney",
+                            UserType = 0
+                        },
+                        new
+                        {
+                            Id = "dummy2",
+                            AccessFailedCount = 0,
+                            ConcurrencyStamp = "a7dc20a8-c92a-40d7-834b-801688c18654",
+                            Email = "maigriffiths@gmail.com",
+                            EmailConfirmed = true,
+                            LockoutEnabled = false,
+                            PhoneNumberConfirmed = false,
+                            SecurityStamp = "acc1f6f1-e5f2-4f0f-bb76-d1fc147814ff",
+                            TwoFactorEnabled = false,
+                            UserName = "Mai Griffits",
+                            Password = "maigriffiths",
+                            UserType = 0
+                        },
+                        new
+                        {
+                            Id = "dummy3",
+                            AccessFailedCount = 0,
+                            ConcurrencyStamp = "7b14d83a-7f3b-4093-b3e1-e6218fa70cab",
+                            Email = "joannemanning@gmail.com",
+                            EmailConfirmed = true,
+                            LockoutEnabled = false,
+                            PhoneNumberConfirmed = false,
+                            SecurityStamp = "d3dd0355-3460-4c99-8649-985504d57413",
+                            TwoFactorEnabled = false,
+                            UserName = "Joanne Manning",
+                            Password = "joannemanning",
+                            UserType = 0
+                        },
+                        new
+                        {
+                            Id = "dummy4",
+                            AccessFailedCount = 0,
+                            ConcurrencyStamp = "d0a0923a-6d7f-40cf-b976-ee1e7105a356",
+                            Email = "keaneboyd@gmail.com",
+                            EmailConfirmed = true,
+                            LockoutEnabled = false,
+                            PhoneNumberConfirmed = false,
+                            SecurityStamp = "61878cb4-c77a-46c9-a543-ca730c19d4c6",
+                            TwoFactorEnabled = false,
+                            UserName = "Keane Boyd",
+                            Password = "keaneboyd",
+                            UserType = 0
+                        },
+                        new
+                        {
+                            Id = "dummy5",
+                            AccessFailedCount = 0,
+                            ConcurrencyStamp = "d8f2064e-79f6-4cc4-a2a6-20b1651c2c5e",
+                            Email = "aneekaeaton@gmail.com",
+                            EmailConfirmed = true,
+                            LockoutEnabled = false,
+                            PhoneNumberConfirmed = false,
+                            SecurityStamp = "6c397ca6-c9a7-4a9b-adef-1966662e002f",
+                            TwoFactorEnabled = false,
+                            UserName = "Aneeka Eaton",
+                            Password = "aneekaeaton",
+                            UserType = 0
+                        },
+                        new
+                        {
+                            Id = "dummy6",
+                            AccessFailedCount = 0,
+                            ConcurrencyStamp = "bddfe034-6c60-434c-98b1-93ffbf226b35",
+                            Email = "bobacosta@gmail.com",
+                            EmailConfirmed = true,
+                            LockoutEnabled = false,
+                            PhoneNumberConfirmed = false,
+                            SecurityStamp = "a430ce4b-fef5-4fe7-b0fe-5016cb0d3277",
+                            TwoFactorEnabled = false,
+                            UserName = "Bob Acosta",
+                            Password = "bobacosta",
+                            UserType = 0
+                        },
+                        new
+                        {
+                            Id = "dummy7",
+                            AccessFailedCount = 0,
+                            ConcurrencyStamp = "712d6518-e84c-4276-b8ef-c8acd5c6e546",
+                            Email = "eoinlynn@gmail.com",
+                            EmailConfirmed = true,
+                            LockoutEnabled = false,
+                            PhoneNumberConfirmed = false,
+                            SecurityStamp = "05f145f5-10c5-4eb6-9aa9-6dc2dcc7b8e6",
+                            TwoFactorEnabled = false,
+                            UserName = "Eoin Lynn",
+                            Password = "eoinlynn",
+                            UserType = 0
+                        },
+                        new
+                        {
                             Id = "0",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "6e595669-8e46-4e82-be88-e9e094d3c878",
+                            ConcurrencyStamp = "258f1d38-e56e-4738-babb-54cd47967d01",
                             Email = "marko@gmail.com",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "ab733887-e41e-4cc9-b259-0da913e0d902",
+                            SecurityStamp = "8dd22b04-a763-400c-8cfd-584286c0ad6d",
                             TwoFactorEnabled = false,
                             Password = "Asd123",
                             UserType = 2
@@ -741,6 +815,17 @@ namespace SalesInMove.Migrations
                     b.HasOne("SalesInMove.Models.User", "User")
                         .WithOne("Company")
                         .HasForeignKey("SalesInMove.Models.Company", "UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("User");
+                });
+
+            modelBuilder.Entity("SalesInMove.Models.Employee", b =>
+                {
+                    b.HasOne("SalesInMove.Models.User", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 

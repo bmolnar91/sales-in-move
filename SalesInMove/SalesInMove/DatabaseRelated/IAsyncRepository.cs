@@ -5,7 +5,7 @@ namespace SalesInMove.DatabaseRelated
 {
     public interface IAsyncRepository <TEntity> where TEntity : class
     {
-        void AddEntityAsync(TEntity entity);
+        Task AddEntityAsync(TEntity entity);
         IEnumerable<TEntity> GetAllEntities();
         void UpdateEntityAsync(TEntity entity);
     }

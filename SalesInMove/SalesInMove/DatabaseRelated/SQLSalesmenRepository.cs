@@ -16,15 +16,20 @@ namespace SalesInMove.DatabaseRelated
         {
             _context = context;
         }
-        public void AddAccount(Account account)
+        public void AddAccount(Employee account)
         {
             _context.Accounts.Add(account);
             _context.SaveChanges();
         }
 
-        public Account GetAccount(string email)
+        public Employee GetAccount(string email)
         {
-            return _context.Accounts.Where(x => x.Email.Equals(email)).FirstOrDefault();
+            return _context.Accounts.Where(x => x.User.Email.Equals(email)).FirstOrDefault();
+        }
+
+        private void Save()
+        {
+            _context.SaveChanges();
         }
 
         private async void SaveAsync()

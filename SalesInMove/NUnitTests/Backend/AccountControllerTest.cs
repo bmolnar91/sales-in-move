@@ -51,7 +51,7 @@ namespace NUnitTests.Backend
             
             var mockSet = new Mock<DbSet<Account>>();
             var mockContext = new Mock<SalesmenDbContext>();
-            mockContext.Setup(x => x.Accounts).Returns(mockSet.Object);
+            //mockContext.Setup(x => x.Accounts).Returns(mockSet.Object);
             Repository = new SQLSalesmenRepository(mockContext.Object);
 
             var mapper = (IMapper)fixture.Server.Host.Services.GetService(typeof(IMapper));
@@ -66,7 +66,7 @@ namespace NUnitTests.Backend
             FakeSignInManager.Setup(x => x.PasswordSignInAsync(It.IsAny<Account>(), It.IsAny<string>(), It.IsAny<bool>(), It.IsAny<bool>()))
                     .ReturnsAsync(SignInResult.Success);
 
-            AccountController = new AccountController(fakeUserManager.Object, FakeSignInManager.Object, new System.Net.Mail.SmtpClient());
+            //AccountController = new AccountController(fakeUserManager.Object, FakeSignInManager.Object, new System.Net.Mail.SmtpClient());
 
         }
 

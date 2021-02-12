@@ -12,6 +12,7 @@ import { AppBar } from './components/AppBar';
 import profilePage from './pages/profile/profilePage';
 import './styles/App.css';
 import { SearchEmployees } from './components/SearchEmployees/SearchEmployees';
+import CompanyProfile from './components/CompanyProfile/CompanyProfile';
 
 const App = () => {
   return (
@@ -32,6 +33,7 @@ const App = () => {
       <Route exact path='/bejelentkezes' component={LoginPage} />
       <Route exact path='/ProfilePage' component={profilePage} />
       <Route exact path='/search-employees' component={SearchEmployees} />
+      <Route exact path='/company-profile' component={CompanyProfile} />
     </>
   );
 };

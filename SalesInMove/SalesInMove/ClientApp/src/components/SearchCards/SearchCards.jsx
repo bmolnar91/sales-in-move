@@ -54,7 +54,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const SearchCards = () => {
+const SearchCards = (props) => {
   const classes = useStyles();
   return (
     <Grid
@@ -81,7 +81,7 @@ const SearchCards = () => {
           width='170x'
           className={classes.profileImage}
         />
-        <div>Erzsébet Chen 28 Budapest</div>
+        <div>{props.userInfo.FirstName} 28 Budapest</div>
         <Button style={{ width: '30px' }}> Tovább </Button>
       </Grid>
       <Grid

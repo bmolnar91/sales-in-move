@@ -12,6 +12,7 @@ import Grid from '@material-ui/core/Grid';
 import FormGroup from '@material-ui/core/FormGroup';
 import Checkbox from '@material-ui/core/Checkbox';
 import axios from 'axios';
+import SearchCards from '../SearchCards/SearchCards';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -94,15 +95,18 @@ export const SearchEmployees = () => {
   const [openLic, setOpenLic] = React.useState(false);
   const [languages, setLanguages] = React.useState([]);
   const [searchResults, setSearchReults] = React.useState();
-
+  const [allUserInfo, setAllUserInfo] = React.useState([{}]);
 
   useEffect(() => {
     axios.get('/api/account')
-      .then(resp => console.log(resp));
+      .then(resp => setAllUserInfo(resp.data.results));
   }, []);
+
+  
 
   //select education
   const handleChange = (event) => {
+    console.log(allUserInfo);
     setAge(event.target.value);
   };
 
@@ -254,21 +258,16 @@ export const SearchEmployees = () => {
       </Grid>
 
       <Grid container item xs={9}>
-        <Grid item xs={12}>
-          <div>Hello</div>
-        </Grid>
-        <Grid item xs={12}>
-          <div>Hello</div>
-        </Grid>
-        <Grid item xs={12}>
-          <div>Hello</div>
-        </Grid>
-        <Grid item xs={12}>
-          <div>Hello</div>
-        </Grid>
-        <Grid item xs={12}>
-          <div>Hello</div>
-        </Grid>
+        {allUserInfo.length}
+        {
+          allUserInfo.map(userInfo => (
+            
+            <Grid item xs={12}>
+              <p>{userInfo.age}</p>
+              <SearchCards userInfo={userInfo}/>
+            </Grid>
+          ))
+        }
       </Grid>
     </Grid>
   );

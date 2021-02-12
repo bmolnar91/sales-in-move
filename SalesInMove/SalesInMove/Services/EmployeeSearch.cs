@@ -23,16 +23,20 @@ namespace SalesInMove.Services
 
             IEnumerable<Employee> employees = _empSearchRepo.GetResults(searchForm.Education, searchForm.City, searchForm.Languages, searchForm.HasDrivingLicence);
             
-            //List<EmployeeVM> vMs = new List<EmployeeVM>();
-            List<EmployeeSearchVM> empVMs = new List<EmployeeSearchVM>();
+            return this.GetEmployeeSearchVMs(employees);
+            
+        }
+
+        private List<EmployeeSearchVM> GetEmployeeSearchVMs(IEnumerable<Employee> employees)
+        {
+            List<EmployeeSearchVM> employeeSearchVMs = new List<EmployeeSearchVM>();
 
             foreach (Employee employee in employees)
             {
-                empVMs.Add(_employeeSearchVMFactory.CreateVM(employee.FirstName, employee.LastName, employee.Age, employee.ProfilePicture, employee.City, employee.Specialisation, employee.Education, employee.SalesTurnOver, employee.Languages));
+                employeeSearchVMs.Add(_employeeSearchVMFactory.CreateVM(employee.FirstName, employee.LastName, employee.Age, employee.ProfilePicture, employee.City, employee.Specialisation, employee.Education, employee.SalesTurnOver, employee.Languages));
             }
 
-            return empVMs;
-            
+            return employeeSearchVMs;
         }
 
         public string GetString(SearchFormVM searchForm)
@@ -52,6 +56,17 @@ namespace SalesInMove.Services
             }
 
             return false;
+        }
+
+        public SearchResultVM GetEmployeeSearchResultVMs(IEnumerable<Employee> employees)
+        {
+            List<EmployeeSearchVM> employeeSearchVMs = this.GetEmployeeSearchVMs(employees);
+
+            return new SearchResultVM
+            {
+                ResultNumber = employeeSearchVMs.Count,
+                Results = employeeSearchVMs
+            };
         }
     }
 }

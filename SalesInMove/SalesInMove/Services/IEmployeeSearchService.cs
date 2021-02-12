@@ -8,5 +8,7 @@ namespace SalesInMove.Services
     {
          List<EmployeeSearchVM> GetEmployees(SearchFormVM searchForm);
          string GetString(SearchFormVM searchForm);
+
+         SearchResultVM GetEmployeeSearchResultVMs(IEnumerable<Employee> employees);
     }
 }

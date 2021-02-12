@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import InputLabel from '@material-ui/core/InputLabel';
 import MenuItem from '@material-ui/core/MenuItem';
@@ -25,6 +25,7 @@ const useStyles = makeStyles((theme) => ({
   },
   form: {
     width: '100%', // Fix IE 11 issue.
+  },
   control: {
     padding: theme.spacing(2),
   },
@@ -94,6 +95,12 @@ export const SearchEmployees = () => {
   const [languages, setLanguages] = React.useState([]);
   const [searchResults, setSearchReults] = React.useState();
 
+
+  useEffect(() => {
+    axios.get('/api/account')
+      .then(resp => console.log(resp));
+  }, []);
+
   //select education
   const handleChange = (event) => {
     setAge(event.target.value);
@@ -134,14 +141,8 @@ export const SearchEmployees = () => {
   const axios = require('axios').default;
 
   const sendRequest = () => {
-    const resp = axios.get(`/api/account/search?Education=${age}&City=${ager}&DrivingLicence=${ageLic}`, {
-      headers: {
-        'Education': age,
-        'City': ager,
-        'DrivingLicence': ageLic 
-      }
-    }).then(resp => console.log(resp));
-    console.log(resp);
+    const resp = axios.get(`/api/account/search?Education=${age}&City=${ager}&DrivingLicence=${ageLic}`)
+      .then(resp => console.log(resp));
   }
 
   //chekcbox language

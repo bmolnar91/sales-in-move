@@ -11,6 +11,7 @@ using NETCore.MailKit.Extensions;
 using NETCore.MailKit.Infrastructure.Internal;
 using SalesInMove.DatabaseRelated;
 using SalesInMove.Models;
+using SalesInMove.Services;
 using System;
 using System.Net;
 using System.Net.Mail;
@@ -79,6 +80,12 @@ namespace SalesInMove
            });
 
            services.AddScoped<ICompanyRepository, SQLCompanyRepositoryAsync>();
+           services.AddScoped<ICompanyFactory, CompanyFactory>();
+           services.AddScoped<IEmployeeFactory, EmployeeFactory>();
+           services.AddScoped<ISalesmenRepository, SQLSalesmenRepository>();
+           services.AddScoped<IEmployeeSearchService, EmployeeSearch>();
+           services.AddScoped<IEmployeeSearchRepository, SQLEmployeeSearchRepository>();
+           services.AddScoped<IEmployeeSearchVMFactory, EmployeeSearchVMFactory>();
 
         }
 

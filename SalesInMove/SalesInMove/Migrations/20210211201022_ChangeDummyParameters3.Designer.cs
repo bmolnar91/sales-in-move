@@ -10,8 +10,8 @@ using SalesInMove.DatabaseRelated;
 namespace SalesInMove.Migrations
 {
     [DbContext(typeof(SalesmenDbContext))]
-    [Migration("20210209092009_PositionSeed")]
-    partial class PositionSeed
+    [Migration("20210211201022_ChangeDummyParameters3")]
+    partial class ChangeDummyParameters3
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -231,8 +231,11 @@ namespace SalesInMove.Migrations
                     b.Property<long>("AnnualNettoIncome")
                         .HasColumnType("bigint");
 
-                    b.Property<string[]>("EmployeeOpinions")
-                        .HasColumnType("text[]");
+                    b.Property<string>("CompanyProfile")
+                        .HasColumnType("text");
+
+                    b.Property<string>("EmployeeOpinions")
+                        .HasColumnType("text");
 
                     b.Property<string>("Headquarter")
                         .HasColumnType("text");
@@ -278,7 +281,7 @@ namespace SalesInMove.Migrations
                         {
                             CompanyId = 12,
                             AnnualNettoIncome = 2000321865L,
-                            EmployeeOpinions = new[] { "Good", "Bad", "Terrific!", "Horrific!" },
+                            EmployeeOpinions = "Good;Bad;Terrific!;Horrific!",
                             Headquarter = "Halásztelek",
                             Name = "Markoó Kft.",
                             NumberOfSalesman = 10,
@@ -288,6 +291,223 @@ namespace SalesInMove.Migrations
                             TaxNumber = 24767107243L,
                             UserId = "0",
                             YearOfFoundation = new DateTime(2000, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                        });
+                });
+
+            modelBuilder.Entity("SalesInMove.Models.Employee", b =>
+                {
+                    b.Property<int>("EmployeeId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer")
+                        .UseIdentityByDefaultColumn();
+
+                    b.Property<int>("Age")
+                        .HasColumnType("integer");
+
+                    b.Property<DateTime?>("BirthDate")
+                        .HasColumnType("timestamp without time zone");
+
+                    b.Property<string>("City")
+                        .HasColumnType("text");
+
+                    b.Property<string[]>("Cons")
+                        .HasColumnType("text[]");
+
+                    b.Property<bool>("DrivingLicence")
+                        .HasColumnType("boolean");
+
+                    b.Property<string>("Education")
+                        .HasColumnType("text");
+
+                    b.Property<string>("FirstName")
+                        .HasColumnType("text");
+
+                    b.Property<bool>("HasPersonalityTest")
+                        .HasColumnType("boolean");
+
+                    b.Property<bool>("IsSubscribed")
+                        .HasColumnType("boolean");
+
+                    b.Property<string>("JobTitle")
+                        .HasColumnType("text");
+
+                    b.Property<string[]>("Languages")
+                        .HasColumnType("text[]");
+
+                    b.Property<string>("LastName")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Motto")
+                        .HasColumnType("text");
+
+                    b.Property<string[]>("OtherCertificates")
+                        .HasColumnType("text[]");
+
+                    b.Property<string>("PreviousCompany")
+                        .HasColumnType("text");
+
+                    b.Property<string>("ProfilePicture")
+                        .HasColumnType("text");
+
+                    b.Property<string>("ProfileVideo")
+                        .HasColumnType("text");
+
+                    b.Property<string[]>("ProgressionIntetions")
+                        .HasColumnType("text[]");
+
+                    b.Property<string[]>("Pros")
+                        .HasColumnType("text[]");
+
+                    b.Property<bool>("SalesCourseSubscription")
+                        .HasColumnType("boolean");
+
+                    b.Property<int>("SalesTurnOver")
+                        .HasColumnType("integer");
+
+                    b.Property<string>("Specialisation")
+                        .HasColumnType("text");
+
+                    b.Property<int?>("TurnoverLastYear")
+                        .HasColumnType("integer");
+
+                    b.Property<string>("UserId")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.HasKey("EmployeeId");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("Accounts");
+
+                    b.HasData(
+                        new
+                        {
+                            EmployeeId = 10,
+                            Age = 28,
+                            City = "Budapest",
+                            DrivingLicence = true,
+                            Education = "Marketing BA",
+                            HasPersonalityTest = true,
+                            IsSubscribed = false,
+                            Languages = new[] { "kinai", "angol" },
+                            ProfilePicture = "https://images.generated.photos/iZOX8m9z2zgSg7_qWRSr4wBWJLfNkbdeofALD6dRIVU/rs:fit:512:512/wm:0.95:sowe:18:18:0.33/Z3M6Ly9nZW5lcmF0/ZWQtcGhvdG9zL3Yz/XzA1NDIxMzguanBn.jpg",
+                            SalesCourseSubscription = true,
+                            SalesTurnOver = 50000000,
+                            Specialisation = "Sales specialist",
+                            UserId = "dummy0"
+                        },
+                        new
+                        {
+                            EmployeeId = 1,
+                            Age = 30,
+                            City = "Budapest",
+                            DrivingLicence = true,
+                            Education = "Marketing BA",
+                            HasPersonalityTest = false,
+                            IsSubscribed = false,
+                            Languages = new[] { "nemet", "angol" },
+                            ProfilePicture = "https://images.generated.photos/DThx55Jct9pbzh0tEWKAH9ilBwpKhHfPL0f0B6umGxU/rs:fit:512:512/wm:0.95:sowe:18:18:0.33/Z3M6Ly9nZW5lcmF0/ZWQtcGhvdG9zL3Yz/XzA4NDk3MjcuanBn.jpg",
+                            SalesCourseSubscription = false,
+                            SalesTurnOver = 30000000,
+                            Specialisation = "Sales Support",
+                            UserId = "dummy1"
+                        },
+                        new
+                        {
+                            EmployeeId = 2,
+                            Age = 34,
+                            City = "Budapest",
+                            DrivingLicence = false,
+                            Education = "Marketing BA",
+                            HasPersonalityTest = false,
+                            IsSubscribed = false,
+                            Languages = new[] { "kinai", "angol, német" },
+                            ProfilePicture = "https://images.generated.photos/1k3lzxgEtWeS2mefKNXprUfn-kPpzyz3QJ0xuizOQrE/rs:fit:512:512/wm:0.95:sowe:18:18:0.33/Z3M6Ly9nZW5lcmF0/ZWQtcGhvdG9zL3Yz/XzA3NzkzMDkuanBn.jpg",
+                            SalesCourseSubscription = true,
+                            SalesTurnOver = 50000000,
+                            Specialisation = "Sales adminisztracio",
+                            UserId = "dummy2"
+                        },
+                        new
+                        {
+                            EmployeeId = 3,
+                            Age = 20,
+                            City = "Budapest",
+                            DrivingLicence = false,
+                            Education = "Marketing BA",
+                            HasPersonalityTest = false,
+                            IsSubscribed = false,
+                            Languages = new[] { "kinai", "angol" },
+                            ProfilePicture = "https://images.generated.photos/jEnG00iXVCxYx24J4dFGMRWTkSaYGOR6-Igumi2VP3w/rs:fit:512:512/wm:0.95:sowe:18:18:0.33/Z3M6Ly9nZW5lcmF0/ZWQtcGhvdG9zL3Yz/XzA5Nzg0MzkuanBn.jpg",
+                            SalesCourseSubscription = false,
+                            SalesTurnOver = 30000000,
+                            Specialisation = "Sales adminisztracio",
+                            UserId = "dummy3"
+                        },
+                        new
+                        {
+                            EmployeeId = 4,
+                            Age = 22,
+                            City = "Budapest",
+                            DrivingLicence = false,
+                            Education = "Marketing BA",
+                            HasPersonalityTest = true,
+                            IsSubscribed = false,
+                            Languages = new[] { "kinai" },
+                            ProfilePicture = "https://images.generated.photos/GmWEUKjveqsM5x3TsJVABoSyjilRB6Tz2Z-Auc9p-8Y/rs:fit:512:512/wm:0.95:sowe:18:18:0.33/Z3M6Ly9nZW5lcmF0/ZWQtcGhvdG9zL3Yz/XzA2MTI4NTcuanBn.jpg",
+                            SalesCourseSubscription = false,
+                            SalesTurnOver = 40000000,
+                            Specialisation = "Sales szaktanacsado",
+                            UserId = "dummy4"
+                        },
+                        new
+                        {
+                            EmployeeId = 5,
+                            Age = 34,
+                            City = "Kecsekemet",
+                            DrivingLicence = true,
+                            Education = "DLA",
+                            HasPersonalityTest = false,
+                            IsSubscribed = false,
+                            Languages = new[] { "angol" },
+                            ProfilePicture = "https://images.generated.photos/qvPRjAxXrZdLdgSDd6yk2I7ni0a1LAwFWZBNfvYNMdo/rs:fit:512:512/wm:0.95:sowe:18:18:0.33/Z3M6Ly9nZW5lcmF0/ZWQtcGhvdG9zL3Yz/XzA4MjM3ODkuanBn.jpg",
+                            SalesCourseSubscription = true,
+                            SalesTurnOver = 50000000,
+                            Specialisation = "Sales specialist",
+                            UserId = "dummy5"
+                        },
+                        new
+                        {
+                            EmployeeId = 6,
+                            Age = 30,
+                            City = "Erd",
+                            DrivingLicence = false,
+                            Education = "Foiskola",
+                            HasPersonalityTest = false,
+                            IsSubscribed = false,
+                            Languages = new[] { "angol" },
+                            ProfilePicture = "https://images.generated.photos/YFrGWaIDMHGU5HoB3GxLFJ_jXTE8S8gpstIs3Pm9dHE/rs:fit:512:512/wm:0.95:sowe:18:18:0.33/Z3M6Ly9nZW5lcmF0/ZWQtcGhvdG9zL3Yz/XzA3ODQ4MzYuanBn.jpg",
+                            SalesCourseSubscription = true,
+                            SalesTurnOver = 30000000,
+                            Specialisation = "Sales Support",
+                            UserId = "dummy6"
+                        },
+                        new
+                        {
+                            EmployeeId = 7,
+                            Age = 19,
+                            City = "Dunaharaszti",
+                            DrivingLicence = true,
+                            Education = "egyetem",
+                            HasPersonalityTest = true,
+                            IsSubscribed = false,
+                            Languages = new[] { "ukran", "angol" },
+                            ProfilePicture = "https://images.generated.photos/aKjcATGNs_-Y5cyzeAdjL3N-cRWqUh7hKjds4pOytgw/rs:fit:512:512/wm:0.95:sowe:18:18:0.33/Z3M6Ly9nZW5lcmF0/ZWQtcGhvdG9zL3Yz/XzA2ODM0NDMuanBn.jpg",
+                            SalesCourseSubscription = false,
+                            SalesTurnOver = 40000000,
+                            Specialisation = "Sales support",
+                            UserId = "dummy7"
                         });
                 });
 
@@ -389,34 +609,13 @@ namespace SalesInMove.Migrations
                         });
                 });
 
-            modelBuilder.Entity("SalesInMove.Models.Account", b =>
-                {
-                    b.HasBaseType("Microsoft.AspNetCore.Identity.IdentityUser");
-
-                    b.Property<string>("FirstName")
-                        .HasColumnType("text");
-
-                    b.Property<string>("LastName")
-                        .HasColumnType("text");
-
-                    b.Property<string>("Password")
-                        .IsRequired()
-                        .HasColumnType("text");
-
-                    b.HasDiscriminator().HasValue("Account");
-                });
-
             modelBuilder.Entity("SalesInMove.Models.User", b =>
                 {
                     b.HasBaseType("Microsoft.AspNetCore.Identity.IdentityUser");
 
-                    b.Property<string>("EmailAddress")
-                        .HasColumnType("text");
-
                     b.Property<string>("Password")
                         .IsRequired()
-                        .HasColumnType("text")
-                        .HasColumnName("User_Password");
+                        .HasColumnType("text");
 
                     b.Property<int>("UserType")
                         .HasColumnType("integer");
@@ -426,14 +625,134 @@ namespace SalesInMove.Migrations
                     b.HasData(
                         new
                         {
+                            Id = "dummy0",
+                            AccessFailedCount = 0,
+                            ConcurrencyStamp = "8b370fff-b4a8-482b-bbf9-777a2ce3d509",
+                            Email = "erzsebetchen@gmail.com",
+                            EmailConfirmed = true,
+                            LockoutEnabled = false,
+                            PhoneNumberConfirmed = false,
+                            SecurityStamp = "5f471b2a-33bc-4b29-88b7-d3f46facd4de",
+                            TwoFactorEnabled = false,
+                            UserName = "Erzsebet Chen",
+                            Password = "erzsebetchen",
+                            UserType = 0
+                        },
+                        new
+                        {
+                            Id = "dummy1",
+                            AccessFailedCount = 0,
+                            ConcurrencyStamp = "8186b950-667b-4f89-a21b-f0922cd51502",
+                            Email = "marjoiretierney@gmail.com",
+                            EmailConfirmed = true,
+                            LockoutEnabled = false,
+                            PhoneNumberConfirmed = false,
+                            SecurityStamp = "b4364d1e-1042-4e75-96a5-bc88764583c7",
+                            TwoFactorEnabled = false,
+                            UserName = "Marjorie Tierney",
+                            Password = "marjoiretierney",
+                            UserType = 0
+                        },
+                        new
+                        {
+                            Id = "dummy2",
+                            AccessFailedCount = 0,
+                            ConcurrencyStamp = "7f4af344-df5c-4b92-8ac0-7a7524e199b1",
+                            Email = "maigriffiths@gmail.com",
+                            EmailConfirmed = true,
+                            LockoutEnabled = false,
+                            PhoneNumberConfirmed = false,
+                            SecurityStamp = "db9f012d-a62e-4164-9bd8-114ddbe5d6ab",
+                            TwoFactorEnabled = false,
+                            UserName = "Mai Griffits",
+                            Password = "maigriffiths",
+                            UserType = 0
+                        },
+                        new
+                        {
+                            Id = "dummy3",
+                            AccessFailedCount = 0,
+                            ConcurrencyStamp = "5b2b719c-0e92-4b70-97a5-b93c5bbcc3eb",
+                            Email = "joannemanning@gmail.com",
+                            EmailConfirmed = true,
+                            LockoutEnabled = false,
+                            PhoneNumberConfirmed = false,
+                            SecurityStamp = "7f1ae2f2-f63f-4326-872e-adce701f1688",
+                            TwoFactorEnabled = false,
+                            UserName = "Joanne Manning",
+                            Password = "joannemanning",
+                            UserType = 0
+                        },
+                        new
+                        {
+                            Id = "dummy4",
+                            AccessFailedCount = 0,
+                            ConcurrencyStamp = "54e11789-e53e-406b-8f9a-3831075d1732",
+                            Email = "keaneboyd@gmail.com",
+                            EmailConfirmed = true,
+                            LockoutEnabled = false,
+                            PhoneNumberConfirmed = false,
+                            SecurityStamp = "b93da66f-dbfc-4713-ae7f-160311181cab",
+                            TwoFactorEnabled = false,
+                            UserName = "Keane Boyd",
+                            Password = "keaneboyd",
+                            UserType = 0
+                        },
+                        new
+                        {
+                            Id = "dummy5",
+                            AccessFailedCount = 0,
+                            ConcurrencyStamp = "3f005699-b324-4c87-8c04-dd90fe583eb0",
+                            Email = "aneekaeaton@gmail.com",
+                            EmailConfirmed = true,
+                            LockoutEnabled = false,
+                            PhoneNumberConfirmed = false,
+                            SecurityStamp = "5ed553c6-07f7-492f-826c-b664b8708143",
+                            TwoFactorEnabled = false,
+                            UserName = "Aneeka Eaton",
+                            Password = "aneekaeaton",
+                            UserType = 0
+                        },
+                        new
+                        {
+                            Id = "dummy6",
+                            AccessFailedCount = 0,
+                            ConcurrencyStamp = "90acaec6-cdb9-4578-a4e8-ba4498e0f8b3",
+                            Email = "bobacosta@gmail.com",
+                            EmailConfirmed = true,
+                            LockoutEnabled = false,
+                            PhoneNumberConfirmed = false,
+                            SecurityStamp = "052cfc7e-5a82-4b00-8a5f-6e2698e25ca1",
+                            TwoFactorEnabled = false,
+                            UserName = "Bob Acosta",
+                            Password = "bobacosta",
+                            UserType = 0
+                        },
+                        new
+                        {
+                            Id = "dummy7",
+                            AccessFailedCount = 0,
+                            ConcurrencyStamp = "5c0d1346-2458-4ec6-b9ae-9cfc770dee96",
+                            Email = "eoinlynn@gmail.com",
+                            EmailConfirmed = true,
+                            LockoutEnabled = false,
+                            PhoneNumberConfirmed = false,
+                            SecurityStamp = "27f803c7-0e93-4e2a-9f82-44d98dc3de98",
+                            TwoFactorEnabled = false,
+                            UserName = "Eoin Lynn",
+                            Password = "eoinlynn",
+                            UserType = 0
+                        },
+                        new
+                        {
                             Id = "0",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "ca4aa081-928d-4045-bfff-513e64448f4c",
+                            ConcurrencyStamp = "2231c4a7-a351-4f8c-973b-6cb6c90fe7c5",
                             Email = "marko@gmail.com",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "218b2118-30b6-49d3-9e1d-bfd0d1be984f",
+                            SecurityStamp = "26b927fe-3ada-45fb-8214-bcedadcd2e08",
                             TwoFactorEnabled = false,
                             Password = "Asd123",
                             UserType = 2
@@ -496,6 +815,17 @@ namespace SalesInMove.Migrations
                     b.HasOne("SalesInMove.Models.User", "User")
                         .WithOne("Company")
                         .HasForeignKey("SalesInMove.Models.Company", "UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("User");
+                });
+
+            modelBuilder.Entity("SalesInMove.Models.Employee", b =>
+                {
+                    b.HasOne("SalesInMove.Models.User", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 

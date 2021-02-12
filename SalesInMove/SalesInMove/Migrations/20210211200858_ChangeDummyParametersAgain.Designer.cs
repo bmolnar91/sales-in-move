@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 using SalesInMove.DatabaseRelated;
@@ -9,9 +10,10 @@ using SalesInMove.DatabaseRelated;
 namespace SalesInMove.Migrations
 {
     [DbContext(typeof(SalesmenDbContext))]
-    partial class SalesmenDbContextModelSnapshot : ModelSnapshot
+    [Migration("20210211200858_ChangeDummyParametersAgain")]
+    partial class ChangeDummyParametersAgain
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -399,7 +401,7 @@ namespace SalesInMove.Migrations
                         {
                             EmployeeId = 1,
                             Age = 30,
-                            City = "Budapest",
+                            City = "DunaHaraszti",
                             DrivingLicence = true,
                             Education = "Marketing BA",
                             HasPersonalityTest = false,
@@ -415,7 +417,7 @@ namespace SalesInMove.Migrations
                         {
                             EmployeeId = 2,
                             Age = 34,
-                            City = "Budapest",
+                            City = "Erd",
                             DrivingLicence = false,
                             Education = "Marketing BA",
                             HasPersonalityTest = false,
@@ -625,12 +627,12 @@ namespace SalesInMove.Migrations
                         {
                             Id = "dummy0",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "8b370fff-b4a8-482b-bbf9-777a2ce3d509",
+                            ConcurrencyStamp = "0c59741f-1836-4410-979d-a281942d03af",
                             Email = "erzsebetchen@gmail.com",
                             EmailConfirmed = true,
                             LockoutEnabled = false,
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "5f471b2a-33bc-4b29-88b7-d3f46facd4de",
+                            SecurityStamp = "804cb020-c4c4-4c67-965e-bf1cc5980b8a",
                             TwoFactorEnabled = false,
                             UserName = "Erzsebet Chen",
                             Password = "erzsebetchen",
@@ -640,12 +642,12 @@ namespace SalesInMove.Migrations
                         {
                             Id = "dummy1",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "8186b950-667b-4f89-a21b-f0922cd51502",
+                            ConcurrencyStamp = "227db717-4813-486d-8424-012dfe90c487",
                             Email = "marjoiretierney@gmail.com",
                             EmailConfirmed = true,
                             LockoutEnabled = false,
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "b4364d1e-1042-4e75-96a5-bc88764583c7",
+                            SecurityStamp = "8f96b94f-dc55-402a-9fb2-090e786daf5d",
                             TwoFactorEnabled = false,
                             UserName = "Marjorie Tierney",
                             Password = "marjoiretierney",
@@ -655,12 +657,12 @@ namespace SalesInMove.Migrations
                         {
                             Id = "dummy2",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "7f4af344-df5c-4b92-8ac0-7a7524e199b1",
+                            ConcurrencyStamp = "e3e21d12-9dc7-4245-b5b9-db32dc997dd0",
                             Email = "maigriffiths@gmail.com",
                             EmailConfirmed = true,
                             LockoutEnabled = false,
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "db9f012d-a62e-4164-9bd8-114ddbe5d6ab",
+                            SecurityStamp = "197f7094-a4ad-4275-a789-645bdb40393a",
                             TwoFactorEnabled = false,
                             UserName = "Mai Griffits",
                             Password = "maigriffiths",
@@ -670,12 +672,12 @@ namespace SalesInMove.Migrations
                         {
                             Id = "dummy3",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "5b2b719c-0e92-4b70-97a5-b93c5bbcc3eb",
+                            ConcurrencyStamp = "7ccb2a94-c1f9-410f-a74b-ae35d193217d",
                             Email = "joannemanning@gmail.com",
                             EmailConfirmed = true,
                             LockoutEnabled = false,
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "7f1ae2f2-f63f-4326-872e-adce701f1688",
+                            SecurityStamp = "eb959440-9c1d-4098-8099-f86a57094e9f",
                             TwoFactorEnabled = false,
                             UserName = "Joanne Manning",
                             Password = "joannemanning",
@@ -685,12 +687,12 @@ namespace SalesInMove.Migrations
                         {
                             Id = "dummy4",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "54e11789-e53e-406b-8f9a-3831075d1732",
+                            ConcurrencyStamp = "dd329bf2-4a67-43e2-8e0a-a0a44faecac4",
                             Email = "keaneboyd@gmail.com",
                             EmailConfirmed = true,
                             LockoutEnabled = false,
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "b93da66f-dbfc-4713-ae7f-160311181cab",
+                            SecurityStamp = "24e27f3b-0652-46bf-8884-6bf26023c217",
                             TwoFactorEnabled = false,
                             UserName = "Keane Boyd",
                             Password = "keaneboyd",
@@ -700,12 +702,12 @@ namespace SalesInMove.Migrations
                         {
                             Id = "dummy5",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "3f005699-b324-4c87-8c04-dd90fe583eb0",
+                            ConcurrencyStamp = "a40f88ad-aa93-41d4-bb57-da9a847895fd",
                             Email = "aneekaeaton@gmail.com",
                             EmailConfirmed = true,
                             LockoutEnabled = false,
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "5ed553c6-07f7-492f-826c-b664b8708143",
+                            SecurityStamp = "9696fa17-4d1a-41e8-aeff-32bafbc75db2",
                             TwoFactorEnabled = false,
                             UserName = "Aneeka Eaton",
                             Password = "aneekaeaton",
@@ -715,12 +717,12 @@ namespace SalesInMove.Migrations
                         {
                             Id = "dummy6",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "90acaec6-cdb9-4578-a4e8-ba4498e0f8b3",
+                            ConcurrencyStamp = "d8fd33e1-9708-4119-80c6-9bb1d21f917e",
                             Email = "bobacosta@gmail.com",
                             EmailConfirmed = true,
                             LockoutEnabled = false,
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "052cfc7e-5a82-4b00-8a5f-6e2698e25ca1",
+                            SecurityStamp = "580808b7-2a0c-49b0-b335-2f323cd7943b",
                             TwoFactorEnabled = false,
                             UserName = "Bob Acosta",
                             Password = "bobacosta",
@@ -730,12 +732,12 @@ namespace SalesInMove.Migrations
                         {
                             Id = "dummy7",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "5c0d1346-2458-4ec6-b9ae-9cfc770dee96",
+                            ConcurrencyStamp = "e179b71e-6fa2-4e33-8cc8-43f262a31c76",
                             Email = "eoinlynn@gmail.com",
                             EmailConfirmed = true,
                             LockoutEnabled = false,
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "27f803c7-0e93-4e2a-9f82-44d98dc3de98",
+                            SecurityStamp = "09f45ba0-76be-4669-aeb0-4230ea494d21",
                             TwoFactorEnabled = false,
                             UserName = "Eoin Lynn",
                             Password = "eoinlynn",
@@ -745,12 +747,12 @@ namespace SalesInMove.Migrations
                         {
                             Id = "0",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "2231c4a7-a351-4f8c-973b-6cb6c90fe7c5",
+                            ConcurrencyStamp = "5fc31cc3-7e54-4fa5-b487-e2e8cb3025be",
                             Email = "marko@gmail.com",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "26b927fe-3ada-45fb-8214-bcedadcd2e08",
+                            SecurityStamp = "1d8fef57-139d-4b55-beb2-b7db3bcc2cda",
                             TwoFactorEnabled = false,
                             Password = "Asd123",
                             UserType = 2

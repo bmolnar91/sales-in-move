@@ -71,6 +71,10 @@ export const SearchEmployees = () => {
         <input name="Education"/>
         <input name="City"/>
         <input name="Languages"/>
+        <label>
+        DrivingLicence
+        </label>
+        <input name="DrivingLicence" type="checkbox"/>
         <button type="submit">Send</button>
       </form>
       <form method="get" action="/api/account/search">

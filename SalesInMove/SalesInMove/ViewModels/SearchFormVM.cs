@@ -4,7 +4,8 @@ namespace SalesInMove.ViewModels
     {
         public string Education { get; set; }
         public string City { get; set; }
+        public string DrivingLicence { get; set; }
         public string[] Languages { get; set; }
-        public bool DrivingLicence { get; set; }
+        public bool HasDrivingLicence { get; set; }
     }
 }

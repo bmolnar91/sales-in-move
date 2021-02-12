@@ -18,7 +18,10 @@ namespace SalesInMove.Services
         }
         public List<EmployeeSearchVM> GetEmployees(SearchFormVM searchForm)
         {
-            IEnumerable<Employee> employees = _empSearchRepo.GetResults(searchForm.Education, searchForm.City, searchForm.Languages);
+
+            searchForm.HasDrivingLicence = this.CheckDrivingLicence(searchForm.DrivingLicence);
+
+            IEnumerable<Employee> employees = _empSearchRepo.GetResults(searchForm.Education, searchForm.City, searchForm.Languages, searchForm.HasDrivingLicence);
             
             //List<EmployeeVM> vMs = new List<EmployeeVM>();
             List<EmployeeSearchVM> empVMs = new List<EmployeeSearchVM>();
@@ -35,6 +38,20 @@ namespace SalesInMove.Services
         public string GetString(SearchFormVM searchForm)
         {
             return _empSearchRepo.GetString(searchForm.Languages);
+        }
+
+        private bool CheckDrivingLicence(string licence)
+        {
+            if(licence == null)
+            {
+                return false;
+            }
+            else if(licence.Equals("on"))
+            {
+                return true;
+            }
+
+            return false;
         }
     }
 }

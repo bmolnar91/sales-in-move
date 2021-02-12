@@ -11,5 +11,7 @@ namespace SalesInMove.DatabaseRelated
         //interface which sqlslaesmenrepository to implement the methods
         Employee GetAccount(string email);
         void AddAccount(Employee account);
+
+        IEnumerable<Employee> GetAllEmployees();
     }
 }

@@ -26,6 +26,11 @@ namespace SalesInMove.DatabaseRelated
             return _context.Accounts.Where(x => x.User.Email.Equals(email)).FirstOrDefault();
         }
 
+        public IEnumerable<Employee> GetAllEmployees()
+        {
+            return _context.Accounts;
+        }
+
         private void Save()
         {
             _context.SaveChanges();

@@ -98,9 +98,17 @@ namespace SalesInMove.Controllers
         }
 
         [HttpGet("search")]
-        public List<EmployeeSearchVM> Search([FromHeader]SearchFormVM datas)
+        public SearchResultVM Search([FromHeader]SearchFormVM datas)
         {
-            return _searchService.GetEmployees(datas);
+            List<EmployeeSearchVM> results = _searchService.GetEmployees(datas);
+            
+            SearchResultVM resultVM = new SearchResultVM
+            {
+                ResultNumber = results.Count(),
+                Results = results
+            };
+
+            return resultVM;
             //return _searchService.GetString(datas);
         }
 

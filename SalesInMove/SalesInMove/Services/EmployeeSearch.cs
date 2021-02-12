@@ -46,7 +46,7 @@ namespace SalesInMove.Services
             {
                 return false;
             }
-            else if(licence.Equals("on"))
+            else if(licence.Equals("van"))
             {
                 return true;
             }

@@ -136,7 +136,7 @@ namespace SalesInMove.DatabaseRelated
                     Age = 20,
                     City = "Budapest",
                     Specialisation = "Sales adminisztracio",
-                    Education = "Egyetem",
+                    Education = "egyetem",
                     Languages = new string[]{ "kinai", "angol" },
                     DrivingLicence = false,
                     SalesCourseSubscription = false,
